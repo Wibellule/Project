@@ -1,0 +1,29 @@
+This plugin adds a select field to your link dialog. 
+
+
+
+[b]License[/b]
+
+Licensed under the terms of the [url=http://www.gnu.org/licenses/gpl.html]GPL[/url].
+
+
+[b]
+Download[/b]
+
+[url=http://]Link to your own pages in link dialog[/url]
+
+
+[b]Installation[/b]
+
+
+
+1. Extract the archiv and copy the "internpage" folder to CKEditors "plugins" folder.
+
+2. In the CKEditor configuration file (config.js) add the following code:
+
+[code]
+config.extraPlugins = 'internpage';
+[/code]
+
+
+3. In pages.php you find an example that outputs a list of files stored in a folder. Change this for your needs.

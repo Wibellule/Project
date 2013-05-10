@@ -1,0 +1,696 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+  <html xmlns="http://www.w3.org/1999/xhtml">
+		<head>
+			<!-- template designed by Marco Von Ballmoos -->
+			<title>Docs For Class ConfigMagik</title>
+			<!--<link rel="stylesheet" href="stylesheet.css" />-->
+			<style>
+				a { color: #000090; text-decoration: none; }
+				a:hover, a:active, a:focus { color: highlighttext; background-color: highlight; text-decoration: none; }
+				
+				body { background: #FFFFFF; }
+				body, table { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 10pt; }
+				
+				a img { border: 0px; }
+				
+				/* Page layout/boxes */
+				
+				.info-box {  }
+				.info-box-title { margin: 1em 0em 0em 0em; font-weight: normal; font-size: 14pt; color: #999999; border-bottom: 2px solid #999999; }
+				.info-box-body { border: 1px solid #999999; padding: .5em; }
+				.nav-bar { font-size: 8pt; white-space: nowrap; text-align: right; padding: .2em; margin: 0em 0em 1em 0em; }
+				
+				.oddrow { background-color: #F8F8F8; border: 1px solid #AAAAAA; padding: .5em; margin-bottom: 1em}
+				.evenrow { border: 1px solid #AAAAAA; padding: .5em; margin-bottom: 1em}
+				
+				.page-body { max-width: 800px; margin: auto; }
+				.tree { white-space: nowrap; font: icon }
+				.tree dd { margin-left: 19px }
+				.tree dl { margin: 0px }
+				.tree-icon { 	vertical-align: middle; border: 0px; margin-right: 3px }
+				
+				/* Index formatting classes */
+				
+				.index-item-body { margin-top: .5em; margin-bottom: .5em}
+				.index-item-description { margin-top: .25em }
+				.index-item-details { font-weight: normal; font-style: italic; font-size: 8pt }
+				.index-letter-section { background-color: #EEEEEE; border: 1px dotted #999999; padding: .5em; margin-bottom: 1em}
+				.index-letter-title { font-size: 12pt; font-weight: bold }
+				.index-letter-menu { text-align: center; margin: 1em }
+				.index-letter { font-size: 12pt }
+				
+				/* Docbook classes */
+				
+				.description {}
+				.short-description { font-weight: bold; color: #666666; }
+				.tags {	padding-left: 0em; margin-left: 3em; color: #666666; list-style-type: square; }
+				.parameters {	padding-left: 0em; margin-left: 3em; color: #014fbe; list-style-type: square; }
+				.redefinitions { font-size: 8pt; padding-left: 0em; margin-left: 2em; }
+				.package { font-weight: bold; }
+				.package-title { font-weight: bold; font-size: 14pt; border-bottom: 1px solid black }
+				.package-details { font-size: 85%; }
+				.sub-package { font-weight: bold; }
+				.tutorial { border-width: thin; border-color: #0066ff; }
+				.tutorial-nav-box { width: 100%; border: 1px solid #999999; background-color: #F8F8F8; }
+				.folder-title { font-style: italic; font-family: Verdana, Arial, Helvetica, sans-serif }
+				
+				/* Generic formatting */
+				
+				.field { font-weight: bold; }
+				.detail { font-size: 8pt; }
+				.notes { font-style: italic; font-size: 8pt; }
+				.separator { background-color: #999999; height: 2px; }
+				.warning {  color: #FF6600; }
+				.disabled { font-style: italic; color: #999999; }
+				
+				/* Code elements */
+				
+				.line-number {  }
+				
+				.class-table { width: 100%; }
+				.class-table-header { border-bottom: 1px dotted #666666; text-align: left}
+				.class-name { color: #0000AA; font-weight: bold; }
+				
+				.method-summary { color: #009000; padding-left: 1em; font-size: 8pt; }
+				.method-header { }
+				.method-definition { margin-bottom: .2em }
+				.method-title { color: #009000; font-weight: bold; }
+				.method-name { font-weight: bold; }
+				.method-signature { font-size: 85%; color: #666666; margin: .5em 0em }
+				.method-result { font-style: italic; }
+				
+				.var-summary { padding-left: 1em; font-size: 8pt; }
+				.var-header { }
+				.var-title { color: #014fbe; margin-bottom: .3em }
+				.var-type { font-style: italic; }
+				.var-name { font-weight: bold; }
+				.var-default {}
+				.var-description { font-weight: normal; color: #000000; }
+				
+				.include-title { color: #014fbe;}
+				.include-type { font-style: italic; }
+				.include-name { font-weight: bold; }
+				
+				.const-title { color: #FF6600; }
+				.const-name { font-weight: bold; }
+				
+				/* Syntax highlighting */
+				
+				.src-code {  }
+				*[class="src-code"] {	line-height : 0.5em }
+				
+				.src-code a:link { padding: 1px; text-decoration: underline; color: #0000DD; }
+				.src-code a:visited { text-decoration: underline; color: #0000DD; }
+				.src-code a:active { background-color: #FFFF66; color: #008000; }
+				.src-code a:hover { background-color: #FFFF66; text-decoration: overline underline; color: #008000; }
+				
+				.src-comm { color: #666666; }
+				.src-id { color: #FF6600; font-style: italic; }
+				.src-inc { color: #0000AA; font-weight: bold; }
+				.src-key { color: #0000AA; font-weight: bold; }
+				.src-num { color: #CC0000; }
+				.src-str { color: #CC0000; }
+				.src-sym { }
+				.src-var { }
+				
+				.src-php { font-weight: bold; }
+				
+				.src-doc { color: #666666; }
+				.src-doc-close-template { color: #666666 }
+				.src-doc-coretag { color: #008000; }
+				.src-doc-inlinetag {}
+				.src-doc-internal {}
+				.src-doc-tag { color: #0080CC; }
+				.src-doc-template { color: #666666 }
+				.src-doc-type { font-style: italic; color: #444444 }
+				.src-doc-var { color: #444444 }
+				
+				.tute-tag { color: #009999 }
+				.tute-attribute-name { color: #0000FF }
+				.tute-attribute-value { color: #0099FF }
+				.tute-entity { font-weight: bold; }
+				.tute-comment { font-style: italic }
+				.tute-inline-tag { color: #636311; font-weight: bold }
+				
+				/* tutorial */
+				
+				.authors {  }
+				.author { font-style: italic; font-weight: bold }
+				.author-blurb { margin: .5em 0em .5em 2em; font-size: 85%; font-weight: normal; font-style: normal }
+				.example { border: 1px dashed #999999; background-color: #EEEEEE; padding: .5em; }
+				*[class="example"] { line-height : 0.5em; }
+				.listing { border: 1px dashed #999999; background-color: #EEEEEE; padding: .5em; white-space: nowrap; }
+				*[class="listing"] { line-height : 0.5em; }
+				.release-info { font-size: 85%; font-style: italic; margin: 1em 0em }
+				.ref-title-box {  }
+				.ref-title {  }
+				.ref-purpose { font-style: italic; color: #666666 }
+				.ref-synopsis {  }
+				.title { font-weight: bold; border-bottom: 1px solid #999999; color: #999999;  }
+				.cmd-synopsis { margin: 1em 0em }
+				.cmd-title { font-weight: bold }
+				.toc { margin-left: 2em; padding-left: 0em }
+				
+
+			</style>
+			<meta http-equiv='Content-Type' content='text/html; charset=iso-8859-1'/>
+		</head>
+		<body>
+			<div class="page-body">			
+<h2 class="class-name">ConfigMagik</h2>
+
+<a name="sec-description"></a>
+<div class="info-box">
+	<div class="info-box-title">Description</div>
+	<div class="nav-bar">
+					<span class="disabled">Description</span> |
+													<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+						|											<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+						
+					</div>
+	<div class="info-box-body">
+        		<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">ConfigMagik - Ini-File Reader and Writer (ConfigKeeper)
+	<p>
+		This class is meant to read and write configuration files in the .ini format.<br />
+		<br />
+		<ul>It provides features like:
+		<li>- Load and save ini style configuration files</li>
+		<li>- Optional automatic synchronization by updating the file after each change of a key value</li>
+		<li>- Protected mode for securing your sensitive data from being accessed directly from the Web</li>
+		<li>- Supports for sections</li>
+		<li>- Add and remove key value pairs</li>
+		<li>- Add and remove sections</li>
+		<li>- Easy and well documented API</li>
+		</ul>
+	</p>
+</p>
+	<ul class="tags">
+				<li><span class="field">version:</span> 0.01</li>
+				<li><span class="field">author:</span> BennyZaminga &lt;<a href="mailto:bzaminga@web.de">bzaminga@web.de</a>&gt;</li>
+			</ul>
+		<p class="notes">
+			Located in <a class="field" href="_ConfigMagik_class_ConfigMagik_php.html">/class.ConfigMagik.php</a> (line <span class="field">7</span>)
+		</p>
+		
+				
+		<pre></pre>
+	
+			</div>
+</div>
+
+
+
+	<a name="sec-var-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variable Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+						<span class="disabled">Vars</span> (<a href="#sec-vars">details</a>)
+							| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+								</div>
+		<div class="info-box-body">
+			<div class="var-summary">
+								<div class="var-title">
+					
+					<span class="var-type">mixed</span>
+					<a href="#$ERRORS" title="details" class="var-name">$ERRORS</a>
+				</div>
+								<div class="var-title">
+					
+					<span class="var-type">mixed</span>
+					<a href="#$PATH" title="details" class="var-name">$PATH</a>
+				</div>
+								<div class="var-title">
+					
+					<span class="var-type">mixed</span>
+					<a href="#$PROCESS_SECTIONS" title="details" class="var-name">$PROCESS_SECTIONS</a>
+				</div>
+								<div class="var-title">
+					
+					<span class="var-type">mixed</span>
+					<a href="#$PROTECTED_MODE" title="details" class="var-name">$PROTECTED_MODE</a>
+				</div>
+								<div class="var-title">
+					
+					<span class="var-type">mixed</span>
+					<a href="#$SYNCHRONIZE" title="details" class="var-name">$SYNCHRONIZE</a>
+				</div>
+								<div class="var-title">
+					
+					<span class="var-type">mixed</span>
+					<a href="#$VARS" title="details" class="var-name">$VARS</a>
+				</div>
+							</div>
+		</div>
+	</div>
+
+	<a name="sec-method-summary"></a>
+	<div class="info-box">
+		<div class="info-box-title">Method Summary</span></div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+																		<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+				 
+				|
+						<span class="disabled">Methods</span> (<a href="#sec-methods">details</a>)
+		</div>
+		<div class="info-box-body">			
+			<div class="method-summary">
+								
+				<div class="method-definition">
+					
+											<span class="method-result">void</span>
+										<a href="#ConfigMagik" title="details" class="method-name">ConfigMagik</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">null</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$synchronize</span> = <span class="var-default">false</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$process_sections</span> = <span class="var-default">false</span>])
+									</div>
+								
+				<div class="method-definition">
+					
+											<span class="method-result">mixed</span>
+										<a href="#get" title="details" class="method-name">get</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+									</div>
+								
+				<div class="method-definition">
+					
+											<span class="method-result">bool</span>
+										<a href="#load" title="details" class="method-name">load</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">null</span>])
+									</div>
+								
+				<div class="method-definition">
+					
+											<span class="method-result">bool</span>
+										<a href="#removeKey" title="details" class="method-name">removeKey</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+									</div>
+								
+				<div class="method-definition">
+					
+											<span class="method-result">bool</span>
+										<a href="#removeSection" title="details" class="method-name">removeSection</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span>)
+									</div>
+								
+				<div class="method-definition">
+					
+											<span class="method-result">bool</span>
+										<a href="#save" title="details" class="method-name">save</a>
+											([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">null</span>])
+									</div>
+								
+				<div class="method-definition">
+					
+											<span class="method-result">bool</span>
+										<a href="#set" title="details" class="method-name">set</a>
+											(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+									</div>
+							</div>
+		</div>
+	</div>		
+
+	<a name="sec-vars"></a>
+	<div class="info-box">
+		<div class="info-box-title">Variables</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+										<a href="#sec-var-summary">Vars</a> (<span class="disabled">details</span>)
+						
+			
+										| 
+									<a href="#sec-method-summary">Methods</a> (<a href="#sec-methods">details</a>)
+							
+					</div>
+		<div class="info-box-body">
+			<a name="var$ERRORS" id="$ERRORS"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$ERRORS</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">13</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+		
+		
+
+</div>
+<a name="var$PATH" id="$PATH"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$PATH</span>
+			 = <span class="var-default">null</span>			(line <span class="line-number">8</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+		
+		
+
+</div>
+<a name="var$PROCESS_SECTIONS" id="$PROCESS_SECTIONS"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$PROCESS_SECTIONS</span>
+			 = <span class="var-default">false</span>			(line <span class="line-number">10</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+		
+		
+
+</div>
+<a name="var$PROTECTED_MODE" id="$PROTECTED_MODE"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$PROTECTED_MODE</span>
+			 = <span class="var-default">true</span>			(line <span class="line-number">11</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+		
+		
+
+</div>
+<a name="var$SYNCHRONIZE" id="$SYNCHRONIZE"><!-- --></A>
+<div class="evenrow">
+
+	<div class="var-header">
+		
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$SYNCHRONIZE</span>
+			 = <span class="var-default">false</span>			(line <span class="line-number">9</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+		
+		
+
+</div>
+<a name="var$VARS" id="$VARS"><!-- --></A>
+<div class="oddrow">
+
+	<div class="var-header">
+		
+		<span class="var-title">
+			<span class="var-type">mixed</span>
+			<span class="var-name">$VARS</span>
+			 = <span class="var-default">array()</span>			(line <span class="line-number">12</span>)
+		</span>
+	</div>
+
+	<!-- ========== Info from phpDoc block ========= -->
+	
+	
+		
+		
+
+</div>
+
+						
+		</div>
+	</div>
+	
+	<a name="sec-methods"></a>
+	<div class="info-box">
+		<div class="info-box-title">Methods</div>
+		<div class="nav-bar">
+			<a href="#sec-description">Description</a> |
+															<a href="#sec-var-summary">Vars</a> (<a href="#sec-vars">details</a>)
+														<a href="#sec-method-summary">Methods</a> (<span class="disabled">details</span>)
+						
+		</div>
+		<div class="info-box-body">
+			<A NAME='method_detail'></A>
+<a name="methodConfigMagik" id="ConfigMagik"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		
+		<span class="method-title">Constructor ConfigMagik</span> (line <span class="line-number">25</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Constructor of this class.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns nothing, like any other constructor-method ;) .</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">void</span>
+		<span class="method-name">
+			ConfigMagik
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">null</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$synchronize</span> = <span class="var-default">false</span>], [<span class="var-type">bool</span>&nbsp;<span class="var-name">$process_sections</span> = <span class="var-default">false</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Path to ini-file to load at startup.<br><b>NOTE:</b> If the ini-file can not be found it will try to generate one there.  By not specifing an ini-file the configuration will be kept in-memory till  you call save().</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$synchronize</span><span class="var-description">: TRUE for constant synchronisation of memory and file (default is disabled).</span>			</li>
+					<li>
+				<span class="var-type">bool</span>
+				<span class="var-name">$process_sections</span><span class="var-description">: TRUE to enable sections in your ini-file (default is disabled).</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodget" id="get"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		
+		<span class="method-title">get</span> (line <span class="line-number">52</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Get value of given key from given section (if any used).</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns the value or NULL on failure.  <br><b>NOTE:</b>   An empty directive will always return an empty string.          Only when directive can not be found, NULL is returned.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">mixed</span>
+		<span class="method-name">
+			get
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span> = <span class="var-default">null</span>], [<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: Key or name of directive to set in current config.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$section</span><span class="var-description">: Name of section to set key/value-pair therein.  <br><b>NOTE:</b>   Section must only be specified when sections are enabled in your ini-file.</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodload" id="load"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		
+		<span class="method-title">load</span> (line <span class="line-number">163</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Loads and parses ini-file from filesystem.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns TRUE on success, FALSE on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			load
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Optional path to ini-file to load.  <br><b>NOTE:</b>   When not provided, path passed to constructor will be used.</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodremoveKey" id="removeKey"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		
+		<span class="method-title">removeKey</span> (line <span class="line-number">100</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Remove a directive (key and it's value) from current config.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns TRUE on success, FALSE on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			removeKey
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: Name of key to remove form current config.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$section</span><span class="var-description">: Optional name of section (if used).</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodremoveSection" id="removeSection"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		
+		<span class="method-title">removeSection</span> (line <span class="line-number">140</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Remove entire section from current config.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns TRUE on success, FALSE on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			removeSection
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span>)
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$section</span><span class="var-description">: Name of section to remove.</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodsave" id="save"><!-- --></a>
+<div class="oddrow">
+	
+	<div class="method-header">
+		
+		<span class="method-title">save</span> (line <span class="line-number">188</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Writes ini-file to filesystem as file.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns TRUE on success, FALSE on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			save
+		</span>
+					([<span class="var-type">string</span>&nbsp;<span class="var-name">$path</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$path</span><span class="var-description">: Optional path to write ini-file to.  <br><b>NOTE:</b>   When not provided, path passed to constructor will be used.</span>			</li>
+				</ul>
+		
+		
+	</div>
+<a name="methodset" id="set"><!-- --></a>
+<div class="evenrow">
+	
+	<div class="method-header">
+		
+		<span class="method-title">set</span> (line <span class="line-number">71</span>)
+	</div> 
+	
+	<!-- ========== Info from phpDoc block ========= -->
+<p class="short-description">Sets a given value (in given section, if any specified) in current configuration.</p>
+	<ul class="tags">
+				<li><span class="field">return:</span> Returns TRUE on success, FALSE on failure.</li>
+			</ul>
+	
+	<div class="method-signature">
+		<span class="method-result">bool</span>
+		<span class="method-name">
+			set
+		</span>
+					(<span class="var-type">string</span>&nbsp;<span class="var-name">$key</span>, <span class="var-type">mixed</span>&nbsp;<span class="var-name">$value</span>, [<span class="var-type">string</span>&nbsp;<span class="var-name">$section</span> = <span class="var-default">null</span>])
+			</div>
+	
+			<ul class="parameters">
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$key</span><span class="var-description">: Key or name of directive to set in current config.</span>			</li>
+					<li>
+				<span class="var-type">mixed</span>
+				<span class="var-name">$value</span><span class="var-description">: Value of directive to set in current config.</span>			</li>
+					<li>
+				<span class="var-type">string</span>
+				<span class="var-name">$section</span><span class="var-description">: Name of section to set key/value-pair therein.  <b>NOTE:</b>   Section must only be specified when sections are enabled in your ini-file.</span>			</li>
+				</ul>
+		
+		
+	</div>
+						
+		</div>
+	</div>
+
+	
+	<p class="notes" id="credit">
+		Documentation generated on Thu, 15 Jul 2004 11:04:14 +0200 by BennyZaminga using parts of <a href="http://www.phpdoc.org" target="_blank">phpDocumentor 1.3.0RC3</a>
+	</p>
+	</div></body>
+</html>

@@ -1,0 +1,85 @@
+<?php
+class AppController extends Controller{
+	function index(){
+	// pr($this->request);
+	// Router::promote(3);
+	// pr($this->request);
+	}
+
+	function backoffice_index(){
+		$modelName = $this->request->modelName;
+	
+		$d['elementsPerPage'] = 10;
+		$d['page'] = $this->request->page;
+		$limit = $d['elementsPerPage']*($d['page']-1);
+		
+		$conditions = array( 'online' => 1);
+		$d[$this->request->controller] = $this->$modelName->find( array( 'limit' => $limit.', '.$d['elementsPerPage'] ) );
+		$d['nbElem'] = $this->$modelName->findCount( $conditions );
+		$d['nbPages'] = ceil($d['nbElem'] / $d['elementsPerPage']);
+		$this->set($d);
+		// pr($modelName);
+	}
+	
+	function backoffice_add($id = null){
+		$modelName = $this->request->modelName;
+		if($this->request->data){
+			
+			//////////////////////////////
+			// Code validation François //
+			//////////////////////////////
+			if($this->$modelName->validates($this->request->data)){
+				$this->$modelName->save($this->request->data);
+				Session::setFlash('Element ajouté avec succes','success');
+				$this->redirect('/adm/'.lcfirst($modelName).'s'.'/index');
+			}else{
+				$errors = $this->$modelName->errors;
+				$message = "Erreur dans le formulaire<br/><br/>";
+				foreach($errors as $k => $v){
+					$message .= $v."<br />";
+				}
+				Session::setFlash($message,'error');
+			}			
+			//////////////////////////////
+		}	
+	}
+	
+	function backoffice_edit($id){	
+		$modelName = $this->request->modelName;
+		if($this->request->data){
+			//////////////////////////////
+			// Code validation François //
+			//////////////////////////////
+			if($this->$modelName->validates($this->request->data)){
+				// $this->request->data['type'] = 'post';
+				$this->$modelName->save($this->request->data);
+				Session::setFlash('Element modifié avec succes','success');
+				// pr($this->request->data);
+				// die();
+				$this->redirect('/adm/'.lcfirst($modelName).'s'.'/index');
+			}else{
+				$errors = $this->$modelName->errors;
+				$message = "Erreur dans le formulaire<br/><br/>";
+				foreach($errors as $k => $v){
+					$message .= $v."<br />";
+				}
+				Session::setFlash($message,'error');
+			}			
+			//////////////////////////////
+		}			
+		//Injection de l'id dans les données
+		$this->request->data = $this->$modelName->findFirst(array('conditions' => array( 'id' => $id )));
+		$d['id'] = $this->request->data['id'];
+		$this->set($d);
+	}
+	
+	function backoffice_delete($id){
+		$modelName = $this->request->modelName;
+		if($this->$modelName->delete($id)){
+			Session::setFlash('L\'enregistrement a été supprimé','success');
+		}else{
+			Session::setFlash('L\'enregistrement n\'a pas été supprimé','error');
+		}
+		$this->redirect('adm/'.lcfirst($modelName).'s'.'/index');
+	}
+}
