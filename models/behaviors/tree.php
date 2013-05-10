@@ -139,7 +139,7 @@
 	 * @param $datas tableau des données à sauvegarder
 	 * @param $forceInsert booleen permettant même si le champ id est présent dans le tableau de forcer l'insert
 	 */
-	function add($datas){
+	function add($datas, $forceInsert = false){
 	
 		if(!is_array($datas)) { return false; } //Si les données à sauvegarder ne sont pas sous forme de tableau on retourne faux
 		
@@ -183,7 +183,7 @@
 		$datas['rgt'] = $parent_data['rgt'] + 1;
 		$datas['level'] = $parent_data['level'] + 1;
         
-		parent::save($datas); //Sauvegarde des données en faisant appel à la fonction parente
+		parent::save($datas, $forceInsert); //Sauvegarde des données en faisant appel à la fonction parente
 		
 		// pr($parent_id);
 		// pr($datas);
@@ -228,24 +228,19 @@
         	//On va extraire l'arbre, le supprimer puis l'insérer à la bonne place
             //On récupère également le noeud parent          
             $curTree = $this->getChildren($id, true, false);
-            pr($curTree);
+            // pr($curTree);
             //Pour chacun des éléments de l'arbre on va supprimer les valeurs lft, rgt et level car elles vont être recalculée lors de l'ajout
             foreach($curTree as $key => $node) { unset($curTree[$key]['lft'], $curTree[$key]['rgt'], $curTree[$key]['level']); }
                         
             $curTree[0]['parent_id'] = $datas['parent_id']; //On affecte au noeud parent la nouvelle valeur du champ parent
-            // $this->delete($id); //On supprime le noeud
-			
+            $this->delete($id); //On supprime le noeud
                         
             //On va parcourir le tableau d'éléments du noeud courant
-			// pr($curTree[0]);
-            foreach($curTree as $key => $node){ 
-				// $this->add($node);//Ajouter le noeud dans l'arbre 
-				pr($node);
-				pr($key);
-			} 
+            foreach($curTree as $key => $node){ $this->add($node, true); }//Ajouter le noeud dans l'arbre 
+
         }
 		
-		die();
+		// die();
     }  
 
 	/**
@@ -306,8 +301,6 @@
 		$pre->execute($d);
 		$d = array();
 		$pre = null;
-		    
-		// die();
 			
         return true;
     }

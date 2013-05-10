@@ -263,7 +263,8 @@ class Model{
 		public function delete($id){
 			if(is_array($id)){ $idConditions = " IN (".implode(',',$id).')';} else { $idConditions = " = ".$id; }
 			$sql = "DELETE FROM ".$this->table." WHERE ".$this->primaryKey.$idConditions.";";
-			$queryResult = $this->db->query($sql);
+			// $queryResult = $this->db->query($sql);
+			$queryResult = $this->query($sql);
 			return $queryResult;
 		}
 		
@@ -274,7 +275,7 @@ class Model{
 		* @param array $datas contient l'ensemble des index et valeurs de $_POST
 		* @access public
 		*/
-		public function save($datas){
+		public function save($datas, $forceInsert = false){
 		
 			$key = $this->primaryKey;//Récupération de la clé primaire //On testera la clé pour déterminer l'insert ou l'update
 			$fieldsToSave = array();//Tableau des champs à sauvegarder
@@ -320,7 +321,7 @@ class Model{
 				}
 			}
 			
-			if($action == 'insert'){
+			if($action == 'insert' && $forceInsert = true){
 				$sql = 'INSERT INTO '.$this->table.' SET '.implode(',',$fieldsToSave).';';
 			}else{
 				$sql = 'UPDATE '.$this->table.' SET '.implode(',',$fieldsToSave).' WHERE '.$key.'=:'.$key.';';
