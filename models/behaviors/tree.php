@@ -230,20 +230,31 @@
         //On récupère la valeur lft et rgt du noeud courant
         $curLft = $tree[$id]['lft'];
         $curRgt = $tree[$id]['rgt'];
+		
+		// pr($curLft);
+		// pr($curRgt);
         
         //Sélection des identifiants des catégories à supprimer        
         //On formate le tout sous forme de tableau puis on fait appel à la fonction parente pour la suppression
         $sql = 'SELECT id FROM '.$this->table.' WHERE lft >= '.$curLft.' AND rgt <= '.$curRgt;
+		
+		pr($sql);
+		
         $idToDeleteTMP = $this->query($sql, true);
+		// pr($idToDeleteTMP);
+		
         $idToDelete = array();
         foreach($idToDeleteTMP as $v) { $idToDelete[] = $v['id']; }
         
         parent::delete($idToDelete);
+		
+		// pr($idToDelete);
                 
         $diff = $tree[$id]['rgt'] - $tree[$id]['lft'] + 1; //On calcule la différence des deux bornes supprimées
         
         //Rebouchage des trous
         $sql = 'UPDATE '.$this->table.' SET lft = lft - :diff WHERE lft >= :lft'; //Préparation de la requête
+		// pr($sql);
         $d[":lft"] = $curLft;
         $d[":diff"] = $diff;
         $pre = $this->db->prepare($sql);
@@ -252,13 +263,16 @@
 		$pre = null;
                 
         $sql = 'UPDATE '.$this->table.' SET rgt = rgt - :diff WHERE rgt >= :rgt';
+		// pr($sql);
         $d[":rgt"] = $curRgt;
         $d[":diff"] = $diff;
         $pre = $this->db->prepare($sql);
 		$pre->execute($d);
 		$d = array();
 		$pre = null;
-		        
+		    
+		// die();
+			
         return true;
     }
 	

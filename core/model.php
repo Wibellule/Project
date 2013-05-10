@@ -251,21 +251,21 @@ class Model{
 		* @param int $id Id de l'enregistrement
 		* @return retourne le resultat de la requete
 		*/
-		public function delete($id)
-		{
-			$sql = "DELETE FROM ".$this->table." WHERE ".$this->primaryKey." = $id";
-			return $this->db->query($sql);
-		}
+		// public function delete($id)
+		// {
+			// $sql = "DELETE FROM ".$this->table." WHERE ".$this->primaryKey." = $id";
+			// return $this->db->query($sql);
+		// }
 		
 		/**
 		* Fonction DELETE FRANçOIS
 		*/
-		// public function delete($id){
-			// if(is_array($id)){ $idConditions = " IN (".implode(',',$id).')';} else { $idConditions = " = ".$id; }
-			// $sql = "DELETE FROM ".$this->table." WHERE ".$this->primaryKey.$idConditions.";";
-			// $queryResult = $this->db->query($sql);
-			// return $queryResult;
-		// }
+		public function delete($id){
+			if(is_array($id)){ $idConditions = " IN (".implode(',',$id).')';} else { $idConditions = " = ".$id; }
+			$sql = "DELETE FROM ".$this->table." WHERE ".$this->primaryKey.$idConditions.";";
+			$queryResult = $this->db->query($sql);
+			return $queryResult;
+		}
 		
 		/**
 		* Fonction save, permet d'effectuer la sauvegarde des données
