@@ -56,7 +56,7 @@ class CategoriesController extends AppController{
 		$d['nbPages'] = ceil($d['nbElem'] / $d['elementsPerPage']);
 		$this->set($d);
 		
-		// pr($this->Categorie->getTree());
+		pr($this->Categorie->getTreeList());
 		// die();
 	}
 	
@@ -90,8 +90,8 @@ class CategoriesController extends AppController{
 	*/
 	function getMenu(){
 		// $this->loadModel('Categorie');
-		$conditions = array('online' => 1);
-		$pages = $this->Categorie->find(array('conditions' => $conditions,'order'=>'id'));
+		$conditions = array('conditions' => 'type != 3','online' => 1,'order'=>'id');
+		$pages = $this->Categorie->find($conditions);
 		$this->set('pages', $pages);
 		return $pages;
 	}

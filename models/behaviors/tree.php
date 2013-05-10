@@ -55,6 +55,31 @@
 	}
 	
 	/**
+	 * Cette fonction permet de récupérer les données sous forme de tableau pouvant être utilisé pour une liste déroulante
+	 *
+	 * @param 	boolean $withRacine 	Indique si il faut ou non renvoyer le noeud racine
+	 * @param 	varchar $req	 		Paramètres de recherche
+	 * @access	public
+	 * @author	koéZionCMS
+	 * @return 	array Liste de tous les noeuds de l'arbre
+	 * @version 0.1 - 27/12/2011 by FI
+	 * @version 0.2 - 23/02/2012 by FI - Rajout du passage de conditions pour la récupération de l'arbre
+	 * @version 0.3 - 16/05/2012 by FI - Modification de la récupération des catégories suite à la mise en place de la gestion des sites - Récupération en premier de la catégorie parente du site et suppression de celle-ci du résultat
+	 */    
+		function getTreeList($withRacine = true, $req = array()) {
+			
+			$arbre = $this->getTree($req); //Récupération de l'arbre       	
+			$racine = each($arbre); //Récupération de la racine de l'arbre
+			if($racine['value']['type'] == 3) { unset($arbre[$racine['key']]); } //On supprime maintenant l'élément correspondant à la racine du site
+			
+			if($withRacine) { $retour = array($racine['key'] => 'Racine'); }
+			else { $retour = array(); }
+			
+			foreach($arbre as $v) { $retour[$v['id']] = str_repeat('__', $v['level']).' '.$v['name']; }       	
+			return $retour;
+		}  
+	
+	/**
 	 * Cette fonction permet de récupérer les enfants de l'élément dont l'identifiant est passé en paramètre
 	 *
 	 * @param 	integer $id 		Indentifiant de l'élément parent
@@ -69,7 +94,7 @@
 	 * @version 0.2 - 28/02/2012 by FI - Rajout du niveau à retourner
 	 */    
     function getChildren($id, $withParent = false, $reverse = true, $level = null, $conditions = array()){
-		
+
 		$id = (int)$id; //On force le type de l'identifiant
         $tree = $this->getTree($conditions); //Récupération de l'arbre
         
@@ -79,7 +104,7 @@
 		$childs = array(); //Liste des enfants à retourner
         
 		if(!$withParent && isset($tree[$id])) unset($tree[$id]);
-					
+
 		//On va parcourir l'arbre
         foreach($tree as $node) {
         	
@@ -114,7 +139,7 @@
 	 * @param $datas tableau des données à sauvegarder
 	 * @param $forceInsert booleen permettant même si le champ id est présent dans le tableau de forcer l'insert
 	 */
-	function add($datas, $forceInsert = false){
+	function add($datas){
 	
 		if(!is_array($datas)) { return false; } //Si les données à sauvegarder ne sont pas sous forme de tableau on retourne faux
 		
@@ -158,7 +183,7 @@
 		$datas['rgt'] = $parent_data['rgt'] + 1;
 		$datas['level'] = $parent_data['level'] + 1;
         
-		parent::save($datas, $forceInsert); //Sauvegarde des données en faisant appel à la fonction parente
+		parent::save($datas); //Sauvegarde des données en faisant appel à la fonction parente
 		
 		// pr($parent_id);
 		// pr($datas);
@@ -190,9 +215,12 @@
 		if(!$id || !isset($tree[$id])) { return false; } //Si l'identifiant n'existe par ou que le noeud n'est pas dans l'arbre on retourne faux
         
         $current = $tree[$id]; //Récupération du noeud courant
-        
+        // pr($current);
         parent::save($datas); //Sauvegarde des données en faisant appel à la fonction parente      
-        
+        // pr($id);
+		
+		// pr($datas['parent_id']);
+		
         //Si le champ parent_id est présent dans les données à mettre à jour
         //ET que la valeur courante du champ parent_id et différente de celle postée
         if(isset($datas['parent_id']) && $current['parent_id'] != $datas['parent_id']) {
@@ -200,16 +228,24 @@
         	//On va extraire l'arbre, le supprimer puis l'insérer à la bonne place
             //On récupère également le noeud parent          
             $curTree = $this->getChildren($id, true, false);
-            
+            pr($curTree);
             //Pour chacun des éléments de l'arbre on va supprimer les valeurs lft, rgt et level car elles vont être recalculée lors de l'ajout
             foreach($curTree as $key => $node) { unset($curTree[$key]['lft'], $curTree[$key]['rgt'], $curTree[$key]['level']); }
                         
             $curTree[0]['parent_id'] = $datas['parent_id']; //On affecte au noeud parent la nouvelle valeur du champ parent
-            $this->delete($id); //On supprime le noeud
+            // $this->delete($id); //On supprime le noeud
+			
                         
             //On va parcourir le tableau d'éléments du noeud courant
-            foreach($curTree as $key => $node) { $this->add($node, true); } //Ajouter le noeud dans l'arbre
+			// pr($curTree[0]);
+            foreach($curTree as $key => $node){ 
+				// $this->add($node);//Ajouter le noeud dans l'arbre 
+				pr($node);
+				pr($key);
+			} 
         }
+		
+		die();
     }  
 
 	/**
@@ -238,7 +274,7 @@
         //On formate le tout sous forme de tableau puis on fait appel à la fonction parente pour la suppression
         $sql = 'SELECT id FROM '.$this->table.' WHERE lft >= '.$curLft.' AND rgt <= '.$curRgt;
 		
-		pr($sql);
+		// pr($sql);
 		
         $idToDeleteTMP = $this->query($sql, true);
 		// pr($idToDeleteTMP);

@@ -170,6 +170,23 @@ class Form{
 				if(count($options['datas']) == 0){ $html .= '<option></option>';}
 				$html .= '</select>';
 			break;
+			case 'selectList':
+				$html .= '<select id="'.$inputIdText.'" name="'.$name.'"';
+				
+				//Gestion des champs multiple
+				if(isset($options['multiple']) && $options['multiple']){ $html .= 'multiple="multiple"';}
+				$html .= $attr.'>';
+				
+				//Gestion des options
+				foreach($options['datas'] as $k => $v){
+					if($value == $k){ $selected=' selected="selected"'; } else { $selected = ''; }
+					$html .= '<option value="'.$k.'"'.$selected.'>'.$v.'</option>';
+				}
+				
+				//Hack pour éviter une erreur si l'option est vide
+				if(count($options['datas']) == 0){ $html .= '<option></option>';}
+				$html .= '</select>';
+			break;
 			case 'submit':
 				$html .= '<input type="submit" name="'.$name.'" id="'.$inputIdText.'Id">';
 			break;
