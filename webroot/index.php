@@ -1,5 +1,5 @@
 <?php
-$debut = microtime(true);
+// $debut = microtime(true);
 ////////////////////////////////////////////////////////////
 //   DEFINITION DES VARIABLES GLOBALES DE L'APPLICATION   //
 ////////////////////////////////////////////////////////////
@@ -7,6 +7,7 @@ define('DS', DIRECTORY_SEPARATOR); //Définition du séparateur dans le cas ou l
 define('WEBROOT', dirname(__FILE__)); //Chemin absolu vers le dossier webroot
 define('ROOT', dirname(WEBROOT)); //Chemin absolu vers le dossier racine du site
 define('CORE', ROOT.DS.'core'); //Chemin relatif vers le coeur de l'application
+define('BEHAVIORS', ROOT.DS.'models'.DS.'behaviors'); //Chemin relatif vers les comportements d'un model
 
 
 // define('BASE_URL', dirname(dirname($_SERVER['SCRIPT_NAME']))); //
@@ -38,7 +39,7 @@ $dispatcher = new Dispatcher();
 // pr($baseUrl);
 
 ?>
-<div style="position:fixed;bottom:0; background:#f15a23;color:#FFF;
+<!--<div style="position:fixed;bottom:0; background:#900;color:#FFF;
 line-height:30px;height:30px;left:0;right:0;padding-left:10px;">
-<?php echo 'Page g&eacute;n&eacute;r&eacute;e en : '.round(microtime(true) - $debut,5).' secondes';?>
-</div>
+<?php //echo 'Page g&eacute;n&eacute;r&eacute;e en : '.round(microtime(true) - $debut,5).' secondes';?>
+</div>-->

@@ -4,25 +4,6 @@
  */
 class Config extends Model {
 	
-	// var $validate = array(
-		// 'localhost.host' => array(
-			// 'rule' 		=> 'notEmpty',
-			// 'message' 	=> "Vous devez indiquer un host"
-		// ),
-		// 'localhost.database' => array(
-			// 'rule'		=> 'notEmpty',
-			// 'message'	=> "Vous devez indiquer une base de donnée"
-		// ),
-		// 'localhost.login' => array(
-			// 'rule'		=> 'notEmpty',
-			// 'message'	=> "Le login ne doit pas être vide"
-		// ),
-		// 'online.host' => array(
-			// 'rule'		=> 'notEmpty',
-			// 'message'	=> "Vous devez indiquer une base de donnée"
-		// ),
-	// );
-	
 /**
  * Tableau contenant l'ensemble des configurations à insérer lors de la création d'une nouvelle langue
  *

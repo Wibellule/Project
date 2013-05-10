@@ -1,15 +1,22 @@
 <?php
 class Model{
 
-	public $conf = 'default';
+	public $conf = 'localhost';
 	public $db;
 	public $table = false;
 	public $primaryKey = 'id';
 	static $connections = array();
 
 	public function __construct(){
-		require ROOT.DS.'configs'.DS.'database.php';
-		$conf = $databases[$this->conf];
+		// require ROOT.DS.'configs'.DS.'database.php';
+		require_once ROOT.DS.'core'.DS.'ConfigMagik'.DS.'class.ConfigMagik.php';
+		$config = new ConfigMagik( ROOT.DS.'configs'.DS.'database.ini', true, true);
+		
+		//Test si une configuration de type localhost ou non, et charge la bonne section du database.ini
+		$httpHost = $_SERVER["HTTP_HOST"];
+		if($httpHost == 'localhost' || $httpHost == '127.0.0.1') { $section = 'localhost'; } else { $section = 'online'; }
+		//Charge la bonne section
+		$conf = $config->get($section);
 		
 		//Si le nom de la table n'est pas défini on va l'initialiser automatiquement
 		if($this->table === false){
@@ -17,12 +24,14 @@ class Model{
 			$this->table = $tableName;//Affectation de la variable de classe
 		}
 		$this->dbName = $conf['database'];
+		
 		//On test qu'une connexion ne soit pas déjà active
 		//Pour éviter de se connecter deux fois à la base de données
 		if(isset(Model::$connections[$this->conf])) {
 			$this->db = Model::$connections[$this->conf];
 			return true;
 		}
+		
 		//On va tenter de se connecter à la base de données
 		try {
 			//Création d'un objet PDO
@@ -153,7 +162,6 @@ class Model{
 			//EXECUTION DE LA REQUETE
 			$pre = $this->db->prepare($sql);
 			// pr($sql);
-			// die();
 			$pre->execute();
 			return $pre->fetchAll($type);
 		}
@@ -365,7 +373,6 @@ class Model{
 			}
 			//On injecte une variable dans l'objet
 			$this->errors = $errors;
-
 			//Cas le plus récurrent
 			if(empty($errors)){
 				return true;

@@ -1,11 +1,23 @@
 ﻿<?php
-class Categorie extends Model{
+/* inclusion du comportement */
+include_once(BEHAVIORS.DS.'tree.php');
+
+class Categorie extends Tree{
 
 	//PRINCIPE DE FONCTIONS PARENTES
 	// public function __construct(){
 		// parent::__construct();
 	// }
+	
+	//Variable pour l'affichage des erreurs sur les champs
 	public $msgerr;
+	
+	/**
+	 * Tableau contenant l'ensemble des champs à valider
+	 *
+	 * @var 	array
+	 * @access 	public
+	 */	
 	
 	var $validate = array(
 		'name' => array(
@@ -15,15 +27,16 @@ class Categorie extends Model{
 		'slug' => array(
 			'rule'		=> '([a-z0-9\-]+)',
 			'message'	=> "Le slug de l'Url n'est pas valide"
-		)/*,
-		'content' => array(
-			'rule'		=> 'notEmpty',
-			'message'	=> "Le contenu ne doit pas être vide"
-		),
-		'online' => array(
-			'rule' => 'notEmpty',
-			'message' => "Le contenu ne doit pas être vide"
-		)*/
+		)
 	);
+	
+	/**
+	 * Fonction qui doit vérifier qu'une catégorie ne doit pas être son propre parent
+	 */
+	 
+	 
+	/**
+	 * Fonction qui doit vérifier qu'une catégorie n'est pas redirigée vers elle même ( boucle infinie )
+	 */
 	
 }

@@ -5,9 +5,11 @@ $description_for_layout = $project['name'];
 $var_p = array();
 $var_p = $project['content'];
 $var_p = explode('/>',$project['content']);
+foreach($var_p as $k => $v){
+	$var_p[$k] = $v.'/>';
+}
 $var_p = array_slice($var_p, 0, -1);
 // var_dump($var_p);
-
 ?>
 <article class="single-project">
 
@@ -35,10 +37,9 @@ $var_p = array_slice($var_p, 0, -1);
 		<div class="image-gallery-slider">
 
 			<ul>
-				<?php foreach($var_p as $k => $v){?>
+				<?php foreach($link['img'] as $k => $v){ ?>
 				<li>
-					<?php $link = explode('<img alt="" src="', $v); $link = implode('',$link); $link = substr($link, 0, strpos($link, '" '));?>
-					<a href="<?php echo $link;?>" class="single-image" title="<?php echo $project['name'];?>" rel="single-project">
+					<a href="<?php echo $link['link'][$k];?>" class="single-image" title="#" rel="single-project">
 						<?php echo $v.'/>';?>
 					</a>
 				</li>
@@ -53,7 +54,7 @@ $var_p = array_slice($var_p, 0, -1);
 
 		<h4>Description</h4>
 
-		<p><?php echo $project['description'];?></p>
+		<?php echo $project['description'];?>
 
 	</div><!-- end #sidebar -->
 	

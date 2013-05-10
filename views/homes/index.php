@@ -36,7 +36,7 @@
 </ul><!-- end .projects-carousel -->
 
 <h6 class="section-title">Derniers articles</h6>
-
+<?php //pr($posts);?>
 	<ul class="post-carousel">
 	
 		<?php 

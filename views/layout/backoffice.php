@@ -18,7 +18,6 @@
 		  <li><a href="<?php echo Router::url('adm/projects/index');?>" title=""><i class="icon-file"></i>&nbsp;Projets</a></li>
 		  <li><a href="<?php echo Router::url('adm/typeposts/index');?>" title=""><i class="icon-file"></i>&nbsp;Type d'articles</a></li>
 		  <li><a href="<?php echo Router::url('adm/typeprojects/index');?>" title=""><i class="icon-file"></i>&nbsp;Type de projets</a></li>
-		  <li><a href="<?php echo Router::url('adm/configs/backoffice_database_liste');?>" title=""><i class="icon-file"></i>&nbsp;Configuration</a></li>
 		  <li><a href="<?php echo Router::url('users/logout');?>" title=""><i class="icon-ban-circle"></i>&nbsp;Déconnexion</a></li>
 		</ul>
 		<?php echo $content_for_layout;?>

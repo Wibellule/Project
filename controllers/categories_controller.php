@@ -41,6 +41,12 @@ class CategoriesController extends AppController{
 		$this->set('categorie',$d);
 	}
 	
+	function backoffice_index(){
+		parent::backoffice_index();
+		// pr($this->Categorie->getTree());
+		// die();
+	}
+	
 	/**
 	* Fonction qui récupère les élements du menu à inclure dans la view
 	*/

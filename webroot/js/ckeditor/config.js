@@ -9,7 +9,7 @@ CKEDITOR.editorConfig = function( config )
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	CKEDITOR.config.autoParagraph = false;
-	CKEDITOR.config.extraPlugins = 'video,internpage';
+	CKEDITOR.config.extraPlugins = 'video';
 	// config.toolbar = 'video';
 	
 	//Définition de la barre de menu
@@ -28,6 +28,6 @@ CKEDITOR.editorConfig = function( config )
 		{ name: 'styles',      items : [ 'Styles','Format','Font','FontSize' ] },
 		{ name: 'colors',      items : [ 'TextColor','BGColor' ] },
 		{ name: 'tools',       items : [ 'Maximize', 'ShowBlocks','-','About' ] },
-	    { name: 'Video',	   items : [ 'Video'] }
+	    { name: 'Video',    items : [ 'Video'] }
 	];	
 };

@@ -17,6 +17,8 @@
 	
 		<?php include(FRONTOFFICE.DS.'layout'.DS.'header.php');?>
 		
+		<?php //include(FRONTOFFICE.DS.'layout'.DS.'menu.php');?>
+		
 		<section id="content" class="container clearfix">
 			
 			<?php echo $content_for_layout; ?>
