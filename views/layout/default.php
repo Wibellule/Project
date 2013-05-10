@@ -10,14 +10,12 @@
 	<title>Home - SmartStart</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
-    <?php include(FRONTOFFICE.DS.'layout'.DS.'css.php');?>
-    <?php include(FRONTOFFICE.DS.'layout'.DS.'js.php');?>
+    <?php $this->element(FRONTOFFICE.DS.'layout'.DS.'css.php');?>
+    <?php $this->element(FRONTOFFICE.DS.'layout'.DS.'js.php');?>
 </head>
-	<body>
-	
-		<?php include(FRONTOFFICE.DS.'layout'.DS.'header.php');?>
+	<body>		
 		
-		<?php //include(FRONTOFFICE.DS.'layout'.DS.'menu.php');?>
+		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'header.php', array('pages' => $pages));?>
 		
 		<section id="content" class="container clearfix">
 			
@@ -25,9 +23,9 @@
 		
 		</section>
 		
-		<?php include(FRONTOFFICE.DS.'layout'.DS.'footer.php');?>
+		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'footer.php');?>
 		
-		<?php include(FRONTOFFICE.DS.'layout'.DS.'js_2.php');?>
+		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'js_2.php');?>
 		
 	</body>
 </html>

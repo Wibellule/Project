@@ -151,6 +151,7 @@ class Controller{
     		foreach($vars as $k => $v) { $this->vars[$k] = $v; } 
     	}    	
 		extract($this->vars);//Passe les variables à la vue
+		// pr($this->vars);
 		include($chemin);//Fait l'inclusion du fichier
 	}
 }
