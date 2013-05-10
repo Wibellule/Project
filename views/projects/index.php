@@ -25,7 +25,7 @@
 	
 		<article class="one-fourth" data-categories="<?php prTab($projects['project'][$i]['type']);?>">
 		
-			<a class="single-image" href="<?php //$project[$i]['thumbnail'];?>" title="">
+			<a class="single-image" href="<?php prTab($link[$i][0]);?>" title="">
 			
 				<?php prTab($projects['project'][$i]['thumbnail']);?>
 				

@@ -3,7 +3,7 @@ $title_for_layout = 'Liste des articles';
 $description_for_layout = 'Liste des articles';
 ?>
 <?php 
-	include(FRONTOFFICE.DS.'msg_flash'.DS.'message_flash.php');
+	$this->element(FRONTOFFICE.DS.'msg_flash'.DS.'message_flash.php');
 ?>
 <header class="page-header">
 		<h1 class="page-title">Bienvenue sur notre blog</h1>
@@ -46,4 +46,4 @@ $description_for_layout = 'Liste des articles';
 	
 </section>
 
-<?php include(FRONTOFFICE.DS.'post'.DS.'menu_blog.php');?>
+<?php $this->element(FRONTOFFICE.DS.'post'.DS.'menu_blog.php');?>

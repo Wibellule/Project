@@ -60,7 +60,7 @@ class ProjectsController extends AppController{
 		$d['type'] = $this->Typeproject->find();
 		
 		// var_dump($d['project']);
-		
+		$tab = array();
 		foreach($d['project'] as $k => $v){
 			// var_dump($v);
 			$link = $v['content'];
@@ -69,16 +69,18 @@ class ProjectsController extends AppController{
 			// var_dump($link);
 			$link = implode('', $link);
 			// var_dump($link);
-			$link = explode('" style="width: 220px; height: 140px;" />',$link);
+			$link = explode('" />',$link);
 			// var_dump($link);
 			$link = array_slice($link, 0, -1);
 			// var_dump($link);
+			$tab[$k] = $link;
 		}
-		var_dump($link);
+		// var_dump($tab);
 		
 		$this->set('nbProjects', $d['nbProjects']);
 		$this->set('projects',$d);
 		$this->set('type',$d['type']);
+		$this->set('link',$tab);
 	}
 	
 	function backoffice_index(){
