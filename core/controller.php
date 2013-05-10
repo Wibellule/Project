@@ -141,9 +141,15 @@ class Controller{
 	/**
 	* Fonction qui permet d'inclure un élement html au sein d'une vue, d'un layout etc ...
 	* @chemin varchar chemin vers l'élement html
+	* @version 0.1 - 05/06/13
+	* @version 0.2 - 10/06/13
 	* @todo gérer directement l'accès aux élements - 06/05/13
 	*/
-	function element($chemin){
+	function element($chemin, $vars = null){
+		if(isset($vars) && !empty($vars)) { 
+    		
+    		foreach($vars as $k => $v) { $this->vars[$k] = $v; } 
+    	}    	
 		extract($this->vars);//Passe les variables à la vue
 		include($chemin);//Fait l'inclusion du fichier
 	}
