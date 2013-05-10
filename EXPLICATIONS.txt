@@ -1,0 +1,14 @@
+activation de la réécriture d'url
+on demande de tout rediriger vers le dossier webroot
+--> (.*) : 
+		* : 0 ou plusieurs fois
+		. : n'importe quel caractère
+
+$1 -> récupérer la chaine matchée
+
+[L] derniere regle a utiliser
+
+--> normalement uniquement avec ce fichier il y a une boucle infinie car dans /webroot/... ca matche avec la regle
+il faut donc mettre en place un autre htaccess dans le dossier webroot
+
+---------------------------------------
