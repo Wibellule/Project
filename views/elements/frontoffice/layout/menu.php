@@ -1,4 +1,5 @@
-﻿<nav id="main-nav">
+﻿<?php //pr($menuGeneral);?>
+<nav id="main-nav">
 	<ul>
 	  <li class="current"><a href="<?php echo router::url('/');?>" data-description="Tout commence ici">Accueil</a></li>
 	  <li><a href="<?php echo router::url('portefolio');?>" data-description="Tous nos projets">Portefolio</a></li>

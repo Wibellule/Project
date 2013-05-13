@@ -1,9 +1,11 @@
 <?php
 class AppController extends Controller{
 	function index(){
-	// pr($this->request);
-	// Router::promote(3);
-	// pr($this->request);
+		// pr($this->request);
+		// Router::promote(3);
+		// pr($this->request);
+		// $menu = $this->_get_website_menu();
+		// $this->set('menuGeneral', $menu);
 	}
 
 	function backoffice_index(){
@@ -82,4 +84,6 @@ class AppController extends Controller{
 		}
 		$this->redirect('adm/'.lcfirst($modelName).'s'.'/index');
 	}
+	
+	   
 }

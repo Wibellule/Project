@@ -14,7 +14,7 @@
     <?php $this->element(FRONTOFFICE.DS.'layout'.DS.'js.php');?>
 </head>
 	<body>		
-		
+		<?php //pr($menuGeneral);?>
 		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'header.php', array('pages' => $pages));?>
 		
 		<section id="content" class="container clearfix">

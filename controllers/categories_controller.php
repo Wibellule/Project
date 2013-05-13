@@ -25,6 +25,9 @@ class CategoriesController extends AppController{
 		
 		//On envoi les variables à la vue
 		$this->set('categorie', $post);
+		// $menu = parent::_get_website_menu();
+		// $this->set('menuGeneral', $menu);
+		// pr($menu);
 		// pr($this->request);
 		// pr($post);
 	}
@@ -87,16 +90,36 @@ class CategoriesController extends AppController{
 		}
 	}
 	
+	function _get_website_menu(){
+		parent::_get_website_menu();
+	}
+	
 	/**
 	* Fonction qui récupère les élements du menu à inclure dans la view
 	*/
 	function getMenu(){
-		// $this->loadModel('Categorie');
+		$this->loadModel('Categorie');
 		$conditions = array('conditions' => 'type != 3','online' => 1,'order'=>'id');
-		$pages = $this->Categorie->find($conditions);
+		$pages = $this->Categorie->find($conditions);		
 		$this->set('pages', $pages);
 		return $pages;
 	}
+	
+	/**
+	 * Fonction qui récupère le menu du site
+	 * @return $menuGeneral array contient les catégories
+	 * @access private
+	 * @version 0.1 13/05/13
+	 */
+	// function _get_website_menu() {
+    	
+		//Récupération du menu général
+		// $this->loadModel('Categorie');
+		// $req = array('conditions' => array('online' => 1, 'type' => 1));
+		// $menuGeneral = $this->Categorie->getTreeRecursive($req);
+		// pr($menuGeneral);
+    	// return $menuGeneral;
+    // }    
 
 
 }
