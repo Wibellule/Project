@@ -234,7 +234,9 @@
                         
             $curTree[0]['parent_id'] = $datas['parent_id']; //On affecte au noeud parent la nouvelle valeur du champ parent
             $this->delete($id); //On supprime le noeud
-                        
+                   
+			// pr($curTree);
+				   
             //On va parcourir le tableau d'éléments du noeud courant
             foreach($curTree as $key => $node){ $this->add($node, true); }//Ajouter le noeud dans l'arbre 
 

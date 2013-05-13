@@ -273,6 +273,7 @@ class Model{
 		* Selon les cas un insert ou un update
 		* On travaille avec les requetes préparées de PDO
 		* @param array $datas contient l'ensemble des index et valeurs de $_POST
+		* @param $forceInsert boolean sert pour forcer l'ajout de donnée ( RI )
 		* @access public
 		*/
 		public function save($datas, $forceInsert = false){
@@ -284,8 +285,9 @@ class Model{
 			//Permet de connaitre le type de requete à effectuer pour deux choses
 			//--> Savoir quelle requete lancer INSERT ou UPDATE
 			//--> Savoir comment renvoyer l'id
+			//--> Ajout de la condition !$forceInsert pour la RI
 			//Dans ce cas on est sur de l'update (car clé pas vide)
-			if(isset($datas[$key]) && !empty($datas[$key])){
+			if(isset($datas[$key]) && !empty($datas[$key]) && !$forceInsert){
 				$action = 'update';//Définition de l'action
 				$returnId = $datas[$key];//Récupération de la valeur de la clé primaire
 				//Notation PDO
@@ -310,9 +312,11 @@ class Model{
 			}
 			
 			//Par d'accolade que s'il y a une seule instruction
-			if(isset($datas[$key])) unset($datas[$key]);//Comme la clé est présente par défaut, on l'enlève pour éviter des erreurs
+			if(isset($datas[$key]) && !$forceInsert) unset($datas[$key]);
+			//Comme la clé est présente par défaut, on l'enlève pour éviter des erreurs
 			//à faire avant le foreach sinon génère des erreurs
 			//Il faut supprimer du tableau des données la clé primaire si celle ci est définie
+			//Ajout de la condition !$forceInsert pour gérer l'id correctement sur la RI
 			
 			foreach($datas as $k => $v){//On parcours $datas
 				if(in_array($k, $this->shema())){//On test si la clé est présente dans le schema
@@ -321,7 +325,7 @@ class Model{
 				}
 			}
 			
-			if($action == 'insert' && $forceInsert = true){
+			if($action == 'insert'){
 				$sql = 'INSERT INTO '.$this->table.' SET '.implode(',',$fieldsToSave).';';
 			}else{
 				$sql = 'UPDATE '.$this->table.' SET '.implode(',',$fieldsToSave).' WHERE '.$key.'=:'.$key.';';
