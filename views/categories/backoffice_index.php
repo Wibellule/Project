@@ -1,15 +1,5 @@
 ﻿<div class="page-header">
-	<?php 
-		$messageFlash = Session::read('Flash');
-		if($messageFlash){
-			echo "<div class='alert alert-".Session::read('Flash.type')."'>";
-			echo Session::read('Flash.message').'</div>';
-		}
-		Session::delete('Flash');
-		// pr($_SESSION);
-
-	?>
-	
+	<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
 	<?php $controllerData = $this->request->controller; //pr($controllerData);?>
 	<h1>Liste des pages</h1>
 	<h3><?php echo "Total de pages: ".$nbElem;?></h3>

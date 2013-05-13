@@ -57,6 +57,8 @@ class CategoriesController extends AppController{
 		$this->set($d);
 		
 		pr($this->Categorie->getTreeList());
+		// pr($this->Categorie->getPath(3,'varchar'));
+		pr($this->Categorie->getTreeRecursive());
 		// die();
 	}
 	

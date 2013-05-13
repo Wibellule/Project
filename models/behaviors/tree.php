@@ -77,7 +77,25 @@
 			
 			foreach($arbre as $v) { $retour[$v['id']] = str_repeat('__', $v['level']).' '.$v['name']; }       	
 			return $retour;
-		}  
+		} 
+
+	/**
+	 * Cette fonction permet de récupérer l'arbre sous forme de parents/enfants
+	 *
+	 * @param 	array 	$req 		Liste des paramètres à prendre en compte pour la recherche
+	 * @param 	integer $parentId 	Identifiant de l'élément parent
+	 * @return 	array Arbre
+	 * @access	public
+	 * @author	koéZionCMS
+	 * @version 0.1 - 01/01/2012 by FI
+	 * @version 0.2 - 23/02/2012 by FI - Modification de la structure de la fonction pour gérer d'un coté l'identifiant du parent et de l'autre les conditions supplémentaires
+	 * @version 0.2 - 13/04/2012 by FI - Modification de l'ordre et de la structure des paramètres
+	 */    
+		function getTreeRecursive($req = array(), $parentId = null) {
+
+			$this->_recursive($req, $parentId);
+			return $this->displayTree;    	
+		}    
 	
 	/**
 	 * Cette fonction permet de récupérer les enfants de l'élément dont l'identifiant est passé en paramètre
@@ -307,6 +325,88 @@
         return true;
     }
 	
+	/**
+	 * Cette fonction permet de récupérer le chemin d'un noeud
+	 * Fonction pratique pour la mise en place du fil d'ariane
+	 *
+	 * @param 	integer 	$childrenId Identifiant du noeud 
+	 * @param 	varchar 	$type Type de retour souhaité (array dans son fonctionnement normal, varchar si on l'utilise dans la fonction récursive)
+	 * @return	mixed	Soit un tableau, soit une chaine de caractères
+	 * @access	public
+	 * @author	koéZionCMS
+	 * @version 0.1 - 01/01/2012 by FI
+	 * @version 0.2 - 13/04/2012 by FI - Modification des conditions de recherche
+	 * @version 0.3 - 16/05/2012 by FI - Modification de la récupération des catégories suite à la mise en place de la gestion des sites - On ne récupère pas les catégories de type 3
+	 */    
+		function getPath($childrenId, $type = 'array') {
+			
+			$children = $this->getTree(array('conditions' => array('id' => $childrenId))); //Récupération de l'enfant    	
+			$children = $children[$childrenId]; //Récupération de l'enfant
+
+			$req = array('moreConditions' => "lft<".$children['lft']." AND rgt>".$children['rgt']." AND type != 3"); //Conditions de recherche
+			$node = $this->getTree($req); //On va récupérer les menus
+			
+			if($type == 'array') {
+				
+				if(!empty($node)) return array_merge($node, array($childrenId => $children));
+				else return array(0 => $children);
+				
+			//Utilisé pour la génération de la fonction récursive pour la mise en place de l'arbre    		
+			} else if($type == 'varchar') {
+
+				if(!empty($node)) {
+					
+					$path = array_merge($node, array($childrenId => $children)); //Path du noeud
+					$return = ''; //Variable de retour
+					foreach($path as $k => $v) { //Parcours des noeuds
+
+						if($v['level'] > 1) { $return .= 'children.'; } //Si le level est > 0 on est sur un noeud enfant
+						$return .= $v['id'].'.'; 
+					}
+					
+					$return = substr($return, 0, strlen($return) - 1); //Suppression du dernier .
+					return $return; //On retourne les données
+				} else {
+					
+					return $childrenId; //On retourne l'identifiant du noeud par défaut
+				} 
+			}
+		}
+		
+	/**
+	 * Cette fonction est utilisée pour mettre en place l'arbre avec toutes les dépendances parents/enfants
+	 *
+	 * @param 	array 	$req 		paramètres de recherche
+	 * @param 	integer $parentId 	Identifiants de l'élement parent
+	 * @access	public
+	 * @author	koéZionCMS
+	 * @version 0.1 - 01/01/2012 by FI
+	 * @version 0.2 - 23/02/2012 by FI - Modification de la structure de la fonction pour gérer d'un coté l'identifiant du parent et de l'autre les conditions supplémentaires 
+	 * @version 0.3 - 16/05/2012 by FI - Modification de la récupération des catégories suite à la mise en place de la gestion des sites - Récupération en premier de la catégorie parente du site 
+	 */    
+		function _recursive($req = array(), $parentId = null) {
+						
+			//Récupération de l'indentifiant de la catégorie racine du site
+			$racineConditions = array('conditions' => array('type' => 3, 'online' => 1));
+			$racine = $this->findFirst($racineConditions);
+			$racineId = $racine['id'];
+			
+			if(empty($parentId)) { $req['conditions']['parent_id'] = $racineId; }
+			else { $req['conditions']['parent_id'] = $parentId; }
+					
+			$nodes = $this->getTree($req); //On va récupérer les menus
+			foreach($nodes as $k => $v) { //On parcours l'ensemble de ces menus
+				
+				$path = $this->getPath($v['id'], 'varchar'); //On récupère le path    		
+				$this->displayTree = Set::insert($this->displayTree, $path, $v); //On insère l'élément courant dans l'arbre
+				
+				//Pour savoir si le noeud courant à des enfants il suffit de faire 
+				//la différence entre la borne doite et la borne gauche si cette
+				//valeur est > 1 il y à des enfants    		
+				$diff = $v['rgt'] - $v['lft'];    		
+				if($diff > 1) { $this->_recursive($req, $v['id']); } //On relance la fonction
+			}
+		}
 	
 	
 	
