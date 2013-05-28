@@ -23,6 +23,10 @@ class PostsController extends AppController{
 		$d['typeposts'] = $this->Typepost->find();
 		$this->set('post', $post);
 		$this->set($d);
+		
+		/* menu */
+		$menu = $this->_get_website_menu();
+		$this->set('menuGeneral', $menu);
 	}
 
 	function index($tag = null){
@@ -42,6 +46,9 @@ class PostsController extends AppController{
 		$this->loadModel('Typepost');
 		$d['typeposts'] = $this->Typepost->find();
 		$this->set($d);
+		
+		$menu = $this->_get_website_menu();
+		$this->set('menuGeneral', $menu);
 	}
 	
 	function backoffice_add(){

@@ -46,6 +46,10 @@ class ProjectsController extends AppController{
 		
 		//On envoi les variables à la vue
 		$this->set('project', $post);
+		
+		/* menu */
+		$menu = $this->_get_website_menu();
+		$this->set('menuGeneral', $menu);
 	}
 
 	function index(){		
@@ -81,6 +85,9 @@ class ProjectsController extends AppController{
 		$this->set('projects',$d);
 		$this->set('type',$d['type']);
 		$this->set('link',$tab);
+		
+		$menu = $this->_get_website_menu();
+		$this->set('menuGeneral', $menu);
 	}
 	
 	function backoffice_index(){

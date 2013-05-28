@@ -8,7 +8,7 @@ class Controller{
 	private $rendered = false;
 	
 	var $helpers = array(
-		'Form'
+		'Form','Html'
 	);
 	
 	/**

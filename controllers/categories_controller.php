@@ -25,11 +25,31 @@ class CategoriesController extends AppController{
 		
 		//On envoi les variables à la vue
 		$this->set('categorie', $post);
-		// $menu = parent::_get_website_menu();
-		// $this->set('menuGeneral', $menu);
-		// pr($menu);
-		// pr($this->request);
-		// pr($post);
+		
+		/** Affichage du menu **/
+		$menu = $this->_get_website_menu();
+		$this->set('menuGeneral', $menu);
+		
+		/** Pour le cas de la redirection **/
+		if($post['redirection_category_id'] != 0) {
+			
+			//Cas particulier la redirection vers la home page
+			if($post['redirection_category_id'] == -1) { $redirectUrl = '/'; } 
+			else {				
+			
+				$redirectId = $post['redirection_category_id']; //Identifiant de la catégorie de redirection
+				$redirectConditions = array('fields' => array('slug'), 'conditions' => array('id' => $redirectId)); //Conditions de recherche
+				$redirectCategory = $this->Categorie->findFirst($redirectConditions); //Récupération des données de la catégorie
+				$redirectSlug = $redirectCategory['slug']; //Récupération du slug
+				$redirectUrl = "categories/view/id:$redirectId/slug:".$redirectSlug; //On lance la redirection
+			}
+			
+			if($post['redirection_category_id'] == -2) {$redirectUrl = 'blog';}
+			if($post['redirection_category_id'] == -3) {$redirectUrl = 'portefolio';}
+			
+			$this->redirect($redirectUrl, 301); //On lance la redirection
+		}		
+		
 	}
 
 	function index(){
@@ -42,6 +62,7 @@ class CategoriesController extends AppController{
 		$d['nbPosts'] = $this->Categorie->findCount( $conditions );
 		$d['nbPages'] = ceil($d['nbPosts'] / $d['elementsPerPage']);
 		$this->set('categorie',$d);
+		
 	}
 	
 	function backoffice_index(){
@@ -55,14 +76,18 @@ class CategoriesController extends AppController{
 			'order' => 'lft'
 		);
 		$d['categories'] = $this->Categorie->find($conditions);		
+		$d['titre'] = $this->Categorie->getTreeList(false);		
 		$d['nbElem'] = $this->Categorie->findCount('type != 3');
 		$d['nbPages'] = ceil($d['nbElem'] / $d['elementsPerPage']);
 		$this->set($d);
 		
-		pr($this->Categorie->getTreeList());
+		
+		// pr($this->Categorie->getTreeList(false));
 		// pr($this->Categorie->getPath(3,'varchar'));
-		pr($this->Categorie->getTreeRecursive());
+		// pr($this->Categorie->getTreeRecursive());
 		// die();
+		$menu = $this->_get_website_menu();
+		$this->set('menuGeneral', $menu);
 	}
 	
 	function backoffice_add($id = null){
@@ -90,9 +115,9 @@ class CategoriesController extends AppController{
 		}
 	}
 	
-	function _get_website_menu(){
-		parent::_get_website_menu();
-	}
+	// function _get_website_menu(){
+		// parent::_get_website_menu();
+	// }
 	
 	/**
 	* Fonction qui récupère les élements du menu à inclure dans la view
@@ -100,6 +125,7 @@ class CategoriesController extends AppController{
 	function getMenu(){
 		$this->loadModel('Categorie');
 		$conditions = array('conditions' => 'type != 3','online' => 1,'order'=>'id');
+		// $conditions = array('online' => 1, 'type' => 1,'order'=>'id');
 		$pages = $this->Categorie->find($conditions);		
 		$this->set('pages', $pages);
 		return $pages;

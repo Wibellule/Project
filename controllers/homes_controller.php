@@ -26,6 +26,9 @@ class HomesController extends AppController{
 		$d['posts'] = $this->Post->find(array('conditions' => $conditions,'order'=>'id', 'limit' => $limit.', '.$d['elem']));
 		$this->set('posts', $d['posts']);
 		
+		/* Génération du menu */
+		$menu = $this->_get_website_menu();
+		$this->set('menuGeneral', $menu);
 		
 		return($d);
 	}

@@ -85,5 +85,35 @@ class AppController extends Controller{
 		$this->redirect('adm/'.lcfirst($modelName).'s'.'/index');
 	}
 	
+	/**
+	 * Cette fonction permet de récupérer le menu
+	 *
+	 * @param 	integer $websiteId Identifiant du site Internet
+	 * @return 	array 	Liste des catégories
+	 * @access 	protected
+	 * @author 	koéZionCMS
+	 * @version 0.1 - 03/05/2012 by FI
+	 */       
+    // protected function _get_website_menu($websiteId) {
+    protected function _get_website_menu() {
+    	
+    	// $cacheFolder 	= TMP.DS.'cache'.DS.'variables'.DS.'Categories'.DS;
+    	// $cacheFile 		= "website_menu_".$websiteId;
+    	
+    	// $menuGeneral = Cache::exists_cache_file($cacheFolder, $cacheFile);
+    	
+    	// if(!$menuGeneral) {
+    	
+    		//Récupération du menu général
+    		$this->loadModel('Categorie');
+    		$req = array('conditions' => array('online' => 1, 'type' => 1));
+    		$menuGeneral = $this->Categorie->getTreeRecursive($req);
+    		
+    		// Cache::create_cache_file($cacheFolder, $cacheFile, $menuGeneral);
+    	// }
+    	// pr($menuGeneral);
+    	return $menuGeneral;
+    }       
+	
 	   
 }
