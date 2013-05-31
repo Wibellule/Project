@@ -95,7 +95,7 @@ class AppController extends Controller{
 	 * @version 0.1 - 03/05/2012 by FI
 	 */       
     // protected function _get_website_menu($websiteId) {
-    protected function _get_website_menu() {
+    protected function _get_website_menu($level = null) {
     	
     	// $cacheFolder 	= TMP.DS.'cache'.DS.'variables'.DS.'Categories'.DS;
     	// $cacheFile 		= "website_menu_".$websiteId;
@@ -105,10 +105,18 @@ class AppController extends Controller{
     	// if(!$menuGeneral) {
     	
     		//Récupération du menu général
-    		$this->loadModel('Categorie');
-    		$req = array('conditions' => array('online' => 1, 'type' => 1));
-    		$menuGeneral = $this->Categorie->getTreeRecursive($req);
     		
+    		
+			if($level){
+				$this->loadModel('Categorie');
+				$req = array('conditions' => array('online' => 1, 'type' => 1,'level' => $level));
+				$menuGeneral = $this->Categorie->getTreeRecursive($req);
+			}else{
+				$this->loadModel('Categorie');
+				$req = array('conditions' => array('online' => 1, 'type' => 1));
+				$menuGeneral = $this->Categorie->getTreeRecursive($req);
+			}
+			
     		// Cache::create_cache_file($cacheFolder, $cacheFile, $menuGeneral);
     	// }
     	// pr($menuGeneral);

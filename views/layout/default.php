@@ -1,4 +1,4 @@
-﻿<?php $pages = $this->requestAction('categories','getMenu');?>
+﻿<?php $menuFooter = $this->requestAction('categories','getMenuFooter',1);?>
 <!DOCTYPE html>
 <!--[if IE 7]>                  <html class="ie7 no-js" lang="fr">     <![endif]-->
 <!--[if lte IE 8]>              <html class="ie8 no-js" lang="fr">     <![endif]-->
@@ -15,7 +15,7 @@
 </head>
 	<body>		
 		<?php //pr($menuGeneral);?>
-		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'header.php', array('pages' => $pages));?>
+		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'header.php');?>
 		
 		<section id="content" class="container clearfix">
 			
@@ -23,7 +23,7 @@
 		
 		</section>
 		
-		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'footer.php');?>
+		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'footer.php', array('menuFooter' => $menuFooter));?>
 		
 		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'js_2.php');?>
 		

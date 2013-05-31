@@ -134,18 +134,15 @@ class CategoriesController extends AppController{
 	/**
 	 * Fonction qui récupère le menu du site
 	 * @return $menuGeneral array contient les catégories
-	 * @access private
+	 * @access protected
 	 * @version 0.1 13/05/13
 	 */
-	// function _get_website_menu() {
-    	
-		//Récupération du menu général
-		// $this->loadModel('Categorie');
-		// $req = array('conditions' => array('online' => 1, 'type' => 1));
-		// $menuGeneral = $this->Categorie->getTreeRecursive($req);
-		// pr($menuGeneral);
-    	// return $menuGeneral;
-    // }    
+	function getMenuFooter($level=null) {
+		$this->loadModel('Categorie');
+		$req = array('conditions' => array('online' => 1, 'type' => 1,'level' => $level));
+		$menuFooter = $this->Categorie->getTreeRecursive($req);
+		return $menuFooter;
+    }    
 
 
 }

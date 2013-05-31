@@ -3,13 +3,10 @@
 		<div class="three-fourth">
 			<nav id="footer-nav" class="clearfix">
 				<ul>
-					<li class="current"><a href="<?php echo router::url('/');?>" data-description="Tout commence ici">Accueil</a></li>
-					<li><a href="<?php echo router::url('portefolio');?>" data-description="Tous nos projets">Portefolio</a></li>
-					<li><a href="<?php echo router::url('blog');?>" data-description="Actualités">Blog</a></li>
-					<?php foreach($pages as $p){ ?>
+					<?php foreach($menuFooter as $v){ ?>
 					<li>
-						<a href="<?php echo router::url('categories/view/id:'.$p['id'].'/slug:'.$p['slug']);?>" title="<?php echo $p['name'];?>" data-description="<?php echo $p['name'];?>">
-							<?php echo $p['name'];?>
+						<a href="<?php echo router::url('categories/view/id:'.$v['id'].'/slug:'.$v['slug']);?>" title="<?php echo $v['name'];?>" data-description="<?php echo $v['name'];?>">
+							<?php echo $v['name'];?>
 						</a>
 					</li>
 					<?php } ?>

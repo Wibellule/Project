@@ -31,16 +31,18 @@ class ProjectsController extends AppController{
 		$req = array();
 		$req = $d['req'];
 		foreach($req as $k => $v){
+			/*images*/
 			$d['img'] = array();
 			$d['img'] = explode('/>', $v['content']);
-			$d['link'] = array();
-			$d['link'] = explode('<img alt="" src="', $v['content']);
-			$d['link'] = implode('',$d['link']);
-			$d['link'] = explode('" style="width: 680px; height: 600px;" />',$d['link']);
+						
+			/*single link*/
+			$d['single'] = imgToLink($req,false);
+			
+			/*multi link*/
+			$d['link'] = imgToLink($req);
 		}
-		// var_dump($link);
+		
 		$d['img'] = array_slice($d['img'], 0, -1);
-		$d['link'] = array_slice($d['link'], 0, -1);
 		$this->set('link', $d);
 		////////////////////////////
 		

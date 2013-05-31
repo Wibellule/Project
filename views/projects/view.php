@@ -1,15 +1,6 @@
-<?php
+﻿<?php
 $title_for_layout = $project['name'];
 $description_for_layout = $project['name'];
-
-$var_p = array();
-$var_p = $project['content'];
-$var_p = explode('/>',$project['content']);
-foreach($var_p as $k => $v){
-	$var_p[$k] = $v.'/>';
-}
-$var_p = array_slice($var_p, 0, -1);
-// var_dump($var_p);
 ?>
 <article class="single-project">
 
@@ -31,17 +22,23 @@ $var_p = array_slice($var_p, 0, -1);
 		</ul><!-- end .portfolio-pagination -->
 		
 	</header><!-- end .page-header -->
-
+	<?php //pr($link['link']);?>
 	<div id="main">
-	
 		<div class="image-gallery-slider">
 
 			<ul>
+				
 				<?php foreach($link['img'] as $k => $v){ ?>
 				<li>
-					<a href="<?php echo $link['link'][$k];?>" class="single-image" title="#" rel="single-project">
+					<?php if(empty($link['link'])){ ?>
+					<a href="<?php echo $link['single'];?>" class="single-image" title="<?php echo $project['name'];?>" rel="single-project">
 						<?php echo $v.'/>';?>
 					</a>
+					<?php }else{ ?>
+					<a href="<?php echo $link['link'][$k];?>" class="single-image" title="<?php echo $project['name'];?>" rel="single-project">
+						<?php echo $v.'/>';?>
+					</a>
+					<?php } ?>
 				</li>
 				<?php } ?>
 			</ul>

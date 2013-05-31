@@ -104,16 +104,15 @@ class Controller{
 	* Fonction requestAction qui peut utiliser une methode d'un controller depuis une vue
 	* @param $controller
 	* @param $action
+	* @param $param mixed
 	*/
-	public function requestAction($controller,$action){
+	public function requestAction($controller,$action,$param = null){
 		//Nom du controller
 		$name = ucfirst($controller).'Controller';
 		//Chemin du fichier à charger
 		$file = ROOT.DS.'controllers'.DS.$controller.'_controller.php';
 		//Vérification de l'existence du controleur
-		/*if(!file_exists($file)){
-			$this->error("Le controleur ".$controller." n'existe pas");
-		}*/
+		if(!file_exists($file)){ $this->error("Le controleur ".$controller." n'existe pas");}
 		//inclusion du fichier
 		require_once $file;// !!!! important require_once !!!!
 		//Affectation d'un nouvel objet dans une variable
@@ -121,7 +120,7 @@ class Controller{
 		$modelName = ucfirst(substr($controller,0,-1));
 		$variable->loadModel($modelName);
 		//Appel de la méthode sur le controller
-		return $variable->$action();
+		return $variable->$action($param);
 	}
 	
 	/**
