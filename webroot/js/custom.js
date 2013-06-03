@@ -1077,44 +1077,98 @@ jQuery(document).ready(function($) {
 	/*	Contact Form
 	/* ---------------------------------------------------------------------- */
 
-	(function() {
+	// (function() {
 
 		// Setup any needed variables.
-		var $form   = $('.contact-form'),
-			$loader = '<img src="img/loader.gif" height="11" width="16" alt="Loading..." />';
+		// var $form   = $('.contact-form'),
+			// $loader = '<img src="/Project-master/img/loader.gif" height="11" width="16" alt="Loading..." />';
 
-		$form.append('<div id="response" class="hidden">');
-		var $response = $('#response');
+		// $form.append('<div id="response" class="hidden">');
+		// var $response = $('#response');
 		
 		// Do what we need to when form is submitted.
-		$form.on('click', 'input[type=submit]', function(e){
+		// $form.on('click', 'input[type=submit]', function(e){
 
 			// Hide any previous response text and show loader
-			$response.hide().html( $loader ).show();
+			// $response.hide().html( $loader ).show();
 			
 			// Make AJAX request 
-			$.post('php/contact-send.php', $form.serialize(), function( data ) {
-			
+			// $.post('Project-master/adm/mails/send', $form.serialize(), function( data ) {
+				// alert('ok');
 				// Show response message
-				$response.html( data );
+				// $response.html( data );
 
 				// Scroll to bottom of the form to show respond message
-				var bottomPosition = $form.offset().top + $form.outerHeight() - $(window).height();
+				// var bottomPosition = $form.offset().top + $form.outerHeight() - $(window).height();
 				
-				if( $(document).scrollTop() < bottomPosition )
-					$('html, body').animate({ scrollTop : bottomPosition });
+				// if( $(document).scrollTop() < bottomPosition )
+					// $('html, body').animate({ scrollTop : bottomPosition });
 				
 				// If form has been sent succesfully, clear it
-				if( data.indexOf('success') !== -1 )
-					$form.find('input:not(input[type="submit"]), textarea, select').val('').attr( 'checked', false );
+				// if( data.indexOf('success') !== -1 )
+					// $form.find('input:not(input[type="submit"]), textarea, select').val('').attr( 'checked', false );
 				
-			});
+			// });
 			
 			// Cancel default action
-			e.preventDefault();
+			// e.preventDefault();
+		// });
+
+	// })();
+	
+	(function() {
+	
+		
+		$("#form-contact").submit(function(){
+			name = $(this).find("input[name=name]").val();
+			email = $(this).find("input[name=email]").val();
+			subject = $(this).find("input[name=subject]").val();
+			message = $(this).find("textarea[name=message]").val();
+			$.post('Project-master/adm/mails/send',{name: name, email: email, subject: subject, content: message}, function( data ){ 
+				alert(data);
+			});
+			return false;
 		});
 
+		// Setup any needed variables.
+		// var $form   = $('#form-contact'),
+			// $loader = '<img src="/Project-master/img/loader.gif" height="11" width="16" alt="Loading..." />';
+
+		// alert('ok');
+		// $form.append('<div id="response" class="hidden">');
+		// var $response = $('#response');
+		
+		// Do what we need to when form is submitted.
+		// $form.on('click', 'input[type=submit]', function(e){
+			// alert('ok');
+
+			// Hide any previous response text and show loader
+			// $response.hide().html( $loader ).show();
+			
+			// Make AJAX request 
+			// $.post('Project-master/adm/mails/send', $form.serialize(), function( data ) {
+				// alert('ok');
+				// Show response message
+				// $response.html( data );
+
+				// Scroll to bottom of the form to show respond message
+				// var bottomPosition = $form.offset().top + $form.outerHeight() - $(window).height();
+				
+				// if( $(document).scrollTop() < bottomPosition )
+					// $('html, body').animate({ scrollTop : bottomPosition });
+				
+				// If form has been sent succesfully, clear it
+				// if( data.indexOf('success') !== -1 )
+					// $form.find('input:not(input[type="submit"]), textarea, select').val('').attr( 'checked', false );
+				
+			// });
+			
+			// Cancel default action
+			// e.preventDefault();
+		// });
+
 	})();
+
 
 	/* end Contact Form */
 	

@@ -92,6 +92,64 @@ class Html{
 			}
 		}
 	 }
+	 
+	/**
+	 * Fonction qui affiche un formulaire de contact pour le frontoffice
+	 * @return $html tout le html pour le formulaire de contact sur le frontoffice
+	 * @access public
+	 * @author Gyome
+	 * @version 0.1
+	 * @todo 02/06/13 appeler le html de manière (beaucoup) plus dynamique
+	 */
+	public function contact($id,$slug){
+		
+		$html = '';
+		
+		$html .= '<div class="three-fourth last">';
+
+		$html .= '<h3>Gardons le contact</h3>';
+
+		$html .= '<form action="'.$this->controller->request->url.'#formulaire" method="post" class="contact-form" id="form-contact">';
+			
+		$html .= '<p class="input-block">';
+				$html .= '<label for="contact-name"><strong>Nom</strong> (obligatoire)</label>';
+				// $html .= '<input type="text" name="name" value="" id="contact-name" required>';
+				$html .= '<input type="text" name="name" value="" id="contact-name">';
+		$html .= '</p>';
+
+		$html .= '<p class="input-block">';
+				$html .= '<label for="contact-email"><strong>Email</strong> (obligatoire)</label>';
+				// $html .= '<input type="email" name="email" value="" id="contact-email" required>';
+				$html .= '<input type="email" name="email" value="" id="contact-email">';
+		$html .= '</p>';
+				
+		$html .= '<p class="input-block">';
+				$html .= '<label for="contact-subject"><strong>Sujet</strong></label>';
+				$html .= '<input type="text" name="subject" value="" id="contact-subject">';
+		$html .= '</p>';
+
+		$html .= '<p class="textarea-block">';
+				$html .= '<label for="contact-message"><strong>Votre Message</strong> (obligatoire)</label>';
+				// $html .= '<textarea name="message" id="contact-message" cols="88" rows="6" required></textarea>';
+				$html .= '<textarea name="message" id="contact-message" cols="88" rows="6"></textarea>';
+		$html .= '</p>';
+			
+				// $html .= '<div class="hidden">';
+					// $html .= '<label for="contact-spam-check">Do not fill out this field:</label>';
+					// $html .= '<input name="spam-check" type="text" value="" id="contact-spam-check" />';
+				// $html .= '</div>';
+
+				$html .= '<input type="submit" value="Envoyer">';
+
+				$html .= '<div class="clear"></div>';
+
+			$html .= '</form>';
+
+		$html .= '</div><!-- end .three-fourth.last -->';
+		
+		return $html;
+	
+	}
 	
 	
 }

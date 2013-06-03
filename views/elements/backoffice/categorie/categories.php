@@ -13,3 +13,5 @@ echo $this->helpers['Form']->input('content', 'Contenu', array('type' => 'textar
 echo $this->helpers['Form']->ckeditor(array('content'));
 echo $this->helpers['Form']->input('redirection_category_id', 'Redirection', array('type' => 'selectList', 'datas' => $redirect )); echo "<br />";
 echo $this->helpers['Form']->input('online', 'En ligne', array('type' => 'checkbox')); echo "<br />";
+echo '<h3>Options</h3>';
+echo $this->helpers['Form']->input('display_option', 'Formulaire de contact', array('type' => 'selectList', 'datas' => array( 0 => 'Pas d\'options', 1 => 'Formulaire de contact')));echo "<br />";
