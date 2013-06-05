@@ -11,6 +11,10 @@ class Controller{
 		'Form','Html'
 	);
 	
+	var $components = array(
+		'RequestHandler'
+	);
+	
 	/**
 	* Constructeur de la classe Controller
 	* @param object $request
@@ -18,6 +22,8 @@ class Controller{
 	*/
 	function __construct($request = null){
 		if($request) {$this->request = $request; include CORE.DS.'is_logged.php';}
+		
+		//Chargement des Helpers
 		foreach($this->helpers as $k=>$v){
 			$file_name = HELPERS.DS.Inflector::underscore($v).'.php';
 			require_once $file_name;
@@ -26,6 +32,16 @@ class Controller{
 			$this->helpers[$v] = $helper;
 		}
 		
+		//Chargement des composants
+		foreach($this->components as $k => $v) {
+		
+			$component = strtolower($v); //Nom du fichier
+			require_once COMPONENTS.DS.$component.'.php'; //Inclusion du fichier
+			unset($this->components[$k]); //On supprime de la variable
+			$this->components[$v] = new $v($this); //Et on insère l'objet
+		}
+		
+		// pr($this->components);
 	}
 	
 	/**

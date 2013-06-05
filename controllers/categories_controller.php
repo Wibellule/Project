@@ -30,6 +30,19 @@ class CategoriesController extends AppController{
 		$menu = $this->_get_website_menu();
 		$this->set('menuGeneral', $menu);
 		
+		/** Gestion du formulaire de contact **/
+		if($this->request->data){
+			$this->loadModel('Mail');
+			/** etc **/
+			// Session::setFlash('Element ajouté avec succes','success');
+		}
+		
+		/** Gestion du formulaire en Ajax **/
+		if($this->components['RequestHandler']->isAjax()){
+			$this->layout = 'ajax';
+			/** futurs messages ici **/
+		}
+		
 		/** Pour le cas de la redirection **/
 		if($post['redirection_category_id'] != 0) {
 			

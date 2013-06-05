@@ -109,7 +109,7 @@ class Html{
 
 		$html .= '<h3>Gardons le contact</h3>';
 
-		$html .= '<form action="'.$this->controller->request->url.'#formulaire" method="post" class="contact-form" id="form-contact">';
+		$html .= '<form action="'.Router::url('categories/view/id:'.$id.'/slug:'.$slug).'#formulaire" method="post" class="contact-form" id="form-contact">';
 			
 		$html .= '<p class="input-block">';
 				$html .= '<label for="contact-name"><strong>Nom</strong> (obligatoire)</label>';

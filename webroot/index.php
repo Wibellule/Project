@@ -8,6 +8,7 @@ define('WEBROOT', dirname(__FILE__)); //Chemin absolu vers le dossier webroot
 define('ROOT', dirname(WEBROOT)); //Chemin absolu vers le dossier racine du site
 define('CORE', ROOT.DS.'core'); //Chemin relatif vers le coeur de l'application
 define('BEHAVIORS', ROOT.DS.'models'.DS.'behaviors'); //Chemin relatif vers les comportements d'un model
+define('COMPONENTS', ROOT.DS.'controllers'.DS.'components'); //Chemin relatif vers les composants des controllers
 
 
 // define('BASE_URL', dirname(dirname($_SERVER['SCRIPT_NAME']))); //

@@ -1119,13 +1119,29 @@ jQuery(document).ready(function($) {
 	(function() {
 	
 		
+		// $("#form-contact").submit(function(){
+			// name = $(this).find("input[name=name]").val();
+			// email = $(this).find("input[name=email]").val();
+			// subject = $(this).find("input[name=subject]").val();
+			// message = $(this).find("textarea[name=message]").val();
+			// $.post('Project-master/adm/mails/send',{name: name, email: email, subject: subject, content: message}, function( data ){ 
+				// alert(data);
+			// });
+			// return false;
+		// });
+		
 		$("#form-contact").submit(function(){
-			name = $(this).find("input[name=name]").val();
-			email = $(this).find("input[name=email]").val();
-			subject = $(this).find("input[name=subject]").val();
-			message = $(this).find("textarea[name=message]").val();
-			$.post('Project-master/adm/mails/send',{name: name, email: email, subject: subject, content: message}, function( data ){ 
-				alert(data);
+			$.get($(this).attr('href'),{},function(data){
+				$("#content").empty().append(data);
+					//Variable des champs
+					name = $(this).find("input[name=name]").val();
+					email = $(this).find("input[name=email]").val();
+					subject = $(this).find("input[name=subject]").val();
+					message = $(this).find("textarea[name=message]").val();
+					$.post('#',{name: name, email: email, subject: subject, content: message}, function( data ){ 
+						// alert(data);
+					});
+				// alert(data);
 			});
 			return false;
 		});

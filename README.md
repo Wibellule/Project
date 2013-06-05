@@ -10,5 +10,3 @@ Projet de cr&eacute;ation d'un cms personnel :
 - Frontoffice + Backoffice
 - CRUD catégories + projets ( + type de projets ) + articles ( + type d'articles )
 - Gestion d'une représentation intervallaire pour les catégories
-
-==========
