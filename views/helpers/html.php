@@ -109,18 +109,18 @@ class Html{
 
 		$html .= '<h3>Gardons le contact</h3>';
 
-		$html .= '<form action="'.Router::url('categories/view/id:'.$id.'/slug:'.$slug).'#formulaire" method="post" class="contact-form" id="form-contact">';
+		$html .= '<form action="'.Router::url('categories/view/id:'.$id.'/slug:'.$slug).'" method="post" class="contact-form" id="form-contact">';
 			
 		$html .= '<p class="input-block">';
 				$html .= '<label for="contact-name"><strong>Nom</strong> (obligatoire)</label>';
-				// $html .= '<input type="text" name="name" value="" id="contact-name" required>';
-				$html .= '<input type="text" name="name" value="" id="contact-name">';
+				$html .= '<input type="text" name="name" value="" id="contact-name" required>';
+				// $html .= '<input type="text" name="name" value="" id="contact-name">';
 		$html .= '</p>';
 
 		$html .= '<p class="input-block">';
 				$html .= '<label for="contact-email"><strong>Email</strong> (obligatoire)</label>';
-				// $html .= '<input type="email" name="email" value="" id="contact-email" required>';
-				$html .= '<input type="email" name="email" value="" id="contact-email">';
+				$html .= '<input type="email" name="email" value="" id="contact-email" required>';
+				// $html .= '<input type="email" name="email" value="" id="contact-email">';
 		$html .= '</p>';
 				
 		$html .= '<p class="input-block">';
@@ -130,14 +130,14 @@ class Html{
 
 		$html .= '<p class="textarea-block">';
 				$html .= '<label for="contact-message"><strong>Votre Message</strong> (obligatoire)</label>';
-				// $html .= '<textarea name="message" id="contact-message" cols="88" rows="6" required></textarea>';
-				$html .= '<textarea name="message" id="contact-message" cols="88" rows="6"></textarea>';
+				$html .= '<textarea name="message" id="contact-message" cols="88" rows="6" required></textarea>';
+				// $html .= '<textarea name="message" id="contact-message" cols="88" rows="6"></textarea>';
 		$html .= '</p>';
 			
-				// $html .= '<div class="hidden">';
-					// $html .= '<label for="contact-spam-check">Do not fill out this field:</label>';
-					// $html .= '<input name="spam-check" type="text" value="" id="contact-spam-check" />';
-				// $html .= '</div>';
+				$html .= '<div class="hidden">';
+					$html .= '<label for="contact-spam-check">Do not fill out this field:</label>';
+					$html .= '<input name="spam-check" type="text" value="" id="contact-spam-check" />';
+				$html .= '</div>';
 
 				$html .= '<input type="submit" value="Envoyer">';
 

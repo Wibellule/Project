@@ -39,8 +39,13 @@ class CategoriesController extends AppController{
 		
 		/** Gestion du formulaire en Ajax **/
 		if($this->components['RequestHandler']->isAjax()){
-			$this->layout = 'ajax';
+			$this->layout = 'ajax';		
 			/** futurs messages ici **/
+			if(isset($this->request->data)){
+				var_dump($_POST);
+			}
+		// }elseif(){
+		
 		}
 		
 		/** Pour le cas de la redirection **/
