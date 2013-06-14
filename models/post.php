@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Post extends Model{
 
 	//PRINCIPE DE FONCTIONS PARENTES

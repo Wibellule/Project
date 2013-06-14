@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	function pr($mVar2Display) {
 
 		$debug = debug_backtrace();

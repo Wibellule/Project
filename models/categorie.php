@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /* inclusion du comportement */
 include_once(BEHAVIORS.DS.'tree.php');
 

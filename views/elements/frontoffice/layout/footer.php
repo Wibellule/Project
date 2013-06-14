@@ -1,4 +1,4 @@
-﻿<footer id="footer" class="clearfix">
+<footer id="footer" class="clearfix">
 	<div class="container">
 		<div class="three-fourth">
 			<nav id="footer-nav" class="clearfix">

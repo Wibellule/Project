@@ -1,4 +1,4 @@
-﻿<li>
+<li>
 
 	<a href="<?php echo Router::url('posts/view/id:'.$v['id'].'/slug:'.$v['slug'].'/prefix:article');?>">
 		<?php echo $v['image'];?>

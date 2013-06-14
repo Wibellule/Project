@@ -1,4 +1,4 @@
-﻿<li>
+<li>
 
 	<div class="entry-meta">
 

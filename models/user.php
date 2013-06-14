@@ -1,3 +1,3 @@
-﻿<?php
+<?php
 class User extends Model{
 }

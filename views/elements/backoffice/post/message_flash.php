@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	$titrepage = array('posts' => 'article', 'categories' => 'page','sliders' => 'slider', 'projects' => 'project', 'typeprojects' => 'type de projet');
 	// echo $titrepage[$this->request->controller];
 	$messageFlash = Session::read('Flash');

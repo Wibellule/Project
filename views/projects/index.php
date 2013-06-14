@@ -1,4 +1,4 @@
-﻿<header class="page-header">
+<header class="page-header">
 	
 		<h1 class="page-title">Mes projets</h1>
 

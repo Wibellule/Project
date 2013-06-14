@@ -1,4 +1,4 @@
-﻿<div class="page-header">
+<div class="page-header">
 	<?php 
 		$messageFlash = Session::read('Flash');
 		if($messageFlash){

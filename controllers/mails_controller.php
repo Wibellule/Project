@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class MailsController extends AppController{
 	function index(){
 		

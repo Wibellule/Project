@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Mail extends Model{
 
 	var $validate = array(

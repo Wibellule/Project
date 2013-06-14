@@ -1,4 +1,4 @@
-﻿<div class="page-header">
+<div class="page-header">
 	<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
 	<?php $controllerData = $this->request->controller; //pr($controllerData);?>
 	<h1>Liste des pages</h1>

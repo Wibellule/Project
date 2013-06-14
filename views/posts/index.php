@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $title_for_layout = 'Liste des articles';
 $description_for_layout = 'Liste des articles';
 ?>

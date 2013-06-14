@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Model{
 
 	public $conf = 'localhost';

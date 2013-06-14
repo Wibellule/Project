@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Cette classe est chargée d'effectuer les opérations suivantes : 
  * - Instancier un objet de type Request qui va récupérer l'url

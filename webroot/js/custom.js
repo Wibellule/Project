@@ -1,4 +1,4 @@
-﻿// If JavaScript is enabled remove 'no-js' class and give 'js' class
+// If JavaScript is enabled remove 'no-js' class and give 'js' class
 jQuery('html').removeClass('no-js').addClass('js');
 
 // When DOM is fully loaded

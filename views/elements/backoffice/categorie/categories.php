@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $result = $this->Categorie->getTreeList();
 $redirect = $this->Categorie->getTreeList();
 $redirect[0] = 'Pas de redirection';

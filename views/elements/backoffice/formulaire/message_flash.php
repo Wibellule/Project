@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 	$titrepage = array(
 		'posts' => 'article',
 		'categories' => 'page',

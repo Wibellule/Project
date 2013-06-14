@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 	$var_p = explode('/>',$v['image']);
 	$var_p = array_slice($var_p, 0, -1);
 ?>

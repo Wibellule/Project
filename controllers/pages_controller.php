@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class PagesController extends Controller{
 	
 	function view($id,$slug){

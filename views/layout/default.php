@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--[if IE 7]>                  <html class="ie7 no-js" lang="fr">     <![endif]-->
 <!--[if lte IE 8]>              <html class="ie8 no-js" lang="fr">     <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="fr">  <!--<![endif]-->

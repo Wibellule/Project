@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $type = '';
 foreach($typeposts['typeposts'] as $k => $v){
 	$type .= $v['name'].",";

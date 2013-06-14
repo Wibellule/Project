@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 echo $this->element(FRONTOFFICE.DS.'msg_flash'.DS.'message_flash.php');
 ?>
 </br>

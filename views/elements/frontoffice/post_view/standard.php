@@ -1,4 +1,4 @@
-﻿<article class="entry single clearfix">
+<article class="entry single clearfix">
 
 	<a href="single-post.html" title="">
 		<?php echo $post['image'];?>

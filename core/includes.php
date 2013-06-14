@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 //INCLUSION DES FICHIERS
 require('session.php');
 

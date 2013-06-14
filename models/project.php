@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Project extends Model{
 
 	//PRINCIPE DE FONCTIONS PARENTES

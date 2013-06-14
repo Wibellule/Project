@@ -1,4 +1,4 @@
-﻿<?php 
+<?php 
 	$messageFlash = Session::read('Flash');
 	if($messageFlash){
 		echo "<div class='alert alert-".Session::read('Flash.type')."'>";

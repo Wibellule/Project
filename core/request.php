@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Cette classe va faire les actions suivantes : 
  * - Récupération de l'url courante

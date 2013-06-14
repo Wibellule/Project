@@ -1,4 +1,4 @@
-﻿<aside id="sidebar">
+<aside id="sidebar">
 
 	<div class="widget">
 

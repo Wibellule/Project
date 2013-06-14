@@ -1,4 +1,4 @@
-﻿<!-- Le javascript
+<!-- Le javascript
 ================================================== -->
 <!-- Placé en fin de document le chargement se fait plus rapidement -->
 

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $title_for_layout = $project['name'];
 $description_for_layout = $project['name'];
 ?>

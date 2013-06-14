@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class AppController extends Controller{
 	function index(){
 		// pr($this->request);

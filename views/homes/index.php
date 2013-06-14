@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $title_for_layout = 'Wibellule - Home';
 $description_for_layout = 'Page d\'accueil';
 ?>

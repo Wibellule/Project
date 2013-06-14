@@ -1,4 +1,4 @@
-﻿<li>
+<li>
 	<div class="image-gallery-slider">
 		<ul>
 			<?php 

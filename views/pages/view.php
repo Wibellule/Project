@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 $title_for_layout = $categories['name'];
 $description_for_layout = strip_tags($page['content']);
 ?>

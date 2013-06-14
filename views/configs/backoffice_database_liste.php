@@ -1,4 +1,4 @@
-﻿<div id='rightside'>
+<div id='rightside'>
 <?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>
 <?php echo $this->helpers['Form']->create(array('id' => 'ConfigDatabase', 'action' => Router::url('backoffice/configs/database_liste'), 'method' => 'post')); ?>
 	<h2><?php echo "Configuration de la base de données (locale)"; ?></h2>

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class PostsController extends AppController{
 	function view($id = null,$slug){
 		
