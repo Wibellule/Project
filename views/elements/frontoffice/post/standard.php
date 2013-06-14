@@ -1,4 +1,4 @@
-<article class="entry clearfix">
+﻿<article class="entry clearfix">
 
 	<a href="<?php echo Router::url('posts/view/id:'.$v['id'].'/slug:'.$v['slug'].'/prefix:article');?>" title="">
 		<?php echo $v['image'];?>

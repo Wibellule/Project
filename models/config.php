@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 /**
  * Modèle permettant la gestion de la configuration de du template et de l'application
  */

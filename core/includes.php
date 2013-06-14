@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 //INCLUSION DES FICHIERS
 require('session.php');
 
-//D�marrage de la session
+//Démarrage de la session
 Session::init();
 
 //Inclusion du fichier de fonctions basics

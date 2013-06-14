@@ -1,6 +1,6 @@
-<!-- Le javascript
+﻿<!-- Le javascript
 ================================================== -->
-<!-- Plac� en fin de document le chargement se fait plus rapidement -->
+<!-- Placé en fin de document le chargement se fait plus rapidement -->
 
 <!--[if !lte IE 6]><!-->
 <script src="<?php echo Router::webroot("js/ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js");?>"></script>

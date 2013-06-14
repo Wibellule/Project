@@ -1,4 +1,4 @@
-<article class="entry clearfix">
+﻿<article class="entry clearfix">
 
 	<div class="entry-body">
 

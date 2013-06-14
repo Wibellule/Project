@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 class ProjectsController extends AppController{
 	
 
@@ -8,14 +8,14 @@ class ProjectsController extends AppController{
 		// pr($id);
 		// die();
 		//On test si un paramËtre existe
-		if(!isset($id)){ $this->e404('La page demandÈe n\'existe pas.'); }
+		if(!isset($id)){ $this->e404('La page demand√©e n\'existe pas.'); }
 		
-		else if( !$id ){ $this->e404('La page demandÈe n\'existe pas.'); }
+		else if( !$id ){ $this->e404('La page demand√©e n\'existe pas.'); }
 		
 		$post = $this->Project->findFirst( array( 'conditions' => array( 'id' => $id, 'online' => 1) ) );
 		
 		//On test si la page demandÈe existe
-		if(empty($post)){ $this->e404('La page demandÈe n\'existe pas.'); }
+		if(empty($post)){ $this->e404('La page demand√©e n\'existe pas.'); }
 		
 		if(isset($post['slug'])){
 			if($slug != $post['slug']){

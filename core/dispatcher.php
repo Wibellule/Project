@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Cette classe est chargée d'effectuer les opérations suivantes : 
  * - Instancier un objet de type Request qui va récupérer l'url
@@ -20,6 +20,7 @@ class Dispatcher{
 		//On parse l'url via l'objet Router
 		Router::parse($this->request->url, $this->request);//appel static modifie l'objet request sans créer d'objet intermédiaire
 		// pr($this->request);
+		// pr($this->request->clientIp(true));
 		// die();
 		//Ajout de la fonction qui va charger les controleurs
 		$controller = $this->loadController();

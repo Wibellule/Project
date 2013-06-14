@@ -1,4 +1,8 @@
-﻿<section id="features-slider" class="ss-slider">
+﻿<?php
+$title_for_layout = 'Wibellule - Home';
+$description_for_layout = 'Page d\'accueil';
+?>
+<section id="features-slider" class="ss-slider">
 
 <h2 class="slogan align-center">We are a group of experienced designers and developers.<br />
 	We set new standards in user experience &amp; make future happen.</h2>

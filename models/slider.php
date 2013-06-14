@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class Slider extends Model{
 
 	//PRINCIPE DE FONCTIONS PARENTES

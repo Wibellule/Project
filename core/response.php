@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 /**
  * Cette classe est chargé de gérer le texte réponse, le statut et têtes d'une réponse HTTP.
  * Le contrôleurs courant va utiliser cette classe pour rendre leur réponse. 

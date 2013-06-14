@@ -130,7 +130,7 @@ class Html{
 
 		$html .= '<p class="textarea-block">';
 				$html .= '<label for="contact-message"><strong>Votre Message</strong> (obligatoire)</label>';
-				$html .= '<textarea name="message" id="contact-message" cols="88" rows="6" required></textarea>';
+				$html .= '<textarea name="content" id="contact-message" cols="88" rows="6" required></textarea>';
 				// $html .= '<textarea name="message" id="contact-message" cols="88" rows="6"></textarea>';
 		$html .= '</p>';
 			

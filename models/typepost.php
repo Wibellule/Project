@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class Typepost extends Model{
 
 	//PRINCIPE DE FONCTIONS PARENTES

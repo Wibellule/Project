@@ -1,4 +1,4 @@
-<?php include(BACKOFFICE.DS.'formulaire'.DS.'js.php');?>
+﻿<?php include(BACKOFFICE.DS.'formulaire'.DS.'js.php');?>
 <?php include(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>
 <h2>Ajouter un <?php echo $titrepage[$this->request->controller];?></h2>
 <?php

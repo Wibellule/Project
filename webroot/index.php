@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // $debut = microtime(true);
 ////////////////////////////////////////////////////////////
 //   DEFINITION DES VARIABLES GLOBALES DE L'APPLICATION   //

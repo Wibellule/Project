@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 /**
  * BEHAVIORS | TREE
  * Représentation intervallaire pour la gestion des pages (catégories)

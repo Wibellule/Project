@@ -1,5 +1,4 @@
-﻿<?php $menuFooter = $this->requestAction('categories','getMenuFooter',1);?>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--[if IE 7]>                  <html class="ie7 no-js" lang="fr">     <![endif]-->
 <!--[if lte IE 8]>              <html class="ie8 no-js" lang="fr">     <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--> <html class="not-ie no-js" lang="fr">  <!--<![endif]-->
@@ -7,13 +6,14 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<title>Home - SmartStart</title>
+	<title><?php echo isset($title_for_layout)?$title_for_layout:'Smart Start';?></title>
 	<meta name="description" content="">
 	<meta name="author" content="">
     <?php $this->element(FRONTOFFICE.DS.'layout'.DS.'css.php');?>
     <?php $this->element(FRONTOFFICE.DS.'layout'.DS.'js.php');?>
 </head>
-	<body>		
+	<body>
+		<?php $menuFooter = $this->requestAction('categories','getMenuFooter',1);?>
 		<?php //pr($menuGeneral);?>
 		<?php $this->element(FRONTOFFICE.DS.'layout'.DS.'header.php');?>
 		

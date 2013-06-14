@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 class Home extends Model{
 
 	//PRINCIPE DE FONCTIONS PARENTES
@@ -17,7 +17,7 @@ class Home extends Model{
 		),
 		'content' => array(
 			'rule'		=> 'notEmpty',
-			'message'	=> "Le contenu ne doit pas �tre vide"
+			'message'	=> "Le contenu ne doit pas être vide"
 		)
 	);
 	

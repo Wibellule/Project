@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 class Project extends Model{
 
 	//PRINCIPE DE FONCTIONS PARENTES
@@ -13,11 +13,11 @@ class Project extends Model{
 		),
 		'description' => array(
 			'rule'		=> 'notEmpty',
-			'message'	=> "Le contenu ne doit pas être vide"
+			'message'	=> "Le contenu ne doit pas Ãªtre vide"
 		),
 		'content' => array(
 			'rule'		=> 'notEmpty',
-			'message'	=> "Le contenu ne doit pas être vide"
+			'message'	=> "Le contenu ne doit pas Ãªtre vide"
 		)
 	);
 	

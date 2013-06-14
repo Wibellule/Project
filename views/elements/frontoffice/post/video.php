@@ -1,4 +1,4 @@
-<article class="entry clearfix">
+﻿<article class="entry clearfix">
 
 	<?php echo $v['image'];?>
 

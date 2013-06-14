@@ -1,4 +1,4 @@
-<?php include(BACKOFFICE.DS.'formulaire'.DS.'js.php');?>
+﻿<?php include(BACKOFFICE.DS.'formulaire'.DS.'js.php');?>
 	<div class="contentcontainer">
 	<?php include(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>
 		<div class="headings altheading">

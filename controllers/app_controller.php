@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 class AppController extends Controller{
 	function index(){
 		// pr($this->request);
@@ -32,7 +32,7 @@ class AppController extends Controller{
 			//////////////////////////////
 			if($this->$modelName->validates($this->request->data)){
 				$this->$modelName->save($this->request->data);
-				Session::setFlash('Element ajouté avec succes','success');
+				Session::setFlash('Element ajoutÃ© avec succes','success');
 				$this->redirect('/adm/'.lcfirst($modelName).'s'.'/index');
 			}else{
 				$errors = $this->$modelName->errors;
@@ -55,7 +55,7 @@ class AppController extends Controller{
 			if($this->$modelName->validates($this->request->data)){
 				// $this->request->data['type'] = 'post';
 				$this->$modelName->save($this->request->data);
-				Session::setFlash('Element modifié avec succes','success');
+				Session::setFlash('Element modifiÃ© avec succes','success');
 				// pr($this->request->data);
 				// die();
 				$this->redirect('/adm/'.lcfirst($modelName).'s'.'/index');
@@ -78,9 +78,9 @@ class AppController extends Controller{
 	function backoffice_delete($id){
 		$modelName = $this->request->modelName;
 		if($this->$modelName->delete($id)){
-			Session::setFlash('L\'enregistrement a été supprimé','success');
+			Session::setFlash('L\'enregistrement a Ã©tÃ© supprimÃ©','success');
 		}else{
-			Session::setFlash('L\'enregistrement n\'a pas été supprimé','error');
+			Session::setFlash('L\'enregistrement n\'a pas Ã©tÃ© supprimÃ©','error');
 		}
 		$this->redirect('adm/'.lcfirst($modelName).'s'.'/index');
 	}

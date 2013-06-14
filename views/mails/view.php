@@ -1,4 +1,4 @@
-<div>
+﻿<div>
 	<?php
 		$messageFlash = Session::read('Flash');
 		if($messageFlash){

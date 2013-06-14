@@ -19,7 +19,7 @@ class CategoriesController extends AppController{
 		
 		if(isset($post['slug'])){
 			if($slug != $post['slug']){
-				$this->redirect('categories/view/id:'.$post['id'].'/slug:'.$post['slug'].'/prefix:article');
+				$this->redirect('categories/view/id:'.$post['id'].'/slug:'.$post['slug']);
 			}
 		}
 		
@@ -40,12 +40,25 @@ class CategoriesController extends AppController{
 		/** Gestion du formulaire en Ajax **/
 		if($this->components['RequestHandler']->isAjax()){
 			$this->layout = 'ajax';		
+			// var_dump($_POST);
 			/** futurs messages ici **/
+			$this->loadModel('Mail');
 			if(isset($this->request->data)){
-				var_dump($_POST);
-			}
-		// }elseif(){
-		
+				if($this->Mail->validates($this->request->data)){
+					// var_dump($_POST);
+					$this->request->data['online'] = 1;
+					$this->Mail->save($this->request->data);
+					Session::setFlash('Message envoyé','success');
+					// $this->redirect('categories/view/id:'.$post['id'].'/slug:'.$post['slug']);
+				}else{
+					$errors = $this->Mail->errors;
+					$message = "Erreur dans le formulaire<br/><br/>";
+					foreach($errors as $k => $v){
+						$message .= $v."<br />";
+					}
+					Session::setFlash($message,'error');
+				}
+			}		
 		}
 		
 		/** Pour le cas de la redirection **/

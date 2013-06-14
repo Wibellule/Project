@@ -1,4 +1,4 @@
-<li>
+﻿<li>
 
 	<?php echo $v['image'];?>
 	<div class="entry-meta">

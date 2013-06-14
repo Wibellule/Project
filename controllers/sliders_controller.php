@@ -1,4 +1,4 @@
-<?php
+Ôªø<?php
 class SlidersController extends AppController{
 	
 
@@ -7,14 +7,14 @@ class SlidersController extends AppController{
 		$id = (int) $id;
 		
 		//On test si un paramËtre existe
-		if(!isset($id)){ $this->e404('La page demandÈe n\'existe pas.'); }
+		if(!isset($id)){ $this->e404('La page demand√©e n\'existe pas.'); }
 		
-		else if( !$id ){ $this->e404('La page demandÈe n\'existe pas.'); }
+		else if( !$id ){ $this->e404('La page demand√©e n\'existe pas.'); }
 		
 		$post = $this->Slider->findFirst( array( 'conditions' => array( 'id' => $id, 'online' => 1) ) );
 		
 		//On test si la page demandÈe existe
-		if(empty($post)){ $this->e404('La page demandÈe n\'existe pas.'); }
+		if(empty($post)){ $this->e404('La page demand√©e n\'existe pas.'); }
 		
 		if(isset($post['slug'])){
 			if($slug != $post['slug']){

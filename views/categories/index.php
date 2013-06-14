@@ -1,3 +1,7 @@
+<?php
+$title_for_layout = 'Wibellule - Home';
+$description_for_layout = 'Page d\'accueil';
+?>
 <div>
 	<h1>Titre de la page</h1>
 	<p>Page d'accueil</p>

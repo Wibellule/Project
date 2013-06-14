@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $type = '';
 foreach($typeprojects['typeprojects'] as $k => $v){
 	$type .= $v['name'].",";

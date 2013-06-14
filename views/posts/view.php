@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 $title_for_layout = $post['name'];
 $description_for_layout = $post['name'];
 ?>

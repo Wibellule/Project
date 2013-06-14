@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	function pr($mVar2Display) {
 
 		$debug = debug_backtrace();
@@ -15,7 +15,7 @@
 
 	/**
 	 * Fonction qui transforme une balise <img /> avec son lien, en adresse pour un lien <a>
-	 * @param $req array tableau qui contient les balises � traiter
+	 * @param $req array tableau qui contient les balises à traiter
 	 * @param $multi boolean true si plusieurs lien sinon false
 	 * @return $result array tableau des liens
 	 */
