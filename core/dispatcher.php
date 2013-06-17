@@ -5,23 +5,44 @@
  * - Parser cette url via l'objet Router
  * - Charger le controller souhaité
  */
-class Dispatcher{
+class Dispatcher implements EventListener{
 
-	var $request;
+	/**
+	 *
+	 */
+		var $request;
+	
+	/**
+	 * Event manager, used to handle dispatcher filters
+	 *
+	 * @var EventManager
+	 */
+		protected $_eventManager;
+	
+	public function implementedEvents(){
+ 			return array('Dispatcher.beforeDispatch' => 'parseParams');
+	}
 
-/**
-* Fonction principale du dispatcher
-* Charge le controller en fonction du routing
-*/
+	/**
+	* Fonction principale du dispatcher
+	* Charge le controller en fonction du routing
+	*/
 	function __construct(){
 		
 		//On créer l'objet Request que l'on affecte à $this->request
 		$this->request = new Request();
+		$event = new Event('Dispatcher.afterRequest',$this);
 		//On parse l'url via l'objet Router
 		Router::parse($this->request->url, $this->request);//appel static modifie l'objet request sans créer d'objet intermédiaire
 		// pr($this->request);
+		pr($this->loadEvent());
 		// pr($this->request->clientIp(true));
 		// die();
+		
+		
+		
+		// $event = $this->loadEvent();
+		
 		//Ajout de la fonction qui va charger les controleurs
 		$controller = $this->loadController();
 		
@@ -30,6 +51,8 @@ class Dispatcher{
 		if(isset($this->request->prefix)){
 			$action = $this->request->prefix.'_'.$action;
 		}
+		
+		// pr($this);
 		
 		//Test que request->action soit bien dans les methodes sinon on appel errors
 		if(	!in_array(
@@ -52,10 +75,11 @@ class Dispatcher{
 		// print_r(array_diff(get_class_methods($controller), get_class_methods('Controller')));
 		
 	}
-/**
-* Fonction qui génére une page d'erreur en cas de problème au niveau du routing
-* @param varchar $message
-*/	
+	
+	/**
+	* Fonction qui génére une page d'erreur en cas de problème au niveau du routing
+	* @param varchar $message
+	*/	
 	function error($message){
 		header("HTTP/1.0 404 Not Found");
 		//On recrée un controleur
@@ -65,10 +89,10 @@ class Dispatcher{
 		die();
 	}
 	
-/**
-* Fonction qui permet de charger le controller en fonction de la requete utilisateur
-* @return object nouvelle instance du type $nameController($this->request)
-*/
+	/**
+	* Fonction qui permet de charger le controller en fonction de la requete utilisateur
+	* @return object nouvelle instance du type $nameController($this->request)
+	*/
 	function loadController(){
 	
 		//Nous allons récupérer le controleur directement depuis ma variable request
@@ -95,5 +119,27 @@ class Dispatcher{
 		//Retourne un nouvel objet de type $names
 		return $controller;
 	}
+	
+	function loadEvent(){
+		$event = new Event($this->request->controller.'.'.$this->request->action, $this);
+		return $event;
+	}
+	
+	/**
+	 * Returns the EventManager instance or creates one if none was
+	 * created. Attaches the default listeners and filters
+	 *
+	 * @return CakeEventManager
+	 */
+		public function getEventManager() {
+			if (!$this->_eventManager) {
+				$this->_eventManager = new EventManager();
+				$this->_eventManager->attach($this);
+				// $this->_attachFilters($this->_eventManager);
+			}
+			return $this->_eventManager;
+		}
+
+	
 }	
 

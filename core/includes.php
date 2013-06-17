@@ -25,4 +25,10 @@ require('request.php');
 require('controller.php');
 require(ROOT.DS.'controllers'.DS.'app_controller.php');
 require('model.php');
+
+//Events
+require(EVENT);
+require(EVENT_MANAGER);
+require(EVENT_LISTENER);
+
 require('dispatcher.php');

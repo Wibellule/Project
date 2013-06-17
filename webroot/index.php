@@ -32,6 +32,13 @@ define('ELEMENTS', ROOT.DS.'views'.DS.'elements');//Acces aux elements
 define('BACKOFFICE', ROOT.DS.'views'.DS.'elements'.DS.'backoffice');//Acces aux elements du backoffice
 define('FRONTOFFICE', ROOT.DS.'views'.DS.'elements'.DS.'frontoffice');//Acces aux elements du frontoffice
 define('SWIFTMAILER', CORE.DS.'SwiftMailer'); //Chemin vers les librairies de SwiftMailer
+
+
+define('EVENT', CORE.DS.'Event'.DS.'event.php'); //Chemin vers l'event
+define('EVENT_MANAGER', CORE.DS.'Event'.DS.'event_manager.php'); //Chemin vers l'event_manager
+define('EVENT_LISTENER', CORE.DS.'Event'.DS.'event_listener.php'); //Chemin vers l'event_listener
+
+
 require(CORE.DS.'includes.php');
 $dispatcher = new Dispatcher();
 

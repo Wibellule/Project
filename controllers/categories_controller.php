@@ -1,7 +1,6 @@
 <?php
 class CategoriesController extends AppController{
 	
-
 	function view($id = null,$slug){
 		
 		$id = (int) $id;
@@ -23,6 +22,11 @@ class CategoriesController extends AppController{
 			}
 		}
 		
+		//Chargement du model et de l'évenement s'il existe
+		$this->loadModel('Categorie');
+		// pr($this->Categorie);
+		pr($this->CategoriesEventListener->test());
+		
 		//On envoi les variables à la vue
 		$this->set('categorie', $post);
 		
@@ -36,6 +40,8 @@ class CategoriesController extends AppController{
 			/** etc **/
 			// Session::setFlash('Element ajouté avec succes','success');
 		}
+		
+		// pr($this);
 		
 		/** Gestion du formulaire en Ajax **/
 		if($this->components['RequestHandler']->isAjax()){
