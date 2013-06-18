@@ -19,5 +19,5 @@ Design :
 - Plugins CKEDITOR Video HTML5
 
 R&eacute;f&eacute;rences :
-[CakePHP](http://www.cakephp.org) - The rapid development PHP framework (gestionnaire d'évènements)
-[Cookbook](http://book.cakephp.org) - THE Cake user documentation; start learning here!
+- [CakePHP](http://www.cakephp.org) - The rapid development PHP framework (gestionnaire d'évènements)
+- [Cookbook](http://book.cakephp.org) - THE Cake user documentation; start learning here!
