@@ -37,8 +37,8 @@ class EventManager{
 	 *
 	 * Si elle est appelée avec le premier paramètre, il sera défini comme l'instance globalement disponible
 	 *
-	 * @param CakeEventManager $manager
-	 * @return CakeEventManager the global event manager
+	 * @param EventManager $manager
+	 * @return EventManager the global event manager
 	 */
 		public static function instance($manager = null) {
 			if ($manager instanceof EventManager) {

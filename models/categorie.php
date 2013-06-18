@@ -66,6 +66,15 @@ class Categorie extends Tree{
 		else { return true; }		
 	}
 	
+	/**
+	 * Fonction afterSave, fonction qui propage l'évènement
+	 * Fonction de test pour la version 0.1 du gestionnaire d'évènement
+	 * @param $created boolean true ou false (pour le moment)
+	 * @return void
+	 * @access public
+	 * @version 0.1
+	 * @author Wibellule
+	 */
 	public function afterSave( $created ){
 		if($created){
 			$this->getEventManager()->dispatch(new Event('Model.Categorie.add', $this));

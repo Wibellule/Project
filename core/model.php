@@ -400,40 +400,27 @@ class Model /*implements EventListener*/{
 		}
 		
 		/**
-		 * Returns the EventManager instance or creates one if none was
-		 * created. Attaches the default listeners and filters
+		 * Retourne une instance EventManager ou en crée une s'il n'y en a pas de crée.
+		 * Attache par défaut, s'il existe, l'écouteur correspondant au controleur dans lequel la méthode est appelée
 		 *
 		 * @return EventManager
 		 */
-			// public function getEventManager() {
-				// if (!$this->_eventManager) {
-					// $this->_eventManager = new EventManager();
-					
-					// pr($this);
-					
-					// $this->_eventManager->attach($this->$eventName);
-					// $this->_eventManager->attach($this);
-					// pr($this->_eventManager->attach($this));
-					// $this->_attachFilters($this->_eventManager);
-				// }
-				// pr($this);
-				// pr($this->$eventName);
-				// return $this->_eventManager;
-			// }
-			
-			public function getEventManager() {
-				if (empty($this->_eventManager)) {
-					$this->_eventManager = new EventManager();
-					$event = ROOT.DS.'events'.DS.$this->table.'_event.php';
-						if(file_exists($event)){
-							require_once($event);
-							$eventName = ucfirst($this->table).'EventListener';
-							if(!isset($this->$eventName)){ $this->$eventName = new $eventName();}
-						}
-					$this->_eventManager->attach($this->$eventName);
-				}
-				return $this->_eventManager;
+		public function getEventManager() {
+			if (empty($this->_eventManager)) {
+				$this->_eventManager = new EventManager();
+				//Charge le fichier évènement si celui ci existe
+				$event = ROOT.DS.'events'.DS.$this->table.'_event.php';
+					if(file_exists($event)){
+						require_once($event);
+						$eventName = ucfirst($this->table).'EventListener';
+						//On déclare une nouvelle instance du $eventName
+						if(!isset($this->$eventName)){ $this->$eventName = new $eventName();}
+					}
+				//On attache l'instance au bon écouteur pour lancer l'action
+				$this->_eventManager->attach($this->$eventName);
 			}
+			return $this->_eventManager;
+		}
 		
 }
 
