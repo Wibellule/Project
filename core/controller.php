@@ -114,7 +114,11 @@ class Controller{
 		//Test si le model existe et évite de charger plusieurs fois le model
 		if(!isset($this->$modelName)){ $this->$modelName = new $modelName();}
 		// pr($this->$modelName);
-		
+	}
+	
+	public function loadEvent($modelName){
+		// $event = new Event($this->request->controller.'.'.$this->request->action, $this);
+		// return $event;
 		//Chargement des évenements
 		$event = ROOT.DS.'events'.DS.lcfirst($modelName).'s_event.php';
 		if(file_exists($event)){
@@ -122,12 +126,6 @@ class Controller{
 			$eventName = $modelName.'sEventListener';
 			if(!isset($this->$eventName)){ $this->$eventName = new $eventName();}
 		}
-
-	}
-	
-	public function loadEvent(){
-		$event = new Event($this->request->controller.'.'.$this->request->action, $this);
-		return $event;
 	}
 	
 	/**

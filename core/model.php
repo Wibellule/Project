@@ -1,12 +1,23 @@
 <?php
-class Model{
+class Model /*implements EventListener*/{
 
 	public $conf = 'localhost';
 	public $db;
 	public $table = false;
 	public $primaryKey = 'id';
 	static $connections = array();
+	
+	/**
+	 * Event manager, used to handle dispatcher filters
+	 *
+	 * @var EventManager
+	 */
+	protected $_eventManager;
 
+	// public function implementedEvents(){
+ 			// return array('Model' => 'test');
+	// }
+	
 	public function __construct(){
 		// require ROOT.DS.'configs'.DS.'database.php';
 		require_once ROOT.DS.'core'.DS.'ConfigMagik'.DS.'class.ConfigMagik.php';
@@ -31,6 +42,8 @@ class Model{
 			$this->db = Model::$connections[$this->conf];
 			return true;
 		}
+		
+		// pr($this);
 		
 		//On va tenter de se connecter à la base de données
 		try {
@@ -385,6 +398,42 @@ class Model{
 			//Dans tous les autres cas on retourne faux
 			return false;
 		}
+		
+		/**
+		 * Returns the EventManager instance or creates one if none was
+		 * created. Attaches the default listeners and filters
+		 *
+		 * @return EventManager
+		 */
+			// public function getEventManager() {
+				// if (!$this->_eventManager) {
+					// $this->_eventManager = new EventManager();
+					
+					// pr($this);
+					
+					// $this->_eventManager->attach($this->$eventName);
+					// $this->_eventManager->attach($this);
+					// pr($this->_eventManager->attach($this));
+					// $this->_attachFilters($this->_eventManager);
+				// }
+				// pr($this);
+				// pr($this->$eventName);
+				// return $this->_eventManager;
+			// }
+			
+			public function getEventManager() {
+				if (empty($this->_eventManager)) {
+					$this->_eventManager = new EventManager();
+					$event = ROOT.DS.'events'.DS.$this->table.'_event.php';
+						if(file_exists($event)){
+							require_once($event);
+							$eventName = ucfirst($this->table).'EventListener';
+							if(!isset($this->$eventName)){ $this->$eventName = new $eventName();}
+						}
+					$this->_eventManager->attach($this->$eventName);
+				}
+				return $this->_eventManager;
+			}
 		
 }
 

@@ -66,4 +66,10 @@ class Categorie extends Tree{
 		else { return true; }		
 	}
 	
+	public function afterSave( $created ){
+		if($created){
+			$this->getEventManager()->dispatch(new Event('Model.Categorie.add', $this));
+		}
+	}
+	
 }

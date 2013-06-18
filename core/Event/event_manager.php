@@ -73,11 +73,17 @@ class EventManager{
 	 * Instance de EventListener.
 	 */
 		public function attach($callable, $eventKey = null, $options = array()) {
+			//Si la clé n'existe pas et que l'instance passé n'est pas de type EventListener alors on pr et die()
 			if (!$eventKey && !($callable instanceof EventListener)) {
-				throw new InvalidArgumentException('_dev', 'The eventKey variable is required');
+				// throw new InvalidArgumentException('_dev', 'The eventKey variable is required');
+				pr($callable);
+				die();
 			}
+			//Si l'instance est de type EventListener alors on attache
 			if ($callable instanceof EventListener) {
+				// pr($callable);
 				$this->_attachSubscriber($callable);
+				// pr($this->_attachSubscriber($callable));
 				return;
 			}
 			$options = $options + array('priority' => self::$defaultPriority, 'passParams' => false);
@@ -90,7 +96,7 @@ class EventManager{
 	/**
 	 * Dispatches a new event to all configured listeners
 	 *
-	 * @param string|CakeEvent $event the event key name or instance of CakeEvent
+	 * @param string|Event $event the event key name or instance of Event
 	 * @return void
 	 */
 		public function dispatch($event) {
@@ -141,6 +147,70 @@ class EventManager{
 				$result = array_merge($result, $priorityQ);
 			}
 			return $result;
+		}
+		
+	/**
+	 * Auxiliary function to attach all implemented callbacks of a EventListener class instance
+	 * as individual methods on this manager
+	 *
+	 * Fonction supplémentaire pour attacher tous les callbacks mis en place d'une instance de classe EventListener
+	 * Que les méthodes individuelles de ce gestionnaire
+	 *
+	 * @param EventListener $subscriber
+	 * @return void
+	 */
+		protected function _attachSubscriber(EventListener $subscriber) {
+			// pr($subscriber);
+			foreach ($subscriber->implementedEvents() as $eventKey => $function) {
+				// if(!($eventKey instanceof EventListener)){
+					// unset($eventKey);
+					// die();
+				// }
+				
+				// pr($eventKey.' => '.$function);
+				
+				$options = array();
+				$method = $function;
+				// pr($eventKey);
+				// die();
+				// pr($method);
+				if (is_array($function) && isset($function['callable'])) {
+					list($method, $options) = $this->_extractCallable($function, $subscriber);
+					// pr(list($method, $options) = $this->_extractCallable($function, $subscriber));
+				} elseif (is_array($function) && is_numeric(key($function))) {
+					foreach ($function as $f) {
+						list($method, $options) = $this->_extractCallable($f, $subscriber);
+						// pr(list($method, $options) = $this->_extractCallable($f, $subscriber));
+						$this->attach($method, $eventKey, $options);
+					}
+					continue;
+				}
+				if (is_string($method)) {
+					$method = array($subscriber, $function);
+					// pr($method);
+					// var_dump(array($subscriber, $function));
+				}
+				$this->attach($method, $eventKey, $options);
+				// pr($this->attach($method, $eventKey, $options));
+			}
+		}
+		
+	/**
+	 * Fonction supplémentaire pour extraire et renvoyer un type de callback PHP sur la définition callable
+	 * À partir de la valeur de retour de la méthode `implementedEvents sur un EventListener
+	 *
+	 * @param array $function the array taken from a handler definition for an event
+	 * @param CakeEventListener $object The handler object
+	 * @return callback
+	 */
+		protected function _extractCallable($function, $object) {
+			$method = $function['callable'];
+			$options = $function;
+			unset($options['callable']);
+			if (is_string($method)) {
+				$method = array($object, $method);
+			}
+			return array($method, $options);
 		}
 
 }

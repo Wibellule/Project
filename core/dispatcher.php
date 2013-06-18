@@ -35,11 +35,11 @@ class Dispatcher implements EventListener{
 		//On parse l'url via l'objet Router
 		Router::parse($this->request->url, $this->request);//appel static modifie l'objet request sans créer d'objet intermédiaire
 		// pr($this->request);
-		pr($this->loadEvent());
+		// pr($this->loadEvent());
 		// pr($this->request->clientIp(true));
 		// die();
 		
-		
+		EventManager::instance();
 		
 		// $event = $this->loadEvent();
 		
@@ -115,21 +115,23 @@ class Dispatcher implements EventListener{
 		//Ajout de la variable du nom du model dans la request
 		$controller->request->modelName = $modelName;
 		
+		// pr($this->loadEvent());
+		
 		// $controller->Form = new Form();
 		//Retourne un nouvel objet de type $names
 		return $controller;
 	}
 	
-	function loadEvent(){
-		$event = new Event($this->request->controller.'.'.$this->request->action, $this);
-		return $event;
-	}
+	// function loadEvent(){
+		// $event = new Event($this->request->controller.'.'.$this->request->action, $this);
+		// return $event;
+	// }
 	
 	/**
 	 * Returns the EventManager instance or creates one if none was
 	 * created. Attaches the default listeners and filters
 	 *
-	 * @return CakeEventManager
+	 * @return EventManager
 	 */
 		public function getEventManager() {
 			if (!$this->_eventManager) {

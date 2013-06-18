@@ -1,6 +1,6 @@
 <?php
-class CategoriesController extends AppController{
-	
+class CategoriesController extends AppController {
+		
 	function view($id = null,$slug){
 		
 		$id = (int) $id;
@@ -22,11 +22,19 @@ class CategoriesController extends AppController{
 			}
 		}
 		
-		//Chargement du model et de l'évenement s'il existe
-		$this->loadModel('Categorie');
-		// pr($this->Categorie);
-		pr($this->CategoriesEventListener->test());
+		//Chargement de l'évènement
+		// $this->loadEvent('Categorie');
+		//On attache à l'EventManager l'écouteur qu'on veut lui faire passer
+		// $this->Categorie->getEventManager()->attach(new CategoriesEventListener());
+		// pr($this->Categorie->getEventManager()->attach(new $this->CategoriesEventListener()));
 		
+		// $this->Categorie->afterSave();
+		// pr($this->Categorie->getEventManager());
+		// pr($this);
+		
+		$this->Categorie->afterSave(true);
+		
+
 		//On envoi les variables à la vue
 		$this->set('categorie', $post);
 		
