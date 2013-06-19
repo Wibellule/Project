@@ -27,44 +27,18 @@ class Categorie extends Tree{
 		'slug' => array(
 			'rule'		=> '([a-z0-9\-]+)',
 			'message'	=> "Le slug de l'Url n'est pas valide"
-		)
+		),
+		'parent_id' => array(
+			'rule'		=> 'checkParadox',
+			'message' 	=> "Cette catégorie ne peut pas être son propre parent"
+		)/*,
+		'redirection_category_id' => array(
+			'rule' 		=> 'checkRedirect',
+			'message' 	=> "Cette catégorie ne peut pas être redirigée vers elle-même"
+		)*/
 	);
 	 
-	/**
-	 * Cette fonction permet de contrôler qu'une catégorie ne soit pas son propre parent
-	 * Fonction qui doit vérifier qu'une catégorie ne doit pas être son propre parent
-	 * @var 	integer $val Valeur du champ parent_id
-	 * @access 	public
-	 * @author 	koéZionCMS
-	 * @version 0.1 - 20/04/2012 by FI
-	 */	
-	function check_paradox($val) {
-
-	$modelDatas = $this->datas; //Données postées
-
-	//Il faut contrôler si on est sur un ajout ou sur une édition
-	//car dans le cas de l'ajout il ne faudra pas faire le test		
-	if(isset($modelDatas['id'])) { return $modelDatas['id'] != $val; }
-	else { return true; }		
-	}	
 	
-	/**
-	 * Cette fonction permet de contrôler qu'une catégorie ne soit redirigée vers elle même
-	 * Fonction qui doit vérifier qu'une catégorie n'est pas redirigée vers elle même ( boucle infinie )
-	 * @var 	integer $val Valeur du champ parent_id
-	 * @access 	public
-	 * @author 	koéZionCMS
-	 * @version 0.1 - 20/04/2012 by FI
-	 */	
-	function check_redirect($val) {
-		
-		$modelDatas = $this->datas; //Données postées
-		
-		//Il faut contrôler si on est sur un ajout ou sur une édition
-		//car dans le cas de l'ajout il ne faudra pas faire le test		
-		if(isset($modelDatas['id'])) { return $modelDatas['id'] != $val; }
-		else { return true; }		
-	}
 	
 	/**
 	 * Fonction afterSave, fonction qui propage l'évènement

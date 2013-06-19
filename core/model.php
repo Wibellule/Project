@@ -372,6 +372,7 @@ class Model /*implements EventListener*/{
 		public function validates($datas){
 			//Message d'erreur dans un tableau
 			$errors = array();
+			$this->datas = $datas;
 			if(isset($this->validate)){
 				//Parcours des données à valider
 				//On parcours toujours le tableau le plus petit
@@ -385,6 +386,14 @@ class Model /*implements EventListener*/{
 							}
 						}elseif(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
 							$errors[$k] = $v['message'];
+						}elseif($v['rule'] == 'checkParadox'){
+							if($this->check_paradox($datas[$k])){
+								$errors[$k] = $v['message'];
+							}
+						}elseif($v['rule'] == 'checkRedirect'){
+							// if(!$this->check_redirect($datas[$k])){
+								// $errors[$k] = $v['message'];
+							// }
 						}
 					}
 				}
@@ -396,7 +405,9 @@ class Model /*implements EventListener*/{
 				return true;
 			}
 			//Dans tous les autres cas on retourne faux
-			return false;
+			// return false;
+			$this->check_paradox($this->datas['id']);
+			pr($this->datas);
 		}
 		
 		/**
@@ -420,6 +431,53 @@ class Model /*implements EventListener*/{
 				$this->_eventManager->attach($this->$eventName);
 			}
 			return $this->_eventManager;
+		}
+		
+		/**
+		 * Cette fonction permet de contrôler qu'une catégorie ne soit pas son propre parent
+		 * Fonction qui doit vérifier qu'une catégorie ne doit pas être son propre parent
+		 * @var 	integer $val Valeur du champ parent_id
+		 * @access 	public
+		 * @author 	koéZionCMS
+		 * @version 0.1 - 20/04/2012 by FI
+		 */	
+		function check_paradox($val) {
+			//Récupération des conditions
+			$conditions = array('conditions' => array('online' => 1, 'type' => 1, 'id' => $val));
+			//Requete et variable intermédiaire
+			$value = $this->findFirst($conditions);
+			pr($value);
+			// if($value['id'] != $val){ return false; }
+			// else{ return true; }
+			
+			
+			// if(isset($value['id'])) { return $value['id'] != $val; }
+			// else {return true;}
+			// $modelDatas = $this->datas; //Données postées
+			// pr($val);
+
+			//Il faut contrôler si on est sur un ajout ou sur une édition
+			//car dans le cas de l'ajout il ne faudra pas faire le test		
+			// if(isset($modelDatas['id'])) { return $modelDatas['id'] != $val; }
+			// else { return true; }		
+		}	
+		
+		/**
+		 * Cette fonction permet de contrôler qu'une catégorie ne soit redirigée vers elle même
+		 * Fonction qui doit vérifier qu'une catégorie n'est pas redirigée vers elle même ( boucle infinie )
+		 * @var 	integer $val Valeur du champ parent_id
+		 * @access 	public
+		 * @author 	koéZionCMS
+		 * @version 0.1 - 20/04/2012 by FI
+		 */	
+		function check_redirect($val) {
+			
+			$modelDatas = $this->datas; //Données postées
+			
+			//Il faut contrôler si on est sur un ajout ou sur une édition
+			//car dans le cas de l'ajout il ne faudra pas faire le test		
+			if(isset($modelDatas['id'])) { return $modelDatas['id'] != $val; }
+			else { return true; }		
 		}
 		
 }

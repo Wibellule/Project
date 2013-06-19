@@ -28,7 +28,7 @@ class AppController extends Controller{
 		if($this->request->data){
 			
 			//////////////////////////////
-			// Code validation FranÁois //
+			// Code validation Fran√ßois //
 			//////////////////////////////
 			if($this->$modelName->validates($this->request->data)){
 				$this->$modelName->save($this->request->data);
@@ -50,10 +50,11 @@ class AppController extends Controller{
 		$modelName = $this->request->modelName;
 		if($this->request->data){
 			//////////////////////////////
-			// Code validation FranÁois //
+			// Code validation Fran√ßois //
 			//////////////////////////////
 			if($this->$modelName->validates($this->request->data)){
 				// $this->request->data['type'] = 'post';
+				// die();
 				$this->$modelName->save($this->request->data);
 				Session::setFlash('Element modifi√© avec succes','success');
 				// pr($this->request->data);
@@ -66,10 +67,11 @@ class AppController extends Controller{
 					$message .= $v."<br />";
 				}
 				Session::setFlash($message,'error');
+				// die();
 			}			
 			//////////////////////////////
 		}			
-		//Injection de l'id dans les donnÈes
+		//Injection de l'id dans les donn√©es
 		$this->request->data = $this->$modelName->findFirst(array('conditions' => array( 'id' => $id )));
 		$d['id'] = $this->request->data['id'];
 		$this->set($d);
@@ -86,12 +88,12 @@ class AppController extends Controller{
 	}
 	
 	/**
-	 * Cette fonction permet de rÈcupÈrer le menu
+	 * Cette fonction permet de r√©cup√©rer le menu
 	 *
 	 * @param 	integer $websiteId Identifiant du site Internet
-	 * @return 	array 	Liste des catÈgories
+	 * @return 	array 	Liste des cat√©gories
 	 * @access 	protected
-	 * @author 	koÈZionCMS
+	 * @author 	ko√©ZionCMS
 	 * @version 0.1 - 03/05/2012 by FI
 	 */       
     // protected function _get_website_menu($websiteId) {
@@ -104,7 +106,7 @@ class AppController extends Controller{
     	
     	// if(!$menuGeneral) {
     	
-    		//RÈcupÈration du menu gÈnÈral
+    		//R√©cup√©ration du menu g√©n√©ral
     		
     		
 			if($level){
