@@ -31,11 +31,11 @@ class Categorie extends Tree{
 		'parent_id' => array(
 			'rule'		=> 'checkParadox',
 			'message' 	=> "Cette catégorie ne peut pas être son propre parent"
-		)/*,
+		),
 		'redirection_category_id' => array(
 			'rule' 		=> 'checkRedirect',
 			'message' 	=> "Cette catégorie ne peut pas être redirigée vers elle-même"
-		)*/
+		)
 	);
 	 
 	

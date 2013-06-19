@@ -374,11 +374,6 @@ class Model /*implements EventListener*/{
 			$errors = array();
 			$this->datas = $datas;
 			
-			//Récupération des conditions
-			$conditions = array('conditions' => array('online' => 1, 'type' => 1, 'id' => $this->datas['id']));
-			//Requete et variable intermédiaire
-			$value = $this->findFirst($conditions);
-			
 			if(isset($this->validate)){
 				//Parcours des données à valider
 				//On parcours toujours le tableau le plus petit
@@ -397,13 +392,23 @@ class Model /*implements EventListener*/{
 									$errors[$k] = $v['message'];
 								}
 							break;
-							case '/^'.$v['rule'].'$/':
-								if(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
+							case 'checkRedirect':
+								if($this->datas['id'] == $datas[$k]){
 									$errors[$k] = $v['message'];
 								}
 							break;
+							// case '/^'.$v['rule'].'$/':
+								// if(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
+									// $errors[$k] = $v['message'];
+								// }
+							// break;
 						}
 					}
+					// if(isset($datas[$k])){
+						// if(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
+							// $errors[$k] = $v['message'];
+						// }
+					// }
 						// if($v['rule'] == 'notEmpty'){
 							// if(empty($datas[$k])){
 								// $errors[$k] = $v['message'];
