@@ -373,31 +373,51 @@ class Model /*implements EventListener*/{
 			//Message d'erreur dans un tableau
 			$errors = array();
 			$this->datas = $datas;
+			
+			//Récupération des conditions
+			$conditions = array('conditions' => array('online' => 1, 'type' => 1, 'id' => $this->datas['id']));
+			//Requete et variable intermédiaire
+			$value = $this->findFirst($conditions);
+			
 			if(isset($this->validate)){
 				//Parcours des données à valider
 				//On parcours toujours le tableau le plus petit
 				foreach($this->validate as $k => $v){
 					if(!isset($datas[$k])){
-						$errors[$k] = $v['message'];
+						$errors[$k] = $v['message'];					
 					}else{
-						if($v['rule'] == 'notEmpty'){
-							if(empty($datas[$k])){
+						switch($v['rule']){
+							case 'notEmpty':
+								if(empty($datas[$k])){
 								$errors[$k] = $v['message'];
 							}
-						}elseif(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
-							$errors[$k] = $v['message'];
-						}elseif($v['rule'] == 'checkParadox'){
-							if($this->check_paradox($datas[$k])){
-								$errors[$k] = $v['message'];
-							}
-						}elseif($v['rule'] == 'checkRedirect'){
-							// if(!$this->check_redirect($datas[$k])){
-								// $errors[$k] = $v['message'];
-							// }
+							break;
+							case 'checkParadox':
+								if($this->datas['id'] == $datas[$k]){
+									$errors[$k] = $v['message'];
+								}
+							break;
+							case '/^'.$v['rule'].'$/':
+								if(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
+									$errors[$k] = $v['message'];
+								}
+							break;
 						}
 					}
+						// if($v['rule'] == 'notEmpty'){
+							// if(empty($datas[$k])){
+								// $errors[$k] = $v['message'];
+							// }
+						// }elseif(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
+							// $errors[$k] = $v['message'];
+						// }elseif($v['rule'] == 'checkParadox'){
+							// if($this->datas['id'] == $datas[$k]){
+								// $errors[$k] = $v['message'];
+							// }
+						// }
+					}
 				}
-			}
+			
 			//On injecte une variable dans l'objet
 			$this->errors = $errors;
 			//Cas le plus récurrent
@@ -406,8 +426,14 @@ class Model /*implements EventListener*/{
 			}
 			//Dans tous les autres cas on retourne faux
 			// return false;
-			$this->check_paradox($this->datas['id']);
-			pr($this->datas);
+			// $this->check_paradox($this->datas['id']);
+			// if($this->datas['id'] == $this->datas['parent_id']){
+				// pr($this->datas['parent_id']);
+				// pr($this->datas['id']);
+				pr($datas);
+				// pr($this->validate);
+			// }
+			
 		}
 		
 		/**
@@ -441,12 +467,12 @@ class Model /*implements EventListener*/{
 		 * @author 	koéZionCMS
 		 * @version 0.1 - 20/04/2012 by FI
 		 */	
-		function check_paradox($val) {
+		// function check_paradox($val) {
 			//Récupération des conditions
-			$conditions = array('conditions' => array('online' => 1, 'type' => 1, 'id' => $val));
+			// $conditions = array('conditions' => array('online' => 1, 'type' => 1, 'id' => $val));
 			//Requete et variable intermédiaire
-			$value = $this->findFirst($conditions);
-			pr($value);
+			// $value = $this->findFirst($conditions);
+			// pr($value['id']);
 			// if($value['id'] != $val){ return false; }
 			// else{ return true; }
 			
@@ -460,7 +486,7 @@ class Model /*implements EventListener*/{
 			//car dans le cas de l'ajout il ne faudra pas faire le test		
 			// if(isset($modelDatas['id'])) { return $modelDatas['id'] != $val; }
 			// else { return true; }		
-		}	
+		// }	
 		
 		/**
 		 * Cette fonction permet de contrôler qu'une catégorie ne soit redirigée vers elle même
@@ -470,15 +496,15 @@ class Model /*implements EventListener*/{
 		 * @author 	koéZionCMS
 		 * @version 0.1 - 20/04/2012 by FI
 		 */	
-		function check_redirect($val) {
+		// function check_redirect($val) {
 			
-			$modelDatas = $this->datas; //Données postées
+			// $modelDatas = $this->datas; //Données postées
 			
 			//Il faut contrôler si on est sur un ajout ou sur une édition
 			//car dans le cas de l'ajout il ne faudra pas faire le test		
-			if(isset($modelDatas['id'])) { return $modelDatas['id'] != $val; }
-			else { return true; }		
-		}
+			// if(isset($modelDatas['id'])) { return $modelDatas['id'] != $val; }
+			// else { return true; }		
+		// }
 		
 }
 
