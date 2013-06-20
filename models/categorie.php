@@ -14,7 +14,7 @@ class Categorie extends Tree{
 	
 	/**
 	 * Tableau contenant l'ensemble des champs à valider
-	 *
+	 * @comment version stable pour les conditions
 	 * @var 	array
 	 * @access 	public
 	 */	
