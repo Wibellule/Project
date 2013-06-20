@@ -112,10 +112,12 @@ class AppController extends Controller{
 			if($level){
 				$this->loadModel('Categorie');
 				$req = array('conditions' => array('online' => 1, 'type' => 1,'level' => $level));
+				// pr($req);
 				$menuGeneral = $this->Categorie->getTreeRecursive($req);
 			}else{
 				$this->loadModel('Categorie');
 				$req = array('conditions' => array('online' => 1, 'type' => 1));
+				// pr($req);
 				$menuGeneral = $this->Categorie->getTreeRecursive($req);
 			}
 			

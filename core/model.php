@@ -397,31 +397,15 @@ class Model /*implements EventListener*/{
 									$errors[$k] = $v['message'];
 								}
 							break;
-							// case '/^'.$v['rule'].'$/':
-								// if(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
-									// $errors[$k] = $v['message'];
-								// }
-							// break;
+							case '([a-z0-9\-]+)':
+								if(!preg_match('/^([a-z0-9\-]+)$/',$datas[$k])){
+									$errors[$k] = $v['message'];
+								}
+							break;
 						}
 					}
-					// if(isset($datas[$k])){
-						// if(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
-							// $errors[$k] = $v['message'];
-						// }
-					// }
-						// if($v['rule'] == 'notEmpty'){
-							// if(empty($datas[$k])){
-								// $errors[$k] = $v['message'];
-							// }
-						// }elseif(!preg_match('/^'.$v['rule'].'$/',$datas[$k])){
-							// $errors[$k] = $v['message'];
-						// }elseif($v['rule'] == 'checkParadox'){
-							// if($this->datas['id'] == $datas[$k]){
-								// $errors[$k] = $v['message'];
-							// }
-						// }
-					}
 				}
+			}
 			
 			//On injecte une variable dans l'objet
 			$this->errors = $errors;
@@ -430,15 +414,7 @@ class Model /*implements EventListener*/{
 				return true;
 			}
 			//Dans tous les autres cas on retourne faux
-			// return false;
-			// $this->check_paradox($this->datas['id']);
-			// if($this->datas['id'] == $this->datas['parent_id']){
-				// pr($this->datas['parent_id']);
-				// pr($this->datas['id']);
-				pr($datas);
-				// pr($this->validate);
-			// }
-			
+			return false;			
 		}
 		
 		/**

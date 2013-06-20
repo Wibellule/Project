@@ -119,6 +119,7 @@ class CategoriesController extends AppController {
 			'conditions' => 'type != 3',
 			'fields' => array('id', 'name', 'lft', 'rgt', 'level', 'online', 'type'), 
 			'order' => 'lft'
+			// 'order' => 'id'
 		);
 		$d['categories'] = $this->Categorie->find($conditions);		
 		$d['titre'] = $this->Categorie->getTreeList(false);		
@@ -184,6 +185,12 @@ class CategoriesController extends AppController {
 	 */
 	function getMenuFooter($level=null) {
 		$this->loadModel('Categorie');
+		$conditions = array(
+			'conditions' => 'type != 3',
+			'fields' => array('id', 'name', 'lft', 'rgt', 'level', 'online', 'type'), 
+			'order' => 'lft'
+			// 'order' => 'id'
+		);
 		$req = array('conditions' => array('online' => 1, 'type' => 1,'level' => $level));
 		$menuFooter = $this->Categorie->getTreeRecursive($req);
 		return $menuFooter;
