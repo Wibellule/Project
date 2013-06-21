@@ -181,6 +181,20 @@ class Controller{
 		// pr($this->vars);
 		include($chemin);//Fait l'inclusion du fichier
 	}
+	
+	/**
+	 * BeforeRender Fonction appelée avant le rendu de la fonction render
+	 */
+	 public function beforeRender(){
+		//à définir plus bas dans les controllers
+	 }
+	 
+	/**
+	 * BeforeFilter Fonction appelée avant les traitements effectuées dans la fonction
+	 */
+	 public function beforeFilter(){
+		//à définir plus bas dans les controllers
+	 }
 }
 
 
