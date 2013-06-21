@@ -116,18 +116,6 @@ class Controller{
 		// pr($this->$modelName);
 	}
 	
-	public function loadEvent($modelName){
-		// $event = new Event($this->request->controller.'.'.$this->request->action, $this);
-		// return $event;
-		//Chargement des évenements
-		$event = ROOT.DS.'events'.DS.lcfirst($modelName).'s_event.php';
-		if(file_exists($event)){
-			require_once($event);
-			$eventName = $modelName.'sEventListener';
-			if(!isset($this->$eventName)){ $this->$eventName = new $eventName();}
-		}
-	}
-	
 	/**
 	* Fonction requestAction qui peut utiliser une methode d'un controller depuis une vue
 	* @param $controller
