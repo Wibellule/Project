@@ -12,7 +12,7 @@ class EventManager{
 	/**
 	 * L'instance globale disponible, utilisée pour la distribution des événements attachés de toute portée
 	 *
-	 * @var CakeEventManager
+	 * @var EventManager
 	 */
 		protected static $_generalManager = null;
 
@@ -200,7 +200,7 @@ class EventManager{
 	 * À partir de la valeur de retour de la méthode `implementedEvents sur un EventListener
 	 *
 	 * @param array $function the array taken from a handler definition for an event
-	 * @param CakeEventListener $object The handler object
+	 * @param EventListener $object The handler object
 	 * @return callback
 	 */
 		protected function _extractCallable($function, $object) {
