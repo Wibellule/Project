@@ -69,6 +69,8 @@
 	 *
 	 * @param  string $key Environment variable name.
 	 * @return string Environment variable setting.
+	 *
+	 * @function getenv fonction php qui retourne la valeur d'une variable d'environment
 	 * @link http://book.cakephp.org/2.0/en/core-libraries/global-constants-and-functions.html#env
 	 */
 		function env($key) {

@@ -95,7 +95,7 @@ class Request{
 		}
 		
 	/**
-	 * Check whether or not a Request is a certain type. Uses the built in detection rules
+	 * Vérifie si une Request est d'un certain type. Uses the built in detection rules
 	 * as well as additional rules defined with CakeRequest::addDetector(). Any detector can be called
 	 * as `is($type)` or `is$Type()`.
 	 *

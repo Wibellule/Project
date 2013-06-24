@@ -19,14 +19,14 @@ class RequestHandler {
 	/**
 	 * Holds the reference to Controller::$request
 	 *
-	 * @var CakeRequest
+	 * @var Request
 	 */
 		public $request;
 
 	/**
 	 * Holds the reference to Controller::$response
 	 *
-	 * @var CakeResponse
+	 * @var Response
 	 */
 		public $response;
 		
@@ -54,10 +54,9 @@ class RequestHandler {
 	}
 	
 	/**
-	 * Returns true if the current HTTP request is Ajax, false otherwise
+	 * Retourne true si la requete courante est de type XMLHttpRequest, false sinon
 	 *
-	 * @return boolean True if call is Ajax
-	 * @deprecated use `$this->request->is('ajax')` instead.
+	 * @return boolean True si l'appel est en Ajax
 	 */
 		public function isAjax() {
 			return $this->request->is('ajax');

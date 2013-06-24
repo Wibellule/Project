@@ -2297,6 +2297,7 @@ input.placeholder, textarea.placeholder { color: #b0b0b0; }
 		}
 
 	.contact-form input[type="submit"], .comments-form input[type="submit"],
+	/*.contact-form input[type="button"], .comments-form input[type="button"],*/
 	.contact-form input[type="reset"], .comments-form input[type="reset"] {
 		margin: 0 0 20px;
 		width: auto;

@@ -51,3 +51,4 @@ $dispatcher = new Dispatcher();
 line-height:30px;height:30px;left:0;right:0;padding-left:10px;">
 <?php //echo 'Page g&eacute;n&eacute;r&eacute;e en : '.round(microtime(true) - $debut,5).' secondes';?>
 </div>-->
+<?php //var_dump($_SERVER);?>
