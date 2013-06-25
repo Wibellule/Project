@@ -9,10 +9,11 @@ require_once('bootstrap.php'); //Fichier chargé de loader les librairies et ini
 // }
 
 $steps = array(
-	'database' 			=> 'Configuration de la base de données',
-	'database_tables'	=> 'Import des tables de la base de données',
-	'database_datas'	=> 'Import des données',
-	'final'				=> 'Récapitulatif de l\'installation'
+	'accueil'			=> '- Accueil ',
+	'database' 			=> '- Configuration de la base de données ',
+	'database_tables'	=> '- Import des tables de la base de données ',
+	'database_datas'	=> '- Import des données ',
+	'final'				=> '- Récapitulatif de l\'installation '
 );
 
 //Si on récupère la page à afficher dans l'url, par défaut on charge la page de configuration des dossiers
@@ -28,6 +29,7 @@ else { $step = $_GET['step']; }
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<title>.:: Installation <?php echo $steps[$step];?>::.</title>
 		<link href="../webroot/css/install/bootstrap.css" rel="stylesheet" type="text/css" />
 		<link href="../webroot/css/install/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="../webroot/css/install/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
