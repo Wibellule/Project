@@ -47,7 +47,7 @@ require(CORE.DS.'includes.php');
 //il faut donc rediriger vers le dossier d'installation
 if(!file_exists(CONFIGS.DS.'database.ini')) {
 
-	header("Location: ".Router::url('/install'));
+	header("Location: ".Router::url('/install/index','','php'));
 	die();
 }
 

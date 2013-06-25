@@ -1,0 +1,12 @@
+# Activation de la réécriture d'url
+# On va mettre en place des conditions qui vont indiquer que si un fichier ou un dossier est atteint la réecriture précédente ne soit pas mise en place
+# RewriteCond %{REQUEST_FILENAME} !-d ==> Dossier
+# RewriteCond %{REQUEST_FILENAME} !-f ==> Fichier
+# ==> si je n'atteint pas un dossier ou si je n'atteint pas un fichier je vais faire la regle en dessous
+# On redirige tout vers index.php
+# L] derniere regle a utiliser
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+</IfModule>

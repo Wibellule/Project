@@ -7,6 +7,8 @@ Router::prefix('adm','backoffice');//Définition du prefixe backoffice
 //////////////////////
 //REGLES FRONTOFFICE//
 
+// Router::connect('install');
+
 //Accueil
 Router::connect('','homes/index');
 Router::connect('adm','adm/posts/index');
