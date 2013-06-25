@@ -7,6 +7,20 @@ require_once('bootstrap.php'); //Fichier chargé de loader les librairies et ini
 	// header("Location: ".Router::url('/', ''));
 	// die();
 // }
+
+$steps = array(
+	'database' 			=> 'Configuration de la base de données',
+	'database_tables'	=> 'Import des tables de la base de données',
+	'database_datas'	=> 'Import des données',
+	'final'				=> 'Récapitulatif de l\'installation'
+);
+
+//Si on récupère la page à afficher dans l'url, par défaut on charge la page de configuration des dossiers
+if(!isset($_GET['step'])) { $step = 'accueil'; }
+else { $step = $_GET['step']; }
+
+// pr($step);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,17 +66,15 @@ require_once('bootstrap.php'); //Fichier chargé de loader les librairies et ini
           <div class="well sidebar-nav">
             <ul class="nav nav-list">
               <li class="nav-header">Étapes</li>
-              <li class="active"><a>Accueil</a></li>
-              <li><a>Base de données</a></li>
-              <li><a>Récapitulatif</a></li>
+              <li <?php echo $step == 'accueil' ? 'class="active"' : '';?>><a>Accueil</a></li>
+              <li <?php echo in_array($step, array('database', 'database_tables', 'database_datas')) ? 'class="active"' : ''; ?>><a>Base de données</a></li>
+              <li <?php echo $step == 'final' ? 'class="active"' : '';?>><a>Récapitulatif</a></li>
             </ul>
           </div><!--/.well -->
         </div><!--/span-->
         <div class="span9">
           <div class="hero-unit">
-            <h1>Bienvenue dans le module d'installation</h1>
-            <p></p>
-            <p><a href="#" class="btn btn-primary btn-large">Commencer &raquo;</a></p>
+			<?php include('pages/'.$step.'.php');?>
           </div>
 		  <hr>
 		  <footer>
