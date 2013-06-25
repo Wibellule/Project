@@ -4,5 +4,7 @@ if($httpHost == 'localhost' || $httpHost == '127.0.0.1') { $section = 'localhost
 ?>
 <form action="index.php?step=database" method="post">
 	<input type="hidden" name="section" value="<?php echo $section; ?>" />
-	<button class="btn btn-large btn-primary" type="submit">Configurer la base de données</button>
+	<button class="btn btn-large btn-primary" type="submit">Configurer la base de données</button></br>
+	<p>&nbsp;</p>
+	<?php echo is_active('mod_rewrite');?>
 </form>

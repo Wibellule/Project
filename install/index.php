@@ -1,5 +1,6 @@
 <?php
 require_once('bootstrap.php'); //Fichier chargé de loader les librairies et initialiser les constantes 
+require_once(INSTALL_FUNCTIONS.DS.'accueil.php');
 
 //03/12/2012 - Si le site est paramétré on ne refait pas l'install
 // if(file_exists(CONFIGS_FILES.DS.'installed')) {
@@ -21,7 +22,14 @@ if(!isset($_GET['step'])) { $step = 'accueil'; }
 else { $step = $_GET['step']; }
 
 // pr($step);
-
+// $modules = apache_get_modules();
+// $rewrite = 'mod_rewrite';
+// if(module_enabled($rewrite)){
+	// print_r(apache_get_modules());
+// }
+// pr(is_active($rewrite));
+// echo $result;
+pr('<i class="icon-ok"></i>');
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,6 +42,8 @@ else { $step = $_GET['step']; }
 		<link href="../webroot/css/install/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<link href="../webroot/css/install/bootstrap-responsive.css" rel="stylesheet" type="text/css" />
 		<link href="../webroot/css/install/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+		<link href="../webroot/js/install/js/bootstrap.js" type="javascript" />
+		<link href="../webroot/js/install/js/bootstrap.min.js" type="javascript" />
 		<style type="text/css">
 		  body {
 			padding-top: 60px;
@@ -83,5 +93,18 @@ else { $step = $_GET['step']; }
 			<p>&copy; Wibellule 2013</p>
 		  </footer>
 		</div><!--/.fluid-container-->
+		<script src="../webroot/js/install/js/jquery.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-transition.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-alert.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-modal.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-dropdown.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-scrollspy.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-tab.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-tooltip.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-popover.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-button.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-collapse.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-carousel.js"></script>
+		<script src="../webroot/js/install/js/bootstrap-typeahead.js"></script>
 	</body>
 </html>
