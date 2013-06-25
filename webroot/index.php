@@ -9,6 +9,7 @@ define('ROOT', dirname(WEBROOT)); //Chemin absolu vers le dossier racine du site
 define('CORE', ROOT.DS.'core'); //Chemin relatif vers le coeur de l'application
 define('BEHAVIORS', ROOT.DS.'models'.DS.'behaviors'); //Chemin relatif vers les comportements d'un model
 define('COMPONENTS', ROOT.DS.'controllers'.DS.'components'); //Chemin relatif vers les composants des controllers
+define('CONFIGS', ROOT.DS.'configs'); //Chemin relatif vers les configurations
 
 
 // define('BASE_URL', dirname(dirname($_SERVER['SCRIPT_NAME']))); //
@@ -40,6 +41,16 @@ define('EVENT_LISTENER', CORE.DS.'Event'.DS.'event_listener.php'); //Chemin vers
 
 
 require(CORE.DS.'includes.php');
+
+//Test pour savoir si le site a un fichier de config paramétré
+//Si le fichier database.ini n'existe pas cela veut dire que le site n'est pas correctement paramétré
+//il faut donc rediriger vers le dossier d'installation
+if(!file_exists(CONFIGS.DS.'database.ini')) {
+
+	header("Location: ".Router::url('/install', ''));
+	die();
+}
+
 $dispatcher = new Dispatcher();
 
 // pr($scriptPath);
