@@ -13,7 +13,7 @@ define('CONFIGS', ROOT.DS.'configs'); //Chemin relatif vers les configurations
 
 
 // define('BASE_URL', dirname(dirname($_SERVER['SCRIPT_NAME']))); //
-//********************  CODE FRANçOIS  ***************************//
+//********************  CODE FRANÇOIS  ***************************//
 //Mise en place du chemin relatif pour pouvoir fonctionner dans les sous dossiers
 $baseUrl = '';
 $scriptPath = preg_split("#[\\\\/]#", dirname(__FILE__), -1, PREG_SPLIT_NO_EMPTY);
@@ -47,7 +47,7 @@ require(CORE.DS.'includes.php');
 //il faut donc rediriger vers le dossier d'installation
 if(!file_exists(CONFIGS.DS.'database.ini')) {
 
-	header("Location: ".Router::url('/install', ''));
+	header("Location: ".Router::url('/install'));
 	die();
 }
 
