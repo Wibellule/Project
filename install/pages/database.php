@@ -11,4 +11,3 @@ if(isset($_POST['section']) && !empty($_POST['section'])) {
 }
 ?>
 <h2>Configuration de la base de données</h2>
-<?php include(INSTALL_INCLUDE.DS.'database_form.php');

@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<button type="submit" class="btn btn-success">Envoyer</button>
+			<button class="btn btn-large btn-primary" type="submit">Tester la connexion de la base</button>
 		</div>
 	</fieldset>
 </form>
