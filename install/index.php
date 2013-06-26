@@ -11,6 +11,7 @@ require_once(INSTALL_FUNCTIONS.DS.'accueil.php');
 
 $steps = array(
 	'accueil'			=> '- Accueil ',
+	'connect'			=> '- Test de la connexion',
 	'database' 			=> '- Configuration de la base de données ',
 	'database_tables'	=> '- Import des tables de la base de données ',
 	'database_datas'	=> '- Import des données ',
@@ -29,7 +30,7 @@ else { $step = $_GET['step']; }
 // }
 // pr(is_active($rewrite));
 // echo $result;
-pr('<i class="icon-ok"></i>');
+// pr('<i class="icon-ok"></i>');
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,7 +80,7 @@ pr('<i class="icon-ok"></i>');
             <ul class="nav nav-list">
               <li class="nav-header">Étapes</li>
               <li <?php echo $step == 'accueil' ? 'class="active"' : '';?>><a>Accueil</a></li>
-              <li <?php echo in_array($step, array('database', 'database_tables', 'database_datas')) ? 'class="active"' : ''; ?>><a>Base de données</a></li>
+              <li <?php echo in_array($step, array('database', 'connect', 'database_tables', 'database_datas')) ? 'class="active"' : ''; ?>><a>Base de données</a></li>
               <li <?php echo $step == 'final' ? 'class="active"' : '';?>><a>Récapitulatif</a></li>
             </ul>
           </div><!--/.well -->
