@@ -7,6 +7,7 @@ define('INSTALL_FILES', ROOT.DS.'install'.DS.'files'); 			//Chemin vers les fich
 define('INSTALL_FUNCTIONS', ROOT.DS.'install'.DS.'functions'); 	//Chemin vers les fichiers contenants les fonctions
 define('INSTALL_INCLUDE', ROOT.DS.'install'.DS.'include'); 		//Chemin vers les fichiers include de configuration
 define('INSTALL_VALIDATE', ROOT.DS.'install'.DS.'validate'); 	//Chemin vers les fichiers de validation
+define('CONFIG_MAGIK', ROOT.DS.'core'.DS.'ConfigMagik'); 	//Chemin vers les fichiers de validation
 //********************  CODE FRANÇOIS  ***************************//
 //Mise en place du chemin relatif pour pouvoir fonctionner dans les sous dossiers
 $baseUrl = '';

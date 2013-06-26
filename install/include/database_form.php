@@ -1,9 +1,13 @@
-<?php
-?>
 <form class="form-horizontal" action="index.php?step=connect" method="post">
+	<input type="hidden" value="1" name="valid_database_form" />
+	<input type="hidden" value="<?php echo isset($datas['section']) ? $datas['section'] : $section ?>" name="section" />
 	<fieldset>
 		<div class="control-group">
-			<label class="control-label" for="inputHost">DataBase Host Name</label>
+			<?php if(isset($formerrors['host']) && !empty($formerrors['host'])) { ?>
+				<label class="control-label" for="inputHost">Input with error</label>
+			<?php }else{?>
+				<label class="control-label" for="inputHost">DataBase Host Name</label>
+			<?php } ?>
 			<div class="controls">
 			<input type="text" id="inputHost" placeholder="DataBase Host Name">
 			</div>
