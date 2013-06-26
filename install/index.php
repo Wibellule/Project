@@ -13,7 +13,7 @@ $steps = array(
 	'accueil'			=> '- Accueil ',
 	'connect'			=> '- Test de la connexion',
 	'database' 			=> '- Configuration de la base de données ',
-	'database_tables'	=> '- Import des tables de la base de données ',
+	'import_tables'		=> '- Import des tables de la base de données ',
 	'database_datas'	=> '- Import des données ',
 	'final'				=> '- Récapitulatif de l\'installation '
 );
@@ -23,14 +23,7 @@ if(!isset($_GET['step'])) { $step = 'accueil'; }
 else { $step = $_GET['step']; }
 
 // pr($step);
-// $modules = apache_get_modules();
-// $rewrite = 'mod_rewrite';
-// if(module_enabled($rewrite)){
-	// print_r(apache_get_modules());
-// }
-// pr(is_active($rewrite));
-// echo $result;
-// pr('<i class="icon-ok"></i>');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -80,7 +73,7 @@ else { $step = $_GET['step']; }
             <ul class="nav nav-list">
               <li class="nav-header">Étapes</li>
               <li <?php echo $step == 'accueil' ? 'class="active"' : '';?>><a>Accueil</a></li>
-              <li <?php echo in_array($step, array('database', 'connect', 'database_tables', 'database_datas')) ? 'class="active"' : ''; ?>><a>Base de données</a></li>
+              <li <?php echo in_array($step, array('database', 'connect', 'import_tables', 'database_datas')) ? 'class="active"' : ''; ?>><a>Base de données</a></li>
               <li <?php echo $step == 'final' ? 'class="active"' : '';?>><a>Récapitulatif</a></li>
             </ul>
           </div><!--/.well -->
