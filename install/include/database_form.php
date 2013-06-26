@@ -9,25 +9,25 @@
 				<label class="control-label" for="inputHost">DataBase Host Name</label>
 			<?php } ?>
 			<div class="controls">
-			<input type="text" id="inputHost" placeholder="DataBase Host Name">
+			<input type="text" id="inputHost" name="host" value="" placeholder="DataBase Host Name">
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="inputUser">DataBase Username</label>
 			<div class="controls">
-			<input type="text" id="inputUser" placeholder="Database Username">
+			<input type="text" id="inputUser" name="login" value="" placeholder="Database Username">
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="inputPassword">DataBase Password</label>
 			<div class="controls">
-			<input type="password" id="inputPassword" placeholder="Database Password">
+			<input type="password" id="inputPassword" name="password" value="" placeholder="Database Password">
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label" for="inputName">DataBase Name</label>
 			<div class="controls">
-			<input type="text" id="inputName" placeholder="Database Name">
+			<input type="text" id="inputName" name="database" value="" placeholder="Database Name">
 			</div>
 		</div>
 		<div class="control-group">
