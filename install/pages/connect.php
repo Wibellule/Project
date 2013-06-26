@@ -7,6 +7,7 @@ if($httpHost == 'localhost' || $httpHost == '127.0.0.1') { $section = 'localhost
 if(isset($_POST['valid_database_form']) && $_POST['valid_database_form']) {
 		
 	unset($_POST['valid_database_form']);
+	// unset($_POST['section']);
 	$datas = $_POST; //Création d'une variable contenant les données postées
 
 	require_once(INSTALL_VALIDATE.DS.'connect.php'); //Inclusion des règles de validation des champs
@@ -24,6 +25,11 @@ if(isset($_POST['valid_database_form']) && $_POST['valid_database_form']) {
 				//On va parcourir les données postées et mettre à jour le fichier ini
 				foreach($datas as $k => $v) { $cfg->set($k, $v, $section); }
 				$cfg->save(); //On sauvegarde le fichier de configuration
+			}
+		}else{
+			// pr($result);
+			foreach($result as $k => $v){
+				$formerrors[$k] = $v;
 			}
 		}
 	}
