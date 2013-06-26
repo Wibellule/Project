@@ -1,6 +1,6 @@
 <?php
 ?>
-<form class="form-horizontal" action="index.php?step=database_tables" method="post">
+<form class="form-horizontal" action="index.php?step=connect" method="post">
 	<fieldset>
 		<div class="control-group">
 			<label class="control-label" for="inputHost">DataBase Host Name</label>
