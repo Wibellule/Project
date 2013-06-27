@@ -21,6 +21,7 @@ $init_db_tables = init_db($conf['host'], $conf['database'], $conf['login'], $con
 
 // pr($init_db_tables);
 ?>
+<h2>IMPORT DES TABLES DE LA BASE DE DONNEES</h2>
 <table class="table table-striped">
 	<tr>
 		<th id="MatrixItems">&nbsp;</th>

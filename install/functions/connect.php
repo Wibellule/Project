@@ -367,7 +367,7 @@
 						$queries_tota = $totalqueries; 
 					}
 					
-					$pct_bar  = "<div style=\"height:15px;background-color:#000080;margin:0 15px;\"></div>";
+					$pct_bar  = '<div class="progress progress-striped active"><div class="bar" style="width: 100%;"></div></div>';
 				} else {
 					
 					$bytes_togo  = ' ? ';
