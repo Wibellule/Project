@@ -7,6 +7,7 @@ Projet de cr&eacute;ation d'un framework personnel :
 - Gestion d'une représentation intervallaire pour les catégories
 - Gestion du formulaire de contact en Ajax
 - Gestionnaire d'évènements @version 0.1 (stable) (Niv: Model)
+- Gestionnaire d'installation automatique de l'application
 
 Options :
 - Librairie SwiftMailer - ConfigMagik - CakePhp ( Inflector / Set / String )
