@@ -14,7 +14,7 @@ $steps = array(
 	'connect'			=> '- Test de la connexion',
 	'database' 			=> '- Configuration de la base de données ',
 	'import_tables'		=> '- Import des tables de la base de données ',
-	'database_datas'	=> '- Import des données ',
+	'import_datas'	=> '- Import des données ',
 	'final'				=> '- Récapitulatif de l\'installation '
 );
 
@@ -73,7 +73,7 @@ else { $step = $_GET['step']; }
             <ul class="nav nav-list">
               <li class="nav-header">Étapes</li>
               <li <?php echo $step == 'accueil' ? 'class="active"' : '';?>><a>Accueil</a></li>
-              <li <?php echo in_array($step, array('database', 'connect', 'import_tables', 'database_datas')) ? 'class="active"' : ''; ?>><a>Base de données</a></li>
+              <li <?php echo in_array($step, array('database', 'connect', 'import_tables', 'import_datas')) ? 'class="active"' : ''; ?>><a>Base de données</a></li>
               <li <?php echo $step == 'final' ? 'class="active"' : '';?>><a>Récapitulatif</a></li>
             </ul>
           </div><!--/.well -->
