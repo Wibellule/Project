@@ -3,18 +3,18 @@ require_once('bootstrap.php'); //Fichier chargé de loader les librairies et ini
 require_once(INSTALL_FUNCTIONS.DS.'accueil.php');
 
 //03/12/2012 - Si le site est paramétré on ne refait pas l'install
-// if(file_exists(CONFIGS_FILES.DS.'installed')) {
+if(file_exists(CONFIGS_FILES.DS.'installed')) {
 
-	// header("Location: ".Router::url('/', ''));
-	// die();
-// }
+	header("Location: ".Router::url('/', ''));
+	die();
+}
 
 $steps = array(
 	'accueil'			=> '- Accueil ',
 	'connect'			=> '- Test de la connexion',
 	'database' 			=> '- Configuration de la base de données ',
 	'import_tables'		=> '- Import des tables de la base de données ',
-	'import_datas'	=> '- Import des données ',
+	'import_datas'		=> '- Import des données ',
 	'final'				=> '- Récapitulatif de l\'installation '
 );
 

@@ -5,6 +5,8 @@ require('session.php');
 //Démarrage de la session
 Session::init();
 
+//Librairie File_And_Dir
+require(LIBS.DS.'file_and_dir.php');
 //Inclusion du fichier de fonctions basics
 require('basics.php');
 

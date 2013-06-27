@@ -10,6 +10,7 @@ define('CORE', ROOT.DS.'core'); //Chemin relatif vers le coeur de l'application
 define('BEHAVIORS', ROOT.DS.'models'.DS.'behaviors'); //Chemin relatif vers les comportements d'un model
 define('COMPONENTS', ROOT.DS.'controllers'.DS.'components'); //Chemin relatif vers les composants des controllers
 define('CONFIGS', ROOT.DS.'configs'); //Chemin relatif vers les configurations
+define('LIBS', ROOT.DS.'core'.DS.'Libs'); //Chemin relatif vers les librairies
 
 
 // define('BASE_URL', dirname(dirname($_SERVER['SCRIPT_NAME']))); //

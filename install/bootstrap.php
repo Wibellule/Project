@@ -8,6 +8,8 @@ define('INSTALL_FUNCTIONS', ROOT.DS.'install'.DS.'functions'); 	//Chemin vers le
 define('INSTALL_INCLUDE', ROOT.DS.'install'.DS.'include'); 		//Chemin vers les fichiers include de configuration
 define('INSTALL_VALIDATE', ROOT.DS.'install'.DS.'validate'); 	//Chemin vers les fichiers de validation
 define('CONFIG_MAGIK', ROOT.DS.'core'.DS.'ConfigMagik'); 	//Chemin vers les fichiers de validation
+define('LIBS', ROOT.DS.'core'.DS.'Libs'); //Chemin relatif vers les librairies
+define('CONFIGS_FILES', ROOT.DS.'configs'.DS.'files');
 //********************  CODE FRANÇOIS  ***************************//
 //Mise en place du chemin relatif pour pouvoir fonctionner dans les sous dossiers
 $baseUrl = '';
@@ -17,11 +19,12 @@ $urlPath = preg_split("#[\\\\/]#", $_SERVER['REQUEST_URI'], -1, PREG_SPLIT_NO_EM
 foreach($urlPath as $k => $v) {
 	
 	$key = array_search($v, $scriptPath);
-	if($key !== false) $baseUrl .= "/".$v;
+	if($key !== false && $v != "install") $baseUrl .= "/".$v;
 }
 define('BASE_URL', $baseUrl); //Chemin relatif vers le coeur de l'application
 //****************************************************************//
 
 /* Inclusion des fichiers */
+require_once(LIBS.DS.'file_and_dir.php');
 require_once(ROOT.DS.'core'.DS.'basics.php');
 require_once(ROOT.DS.'core'.DS.'router.php');
