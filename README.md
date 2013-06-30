@@ -6,7 +6,8 @@ Projet de cr&eacute;ation d'un framework personnel :
 - Mise en place des components et behaviors
 - Gestion d'une représentation intervallaire pour les catégories
 - Gestion du formulaire de contact en Ajax
-- Gestionnaire d'évènements @version 0.1 (stable) (Niv: Model)
+- Gestionnaire d'évènements @version 0.1 (stable) (Niv: Model) :
+- MAJ : @version 0.2 30/06/13 possiblité de charger des model dans les fonctions des évènements
 - Gestionnaire d'installation automatique de l'application
 
 Options :
