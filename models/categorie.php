@@ -12,6 +12,8 @@ class Categorie extends Tree{
 	//Variable pour l'affichage des erreurs sur les champs
 	public $msgerr;
 	
+	public $test = 'ok';
+	
 	/**
 	 * Tableau contenant l'ensemble des champs à valider
 	 * @comment version stable pour les conditions
@@ -55,4 +57,7 @@ class Categorie extends Tree{
 		}
 	}
 	
+	public function test(){
+		return $this->test;
+	}
 }

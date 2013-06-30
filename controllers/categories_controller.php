@@ -36,6 +36,7 @@ class CategoriesController extends AppController {
 			// Session::setFlash('Element ajouté avec succes','success');
 		}
 		
+		$this->Categorie->afterSave(true);
 		// pr($this);
 		
 		/** Gestion du formulaire en Ajax **/
@@ -48,7 +49,6 @@ class CategoriesController extends AppController {
 					// var_dump($_POST);
 					$this->request->data['online'] = 1;
 					$this->Mail->save($this->request->data);
-					$this->Categorie->afterSave(true);
 					Session::setFlash('Message envoyé','success');
 					// $this->redirect('categories/view/id:'.$post['id'].'/slug:'.$post['slug']);
 				}else{

@@ -1,5 +1,5 @@
 <?php
-class Model /*implements EventListener*/{
+class Model extends Object /*implements EventListener*/{
 
 	public $conf = 'localhost';
 	public $db;

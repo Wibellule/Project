@@ -27,11 +27,13 @@ require(EVENT_LISTENER);
 
 //Core
 require('router.php');
+
 require ROOT.DS.'configs'.DS.'routes.php';
 require('request.php');
 require('controller.php');
 require(ROOT.DS.'controllers'.DS.'app_controller.php');
+require('object.php');
 require('model.php');
-
+require('class_registry.php');
 
 require('dispatcher.php');
