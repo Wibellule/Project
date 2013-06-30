@@ -22,9 +22,6 @@ class CategoriesController extends AppController {
 			}
 		}
 		
-		$this->Categorie->afterSave(true);
-		
-
 		//On envoi les variables à la vue
 		$this->set('categorie', $post);
 		
@@ -44,14 +41,14 @@ class CategoriesController extends AppController {
 		/** Gestion du formulaire en Ajax **/
 		if($this->components['RequestHandler']->isAjax()){
 			$this->layout = 'ajax';		
-			// var_dump($_POST);
-			/** futurs messages ici **/
+
 			$this->loadModel('Mail');
 			if(isset($this->request->data)){
 				if($this->Mail->validates($this->request->data)){
 					// var_dump($_POST);
 					$this->request->data['online'] = 1;
 					$this->Mail->save($this->request->data);
+					$this->Categorie->afterSave(true);
 					Session::setFlash('Message envoyé','success');
 					// $this->redirect('categories/view/id:'.$post['id'].'/slug:'.$post['slug']);
 				}else{
