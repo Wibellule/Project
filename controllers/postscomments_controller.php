@@ -31,14 +31,25 @@ class PostscommentsController extends AppController{
 	
 	function index(){
 		parent::index();
+
 	}
 	
 	function backoffice_add(){
 		parent::backoffice_add();
+		//Charge la liste des articles
+		$this->loadModel('Post');
+		$conditions = array('fields' => array('id'));
+		$comments_id = $this->Post->find($conditions);
+		$this->set('comments_id', $comments_id);
 	}
 	
 	function backoffice_edit($id){
 		parent::backoffice_edit($id);
+		//Charge la liste des articles
+		$this->loadModel('Post');
+		$conditions = array('fields' => array('id'));
+		$comments_id = $this->Post->find($conditions);
+		$this->set('comments_id', $comments_id);
 	}
 
 
