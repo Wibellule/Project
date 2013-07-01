@@ -32,6 +32,12 @@ class PostsController extends AppController{
 			}
 		}
 		
+		/** Chargement des commentaires **/
+		$this->loadModel('Postscomment');
+		$conditions = array('post_id' => $id ,'online' => 1);
+		$this->Postscomment->find(array('conditions' => $conditions));
+		/** à suivre **/
+		
 		/* menu */
 		$menu = $this->_get_website_menu();
 		$this->set('menuGeneral', $menu);
