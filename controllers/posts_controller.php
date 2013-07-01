@@ -24,6 +24,14 @@ class PostsController extends AppController{
 		$this->set('post', $post);
 		$this->set($d);
 		
+		/** Gestion du formulaire en Ajax **/
+		if($this->components['RequestHandler']->isAjax()){
+			$this->layout = 'ajax';
+			if(isset($this->request->data)){
+				var_dump($_POST);
+			}
+		}
+		
 		/* menu */
 		$menu = $this->_get_website_menu();
 		$this->set('menuGeneral', $menu);

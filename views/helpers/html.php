@@ -161,10 +161,10 @@ class Html{
 
 			$html .= '<h6 class="section-title">Laisser un commentaire</h6>';
 
-			$html .= '<form method="post" class="comments-form" action="'.Router::url('categories/view/id:'.$id.'/slug:'.$slug).'">';
+			$html .= '<form method="post" class="comments-form" id="comments-form" action="'.Router::url('posts/view/id:'.$id.'/slug:'.$slug.'/prefix:article').'">';
 			
 				$html .= '<p class="input-block">
-					<label for="comment-name"><strong>Name</strong> (required)</label>
+					<label for="comment-name"><strong>Nom</strong> (required)</label>
 					<input type="text" name="name" value="" id="comment-name" required>
 				</p>
 
@@ -174,16 +174,16 @@ class Html{
 				</p>
 				
 				<p class="input-block">
-					<label for="comment-url"><strong>Website</strong></label>
+					<label for="comment-url"><strong>Site Web</strong></label>
 					<input type="url" name="url" value="" id="comment-url">
 				</p>
 
 				<p class="textarea-block">
-					<label for="comment-message"><strong>Your Comment</strong> (required)</label>
+					<label for="comment-message"><strong>Votre commentaire</strong> (required)</label>
 					<textarea name="message" id="comment-message" cols="88" rows="6" required></textarea>
 				</p>';
 			
-				$html .= '<input type="submit" value="Submit">
+				$html .= '<input type="submit" value="Envoyer">
 
 				<div class="clear"></div>
 

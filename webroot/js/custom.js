@@ -1163,6 +1163,51 @@ jQuery(document).ready(function($) {
 
 	/* end Contact Form */
 	
+	/* Comments Form */
+	(function() {
+	
+		// Setup any needed variables.
+		var $form   = $('#comments-form'),
+			$loader = '<img src="/Project-master/img/loader.gif" height="11" width="16" alt="Loading..." />',
+			$url = $('#comments-form').attr("action");
+			// alert($url);
+
+		// alert('ok');
+		$form.append('<div id="response" class="hidden">');
+		var $response = $('#response');
+		
+		// Do what we need to when form is submitted.
+		$form.on('click', 'input[type=submit]', function(e){
+			// alert('ok');
+
+			// Hide any previous response text and show loader
+			$response.hide().html( $loader ).show();
+			
+			// Make AJAX request 
+			$.post($url, $form.serialize(), function( data ) {
+				// alert('ok');
+				$("#content").empty().append(data);
+				// Show response message
+				$response.html( data );
+
+				// Scroll to bottom of the form to show respond message
+				var bottomPosition = $form.offset().top + $form.outerHeight() - $(window).height();
+				
+				if( $(document).scrollTop() < bottomPosition )
+					$('html, body').animate({ scrollTop : bottomPosition });
+				
+				// If form has been sent succesfully, clear it
+				if( data.indexOf('success') !== -1 )
+					$form.find('input:not(input[type="submit"]), textarea, select').val('').attr( 'checked', false );
+				
+			});
+			
+			// Cancel default action
+			e.preventDefault();
+		});
+
+	})();
+	
 	/* ---------------------------------------------------- */
 	/*	UItoTop (Back to Top)
 	/* ---------------------------------------------------- */
