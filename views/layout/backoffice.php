@@ -13,6 +13,7 @@
 		<ul>
 		  <li><a href="<?php echo Router::url('adm');?>" title=""><i class="icon-home"></i>&nbsp;Accueil</a></li>
 		  <li><a href="<?php echo Router::url('adm/posts/index');?>" title=""><i class="icon-tag"></i>&nbsp;Articles</a></li>
+		  <li><a href="<?php echo Router::url('adm/postscomments/index');?>" title=""><i class="icon-file"></i>&nbsp;Commentaires</a></li>
 		  <li><a href="<?php echo Router::url('adm/categories/index');?>" title=""><i class="icon-file"></i>&nbsp;Pages</a></li>
 		  <li><a href="<?php echo Router::url('adm/sliders/index');?>" title=""><i class="icon-file"></i>&nbsp;Sliders</a></li>
 		  <li><a href="<?php echo Router::url('adm/projects/index');?>" title=""><i class="icon-file"></i>&nbsp;Projets</a></li>

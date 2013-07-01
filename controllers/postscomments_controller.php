@@ -1,5 +1,5 @@
 <?php
-class PostsCommentsController extends AppController{
+class PostscommentsController extends AppController{
 	function view($id = null,$slug){
 		
 		$id = (int) $id;
@@ -27,6 +27,18 @@ class PostsCommentsController extends AppController{
 		/* menu */
 		$menu = $this->_get_website_menu();
 		$this->set('menuGeneral', $menu);
+	}
+	
+	function index(){
+		parent::index();
+	}
+	
+	function backoffice_add(){
+		parent::backoffice_add();
+	}
+	
+	function backoffice_edit($id){
+		parent::backoffice_edit($id);
 	}
 
 

@@ -100,6 +100,7 @@ class Dispatcher implements EventListener{
 		$name = ucfirst($this->request->controller).'Controller';
 		//Chemin du fichier à charger
 		$file = ROOT.DS.'controllers'.DS.$this->request->controller.'_controller.php';
+		// pr($file);
 		//Vérification de l'existence du controleur
 		if(!file_exists($file)){
 			$this->error("Le controleur ".$this->request->controller." n'existe pas");

@@ -5,7 +5,8 @@
 		'sliders' => 'slider',
 		'projects' => 'project',
 		'typeprojects' => 'type de projet',
-		'typeposts' => 'type d\'article'
+		'typeposts' => 'type d\'article',
+		'postscomments' => 'commentaire'
 	);
 	
 	// echo $titrepage[$this->request->controller];

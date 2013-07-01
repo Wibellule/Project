@@ -23,6 +23,7 @@ class Router {
 		
 		$url = trim($url, '/'); //On enlève les / en début et fin de chaine
 		$url = str_replace(Router::$extensions, '', $url); //On enlève l'extension
+		// pr($url);
 		
 		//Gestion du cas j'arrive sur la racine
 		if(empty($url)) { $url = Router::$routes[0]['url']; }
@@ -67,7 +68,6 @@ class Router {
 		//Le systeme d'admin n'ayant pas besoin d'url réécrite on peut se positionner à ce niveau
 		//On va tester si le premier paramètre de l'url figure dans le tableau des prefixes
 		if(in_array($params[0], array_keys(self::$prefixes))) {
-			
 			//Si oui on va initialiser une nouvelle valeur à request
 			$request->prefix = self::$prefixes[$params[0]];
 			array_shift($params); //Par défaut params commence par la clé du prefixe on va donc décaller d'un valeur pour qu'il commence bien par le controller
@@ -85,6 +85,7 @@ class Router {
 				
 				$request->prefix = $v; //On injecte le prefixe dans le request
 				$request->action = str_replace($v.'_', '', $request->action); //Et on remplace l'action
+				// pr($request);
 			}
 		}
 		// pr($request->prefix);

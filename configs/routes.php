@@ -12,6 +12,7 @@ Router::prefix('adm','backoffice');//Définition du prefixe backoffice
 //Accueil
 Router::connect('','homes/index');
 Router::connect('adm','adm/posts/index');
+// Router::connect('comments','adm/postscomments/index');
 
 //Détails d'un article + listing
 Router::connect(':prefix/:slug-:id', 'posts/view/id:([0-9]+)/slug:([a-z0-9\-]+)/prefix:([a-z0-9\-]+)');

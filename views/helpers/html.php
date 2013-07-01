@@ -163,6 +163,8 @@ class Html{
 
 			$html .= '<form method="post" class="comments-form" id="comments-form" action="'.Router::url('posts/view/id:'.$id.'/slug:'.$slug.'/prefix:article').'">';
 			
+				$html .= '<input type="hidden" name="article" value="'.$id.'"/>';
+				
 				$html .= '<p class="input-block">
 					<label for="comment-name"><strong>Nom</strong> (required)</label>
 					<input type="text" name="name" value="" id="comment-name" required>

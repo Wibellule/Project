@@ -1,5 +1,11 @@
 <?php
-	$titrepage = array('posts' => 'article', 'categories' => 'page','sliders' => 'slider', 'projects' => 'project', 'typeprojects' => 'type de projet');
+	$titrepage = array(
+		'posts' => 'article',
+		'categories' => 'page',
+		'sliders' => 'slider',
+		'projects' => 'project',
+		'typeprojects' => 'type de projet',
+		'postscomments' => 'commentaire');
 	// echo $titrepage[$this->request->controller];
 	$messageFlash = Session::read('Flash');
 		if($messageFlash){
