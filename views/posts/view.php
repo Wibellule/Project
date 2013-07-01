@@ -25,5 +25,10 @@ $description_for_layout = $post['name'];
 	?>
 	
 </section>
+<?php 
+	if($post['display_option'] == 1){ 
+		echo $this->helpers['Html']->comment($post['id'],$post['slug']);
+	} 
+?>
 
 <?php include(FRONTOFFICE.DS.'post'.DS.'menu_blog.php');?>

@@ -11,7 +11,6 @@ $description_for_layout = strip_tags($categorie['content']);
 	<?php 
 		if($categorie['display_option'] == 1){ 
 			echo $this->helpers['Html']->contact($categorie['id'],$categorie['slug']);
-			// echo $this->element(FRONTOFFICE.DS.'js'.DS.'ajax_formulaire.php');
 		} 
 	?>
 </div>

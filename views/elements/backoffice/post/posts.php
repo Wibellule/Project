@@ -12,4 +12,5 @@ echo $this->helpers['Form']->input('short_content', 'Description courte', array(
 echo $this->helpers['Form']->input('content', 'Contenu', array('type' => 'textarea','class'=>'text-input textarea', 'rows' => 10, 'cols' => 75));
 echo $this->helpers['Form']->ckeditor(array('image','short_content','content'));
 echo $this->helpers['Form']->input('tag', 'Type d\'article', array('type' => 'select','datas' => $result));
+echo $this->helpers['Form']->input('display_option', 'Formulaire de contact', array('type' => 'selectList', 'datas' => array( 0 => 'Pas d\'options', 1 => 'Formulaire de commentaires')));echo "<br />";
 echo $this->helpers['Form']->input('online', 'En ligne', array('type' => 'checkbox')); echo "<br />";
