@@ -151,5 +151,49 @@ class Html{
 	
 	}
 	
+	/**
+	 * Fonction qui va générer le formulaire pour les commentaires des articles
+	 */
+	 public function comment($id,$slug){
+	 
+		$html = '';
+		$html .= '<section id="respond">';
+
+			$html .= '<h6 class="section-title">Laisser un commentaire</h6>';
+
+			$html .= '<form method="post" class="comments-form" action="'.Router::url('categories/view/id:'.$id.'/slug:'.$slug).'">';
+			
+				$html .= '<p class="input-block">
+					<label for="comment-name"><strong>Name</strong> (required)</label>
+					<input type="text" name="name" value="" id="comment-name" required>
+				</p>
+
+				<p class="input-block">
+					<label for="comment-email"><strong>Email</strong> (required)</label>
+					<input type="email" name="email" value="" id="comment-email" required>
+				</p>
+				
+				<p class="input-block">
+					<label for="comment-url"><strong>Website</strong></label>
+					<input type="url" name="url" value="" id="comment-url">
+				</p>
+
+				<p class="textarea-block">
+					<label for="comment-message"><strong>Your Comment</strong> (required)</label>
+					<textarea name="message" id="comment-message" cols="88" rows="6" required></textarea>
+				</p>';
+			
+				$html .= '<input type="submit" value="Submit">
+
+				<div class="clear"></div>
+
+			</form>
+			
+		</section>';
+		
+		return $html;
+	 
+	 }
+	
 	
 }

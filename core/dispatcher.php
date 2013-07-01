@@ -8,7 +8,7 @@
 class Dispatcher implements EventListener{
 
 	/**
-	 *
+	 * Variable contenant la request
 	 */
 		var $request;
 	
