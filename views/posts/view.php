@@ -22,13 +22,13 @@ $description_for_layout = $post['name'];
 		break; 
 	
 	} 
-	?>
-	
-</section>
-<?php 
+	/* Affichage du formulaire de commentaires */
 	if($post['display_option'] == 1){ 
+	
 		echo $this->helpers['Html']->comment($post['id'],$post['slug']);
+		
 	} 
 ?>
+</section>
 
 <?php include(FRONTOFFICE.DS.'post'.DS.'menu_blog.php');?>
