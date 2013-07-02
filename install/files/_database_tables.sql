@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le: Mar 02 Juillet 2013 à 07:11
+-- Généré le: Mer 26 Juin 2013 à 07:46
 -- Version du serveur: 5.5.24-log
 -- Version de PHP: 5.3.13
 
@@ -95,26 +95,6 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `online` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `postscol` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `display_option` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `postscomments`
---
-
-CREATE TABLE IF NOT EXISTS `postscomments` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `message` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `message_backoffice` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `online` int(11) NOT NULL,
-  `created` datetime NOT NULL,
-  `post_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
@@ -191,20 +171,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `login` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `online` int(11) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `websites`
---
-
-CREATE TABLE IF NOT EXISTS `websites` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `logo` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `created` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
