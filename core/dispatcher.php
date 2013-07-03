@@ -31,7 +31,7 @@ class Dispatcher implements EventListener{
 		
 		//On créer l'objet Request que l'on affecte à $this->request
 		$this->request = new Request();
-		$event = new Event('Dispatcher.afterRequest',$this);
+		// $event = new Event('Dispatcher.afterRequest',$this);
 		//On parse l'url via l'objet Router
 		Router::parse($this->request->url, $this->request);//appel static modifie l'objet request sans créer d'objet intermédiaire
 		// pr($this->request);
@@ -39,7 +39,7 @@ class Dispatcher implements EventListener{
 		// pr($this->request->clientIp(true));
 		// die();
 		
-		EventManager::instance();
+		// EventManager::instance();
 		
 		// $event = $this->loadEvent();
 		

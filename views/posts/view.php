@@ -23,11 +23,25 @@ $description_for_layout = $post['name'];
 	
 	}
 	/* Affichage des commentaires */
-	pr($comments);
 	?>
 	<section id="comments">
 		<h6 class="section-title">Commentaires (<?php echo $nbcomments;?>)</h6>
-		
+		<ol class="comments-list">
+			<?php foreach($comments as $k => $v){ ?>
+				<li class="comment">
+					<article>
+						<img src="http://www.gravatar.com/avatar/00000000000000000000000000000000?d=mm&amp;s=50" alt="Image" class="avatar"/>
+						<div class="comment-meta">
+							<h5 class="author"><a href="#"><?php echo $v['name'];?></a></h5>
+							<p class="date"><?php echo $v['created'];?></p>
+						</div><!-- end .comment-meta -->
+						<div class="comment-body">
+							<p><?php echo $v['message'];?></p>
+						</div><!-- end .comment-body -->
+					</article>
+				</li>
+			<?php } ?>
+		</ol>
 	</section>
 	<?php
 	/* Affichage du formulaire de commentaires */

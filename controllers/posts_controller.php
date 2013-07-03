@@ -81,7 +81,7 @@ class PostsController extends AppController{
 		$menu = $this->_get_website_menu();
 		$this->set('menuGeneral', $menu);
 	}
-	
+		
 	function backoffice_add(){
 		parent::backoffice_add();
 		$this->loadModel('Typepost');
