@@ -31,12 +31,16 @@
 	</div><!-- end .entry-body -->
 
 	<div class="entry-meta">
-
+		<?php 
+			$comments = ClassRegistry::init('Postscomment');
+			$conditions = array('post_id' => $v['id'], 'online' => 1);
+			$nb_comments = $comments->findCount($conditions);
+		?>
 		<ul>
 			<li><a href="<?php echo Router::url('posts/view/id:'.$v['id'].'/slug:'.$v['slug'].'/prefix:article');?>"><span class="post-format gallery">Permalink</span></a></li>
-			<li><span class="title">Posted:</span> <a href="#"><?php echo $v['created'];?></a></li>
+			<li><span class="title">Posted:</span> <a href="#"><?php echo substr($v['created'],0,10);?></a></li>
 			<li><span class="title">Tags:</span> <a href="#"><?php echo $v['tag'];?></a></li>
-			<li><span class="title">Comments:</span> <a href="#">3</a></li>
+			<li><span class="title">Comments:</span><a href="#"><?php echo $nb_comments;?></a></li>
 		</ul>
 
 	</div><!-- end .entry-meta -->

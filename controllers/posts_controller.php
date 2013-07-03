@@ -78,8 +78,15 @@ class PostsController extends AppController{
 		$d['typeposts'] = $this->Typepost->find();
 		$this->set($d);
 		
+		/** Menu **/
 		$menu = $this->_get_website_menu();
 		$this->set('menuGeneral', $menu);
+		
+		/** Commentaires **/
+		$this->loadModel('Postscomment');
+		// $conditions = array('post_id' => $id ,'online' => 1);
+		// $nb_comments = $this->Postscomment->findCount($conditions);
+		// $this->set('nbcomments', $nb_comments);
 	}
 		
 	function backoffice_add(){

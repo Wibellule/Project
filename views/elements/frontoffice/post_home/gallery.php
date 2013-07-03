@@ -10,7 +10,7 @@
 			<?php foreach($var_g as $k => $var){ ?>
 			<li>
 				<a href="<?php echo Router::url('posts/view/id:'.$v['id'].'/slug:'.$v['slug'].'/prefix:article');?>">
-					<?php echo $var;?>
+					<?php echo $var.'/>';?>
 				</a>
 			</li>
 			<?php } ?>
