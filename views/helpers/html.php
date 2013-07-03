@@ -196,6 +196,15 @@ class Html{
 		return $html;
 	 
 	 }
+	 
+	/**
+	 * Fonction qui va afficher un commmentaire
+	 */
+	 public function view_comment($id){
+		$html = '';
+		
+		return $html;
+	 }
 	
 	
 }

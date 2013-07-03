@@ -48,7 +48,11 @@ class PostsController extends AppController{
 		$this->loadModel('Postscomment');
 		$conditions = array('post_id' => $id ,'online' => 1);
 		$comments = $this->Postscomment->find(array('conditions' => $conditions));
-		pr($comments);
+		$nb_comments = $this->Postscomment->findCount($conditions);
+		// pr($comments);
+		// pr($nb_comments);
+		$this->set('comments', $comments);
+		$this->set('nbcomments', $nb_comments);
 		/** à suivre **/
 		
 		/* menu */

@@ -21,7 +21,15 @@ $description_for_layout = $post['name'];
 			
 		break; 
 	
-	} 
+	}
+	/* Affichage des commentaires */
+	pr($comments);
+	?>
+	<section id="comments">
+		<h6 class="section-title">Commentaires (<?php echo $nbcomments;?>)</h6>
+		
+	</section>
+	<?php
 	/* Affichage du formulaire de commentaires */
 	if($post['display_option'] == 1){ 
 	
