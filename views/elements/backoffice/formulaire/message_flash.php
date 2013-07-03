@@ -6,7 +6,8 @@
 		'projects' => 'project',
 		'typeprojects' => 'type de projet',
 		'typeposts' => 'type d\'article',
-		'postscomments' => 'commentaire'
+		'postscomments' => 'commentaire',
+		'mails' => 'messages'
 	);
 	
 	// echo $titrepage[$this->request->controller];

@@ -7,7 +7,7 @@ foreach($comments_id as $k => $v){
 
 $result = explode(',', $comments_list);
 $result = array_slice($result, 0, -1);
-pr($result);
+// pr($result);
 echo $this->helpers['Form']->input('name', 'Nom',array('class' => 'input-block-level'));
 echo $this->helpers['Form']->input('email', 'Email',array('class' => 'input-block-level'));
 echo $this->helpers['Form']->input('url', 'Site Web',array('class' => 'input-block-level'));

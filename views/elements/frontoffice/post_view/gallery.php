@@ -11,7 +11,7 @@
 				<li>
 					<?php $link = explode('<img alt="" src="', $var); $link = implode('',$link); $link = substr($link, 0, strpos($link, '" '));?>
 					<a href="<?php echo $link;?>" class="single-image" title="" rel="blog-post-gallery">
-						<?php echo $var;?>
+						<?php echo $var.'/>';?>
 					</a>
 				</li>
 			
