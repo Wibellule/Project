@@ -28,14 +28,27 @@ class PostsController extends AppController{
 		if($this->components['RequestHandler']->isAjax()){
 			$this->layout = 'ajax';
 			if(isset($this->request->data)){
-				var_dump($_POST);
+				$this->loadModel('Postscomment');
+				if($this->Postscomment->validate){
+					$this->request->data['online'] = 0;
+					$this->Postscomment->save($this->request->data);
+					Session::setFlash('Message envoyé','success');
+				}else{
+					$errors = $this->Postscomment->errors;
+					$message = "Erreur dans le formulaire<br/><br/>";
+					foreach($errors as $k => $v){
+						$message .= $v."<br />";
+					}
+					Session::setFlash($message,'error');
+				}
 			}
 		}
 		
 		/** Chargement des commentaires **/
 		$this->loadModel('Postscomment');
 		$conditions = array('post_id' => $id ,'online' => 1);
-		$this->Postscomment->find(array('conditions' => $conditions));
+		$comments = $this->Postscomment->find(array('conditions' => $conditions));
+		pr($comments);
 		/** à suivre **/
 		
 		/* menu */
