@@ -31,8 +31,8 @@
 					<td><?php echo $v['name'];?></td>
 					<td><span class="label <?php echo ($v['online']==1)?'label-success':'label-important';?>"><?php echo ($v['online']==1)?'En ligne':'Hors ligne';?></span></td>
 					<td>
-						<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/edit/'.$v['id']).'><img src='.Router::webroot('img/icons/icon_edit.png').' alt="Edit" /></a>';?>
-						<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/delete/'.$v['id']).'><img src='.Router::webroot('img/icons/icon_delete.png').' alt="Delete" /></a></td>';?>
+						<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/edit/'.$v['id']).'>Editer&nbsp;<span class="fui-new-24"></span></a>';?>
+						<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/delete/'.$v['id']).'>Supprimer&nbsp;<span class="fui-cross-24"></span></a></td>';?>
 					</td>
 				</tr>
 			<?php endforeach;?>

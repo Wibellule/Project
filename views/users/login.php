@@ -1,14 +1,14 @@
-<?php 
-	$messageFlash = Session::read('Flash');
-		if($messageFlash){
-			echo "<div class='alert alert-".Session::read('Flash.type')."'>";
-			echo Session::read('Flash.message').'</div>';
-		}
-	Session::delete('Flash');
-?>
 <div class="container">
 	<div class="page-header">
 		<h1>Zone réservée</h1>
+		<?php 
+			$messageFlash = Session::read('Flash');
+				if($messageFlash){
+					echo "<div class='alert alert-".Session::read('Flash.type')."'>";
+					echo Session::read('Flash.message').'</div>';
+				}
+			Session::delete('Flash');
+		?>
 	</div>
 	<?php 
 		// echo $this->helpers['Form']->login(); 

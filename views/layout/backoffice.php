@@ -48,60 +48,39 @@ $nb_messages = $messages->findCount($conditions_messages);
                       <a href="<?php echo Router::url('adm');?>">Accueil</a>
                     </li>
 					<li>
-                      <a href="#">Catégories
+                      <a href="<?php echo Router::url('adm/categories/index');?>">Catégories
                         <span class="navbar-unread">1</span>
                       </a>
                     </li>
-                    <li>
-                      <a href="<?php echo Router::url('adm/posts/index');?>">
-                        Articles
-                        <span class="navbar-unread">1</span>
+                    <li <?php if($nb_comments > 0){ echo 'class="active"'; }?>>
+                      <a href="<?php echo Router::url('adm/posts/index');?>">Articles
+                        <?php if($nb_comments > 0){ echo '<span class="navbar-unread">'.$nb_comments.'</span>'; }?>
                       </a>
                       <ul>
-                        <li><a href="<?php echo Router::url('adm/postscomments/index');?>">Commentaires</a></li>
-                        <li><a href="#">Element One</a></li>
-                        <li><a href="#">Element One</a></li>
-                        <li>
-                          <a href="#">Sub menu</a>
-                          <ul>
-                            <li><a href="#">Element One</a></li>
-                            <li><a href="#">Element Two</a></li>
-                            <li><a href="#">Element Three</a></li>
-                          </ul> <!-- /Sub menu -->
-                        </li>
-                        <li><a href="#">Element Three</a></li>
-                      </ul> <!-- /Sub menu -->
-                    </li>
-					<li class="active">
-                      <a href="#">
-                        Messages
-                        <span class="navbar-unread">1</span>
-                      </a>
-                      <ul>
-                        <li><a href="#">Element One</a></li>
-                        <li>
-                          <a href="#">Sub menu</a>
-                          <ul>
-                            <li><a href="#">Element One</a></li>
-                            <li><a href="#">Element Two</a></li>
-                            <li><a href="#">Element Three</a></li>
-                          </ul> <!-- /Sub menu -->
-                        </li>
-                        <li><a href="#">Element Three</a></li>
+                        <li><a href="<?php echo Router::url('adm/postscomments/index');?>">Commentaires<?php if($nb_comments > 0){ echo '<span class="navbar-unread">'.$nb_comments.'</span>'; }?></a></li>
+                        <li><a href="<?php echo Router::url('adm/typeposts/index');?>">Type d'articles</a></li>
                       </ul> <!-- /Sub menu -->
                     </li>
 					<li>
-                      <a href="#">Projets
+                      <a href="<?php echo Router::url('adm/sliders/index');?>">Sliders
                         <span class="navbar-unread">1</span>
                       </a>
                     </li>
 					<li>
-                      <a href="#">Sliders
+                      <a href="<?php echo Router::url('adm/projects/index');?>">Projets
                         <span class="navbar-unread">1</span>
+                      </a>
+					  <ul>
+                        <li><a href="<?php echo Router::url('adm/typeprojects/index');?>">Type de projet</a></li>
+                      </ul> <!-- /Sub menu -->
+                    </li>
+					<li <?php if($nb_messages > 0){ echo 'class="active"'; }?>>
+                      <a href="<?php echo Router::url('adm/mails/index');?>">Messages
+                        <?php if($nb_messages > 0){ echo '<span class="navbar-unread">'.$nb_messages.'</span>'; }?>
                       </a>
                     </li>
 					<li>
-                      <a href="#">Déconnexion
+                      <a href="<?php echo Router::url('users/logout');?>">Déconnexion
                         <span class="navbar-unread">1</span>
                       </a>
                     </li>
@@ -114,18 +93,18 @@ $nb_messages = $messages->findCount($conditions_messages);
 	
 	
 	
-		<ul>
-		  <li><a href="<?php echo Router::url('adm');?>" title=""><i class="icon-home"></i>&nbsp;Accueil</a></li>
-		  <li><a href="<?php echo Router::url('adm/posts/index');?>" title=""><i class="icon-tag"></i>&nbsp;Articles</a></li>
-		  <li><a href="<?php echo Router::url('adm/postscomments/index');?>" title=""><i class="icon-file"></i>&nbsp;Commentaires <?php if($nb_comments > 0){ echo '('.$nb_comments.')'; }?></a></li>
-		  <li><a href="<?php echo Router::url('adm/categories/index');?>" title=""><i class="icon-file"></i>&nbsp;Catégories</a></li>
-		  <li><a href="<?php echo Router::url('adm/sliders/index');?>" title=""><i class="icon-file"></i>&nbsp;Sliders</a></li>
-		  <li><a href="<?php echo Router::url('adm/mails/index');?>" title=""><i class="icon-file"></i>&nbsp;Messages <?php if($nb_messages > 0){ echo '('.$nb_messages.')'; }?></a></li>
-		  <li><a href="<?php echo Router::url('adm/projects/index');?>" title=""><i class="icon-file"></i>&nbsp;Projets</a></li>
-		  <li><a href="<?php echo Router::url('adm/typeposts/index');?>" title=""><i class="icon-file"></i>&nbsp;Type d'articles</a></li>
-		  <li><a href="<?php echo Router::url('adm/typeprojects/index');?>" title=""><i class="icon-file"></i>&nbsp;Type de projets</a></li>
-		  <li><a href="<?php echo Router::url('users/logout');?>" title=""><i class="icon-ban-circle"></i>&nbsp;Déconnexion</a></li>
-		</ul>
+		<!--<ul>
+		  <li><a href="<?php //echo Router::url('adm');?>" title=""><i class="icon-home"></i>&nbsp;Accueil</a></li>
+		  <li><a href="<?php //echo Router::url('adm/posts/index');?>" title=""><i class="icon-tag"></i>&nbsp;Articles</a></li>
+		  <li><a href="<?php //echo Router::url('adm/postscomments/index');?>" title=""><i class="icon-file"></i>&nbsp;Commentaires <?php //if($nb_comments > 0){ echo '('.$nb_comments.')'; }?></a></li>
+		  <li><a href="<?php //echo Router::url('adm/categories/index');?>" title=""><i class="icon-file"></i>&nbsp;Catégories</a></li>
+		  <li><a href="<?php //echo Router::url('adm/sliders/index');?>" title=""><i class="icon-file"></i>&nbsp;Sliders</a></li>
+		  <li><a href="<?php //echo Router::url('adm/mails/index');?>" title=""><i class="icon-file"></i>&nbsp;Messages <?php //if($nb_messages > 0){ echo '('.$nb_messages.')'; }?></a></li>
+		  <li><a href="<?php //echo Router::url('adm/projects/index');?>" title=""><i class="icon-file"></i>&nbsp;Projets</a></li>
+		  <li><a href="<?php //echo Router::url('adm/typeposts/index');?>" title=""><i class="icon-file"></i>&nbsp;Type d'articles</a></li>
+		  <li><a href="<?php //echo Router::url('adm/typeprojects/index');?>" title=""><i class="icon-file"></i>&nbsp;Type de projets</a></li>
+		  <li><a href="<?php //echo Router::url('users/logout');?>" title=""><i class="icon-ban-circle"></i>&nbsp;Déconnexion</a></li>
+		</ul>-->
 		<?php echo $content_for_layout;?>
 		
 		</div>
