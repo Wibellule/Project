@@ -4,8 +4,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Login</title>
-		<link href="<?php echo Router::webroot('css/backoffice/css/bootstrap.css');?>" rel="stylesheet" type="text/css" />
-		<link href="<?php echo Router::webroot('css/backoffice/css/flat-ui.css');?>" rel="stylesheet" type="text/css" />
+		<link href="<?php echo Router::webroot('css/backoffice/css/_bootstrap.css');?>" rel="stylesheet" type="text/css" />
+		<!--<link href="<?php //echo Router::webroot('css/backoffice/css/bootstrap-docs.css');?>" rel="stylesheet" type="text/css" />
+		<link href="<?php //echo Router::webroot('css/backoffice/css/bootstrap-responsive.css');?>" rel="stylesheet" type="text/css" />
+		<link href="<?php //echo Router::webroot('css/backoffice/css/prettify.css');?>" rel="stylesheet" type="text/css" />-->
+		<link href="<?php echo Router::webroot('css/backoffice/css/_flat-ui.css');?>" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<?php echo $content_for_layout;?>

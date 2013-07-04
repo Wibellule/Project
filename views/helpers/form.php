@@ -279,6 +279,43 @@ class Form{
 		?></script><?php
 		return ob_get_clean();
 	}
+	
+	/**
+	 * Fonction qui affiche le formulaire de connexion dans une view
+	 * @special apparence spécifique pour le flat-ui
+	 */
+	function login(){
+		
+		$html = '';
+		
+		$html = '<div class="login">
+		<div class="login-screen">
+			<div class="login-icon">
+				<img src="'.Router::webroot('css/backoffice/images/login/icon.png').'" alt="Login" />
+			</div>
+			
+			<div class="login-form">
+				<form method="POST" action="'.Router::url('users/login').'" name="login" id="form-login">
+				<div class="control-group">
+					<input type="text" class="login-field" value="" placeholder="Enter your name" id="login-name" />
+					<label class="login-field-icon fui-man-16" for="login-name"></label>
+				</div>
+
+				<div class="control-group">
+					<input type="password" class="login-field" value="" placeholder="Password" id="login-pass" />
+					<label class="login-field-icon fui-lock-16" for="login-pass"></label>
+				</div>
+				</form>
+				<button class="btn btn-primary btn-large btn-block" type="submit">Login</button>
+				<!--<a class="login-link" href="#">Lost your password?</a>-->
+			</div>
+			
+		</div>
+	</div>"';
+	
+	return $html;
+	
+	}
 }
 
 
