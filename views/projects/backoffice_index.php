@@ -2,7 +2,7 @@
 	<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
 	<?php $controllerData = $this->request->controller; //pr($controllerData);?>
 	<h1>Liste des projets</h1>
-	<h3><?php echo "Total d'articles: ".$nbElem;?></h3>
+	<h3><?php echo "Total d'articles en ligne : ".$nbElem;?></h3>
 	<table class="table">
 			<thead>
 				<tr>
