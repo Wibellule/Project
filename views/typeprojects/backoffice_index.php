@@ -1,19 +1,11 @@
-<?php 
-	$messageFlash = Session::read('Flash');
-	if($messageFlash){
-		echo "<div class='alert alert-".Session::read('Flash.type')."'>";
-		echo Session::read('Flash.message').'</div>';
-	}
-	Session::delete('Flash');
-	// pr($_SESSION);
-?>
-<?php
-	$controllerData = $this->request->controller;
-	// pr($$controllerData);
-?>
-	<h1>Liste des types de projets</h1>
-	<h3><?php echo "Total de types: ".$nbElem;?></h3>
-<table>
+<div class="container">
+	<div class="page-header">
+		<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
+		<?php $controllerData = $this->request->controller; //pr($controllerData);?>
+		<h1>Liste des types de projets</h1>
+		<h3><?php echo "Total de types en ligne : ".$nbElem;?></h3>
+	</div>
+	<table class="table">
 		<thead>
 			<tr>
 				<th>ID</th>
@@ -35,13 +27,17 @@
 				</tr>
 			<?php endforeach;?>
 		</tbody>
-</table>
-<a href="<?php echo router::url('adm/'.$controllerData.'/add');?>" class="btn btn-primary">Ajouter un projet</a>
-	<ul>
-		<li><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page=1';?>">Prev</a></li>
-		<?php for($i=1; $i<=$nbPages; $i++){ ?>
-			<li class="page"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$i; ?>"><?php echo $i; ?></a></li>
-		<?php } ?>
-		<li><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$nbPages; ?>">Next</a></li>
-	</ul>
-
+	</table>
+	<div>
+		<a href="<?php echo router::url('adm/'.$controllerData.'/add');?>" class="btn btn-primary">Ajouter un projet</a>
+	</div>
+	<div class="pagination">
+		<ul>
+			<li class="previous"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page=1';?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/previous.png');?>" /></a></li>
+			<?php for($i=1; $i<=$nbPages; $i++){ ?>
+			<li <?php echo ($i == $this->request->page)?'class="active"':'';?>><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$i; ?>"><?php echo $i; ?></a></li>
+			<?php } ?>
+			<li class="next"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$nbPages; ?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/next.png');?>" /></a></li>
+		</ul>
+	</div>
+</div>

@@ -1,30 +1,32 @@
 <div class="container">
-	<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
-	<?php $controllerData = $this->request->controller; //pr($controllerData);?>
+	<div class="page-header">
+		<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
+		<?php $controllerData = $this->request->controller; //pr($controllerData);?>
 		<h1>Liste des sliders</h1>
 		<h3><?php echo "Total d'articles en ligne : ".$nbElem;?></h3>
+	</div>
 	<table class="table">
-			<thead>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Titre</th>
+				<th>Statut</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($$controllerData as $k=>$v):?>
 				<tr>
-					<th>ID</th>
-					<th>Titre</th>
-					<th>Statut</th>
-					<th>Actions</th>
+					<td><?php echo $v['id'];?></td>
+					<td><?php echo $v['name'];?></td>
+					<td><span class="label <?php echo ($v['online']==1)?'label-success':'label-important';?>"><?php echo ($v['online']==1)?'En ligne':'Hors ligne';?></span></td>
+					<td>
+						<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/edit/'.$v['id']).'><img src='.Router::webroot('img/icons/icon_edit.png').' alt="Edit" /></a>';?>
+						<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/delete/'.$v['id']).'><img src='.Router::webroot('img/icons/icon_delete.png').' alt="Delete" /></a></td>';?>
+					</td>
 				</tr>
-			</thead>
-			<tbody>
-				<?php foreach($$controllerData as $k=>$v):?>
-					<tr>
-						<td><?php echo $v['id'];?></td>
-						<td><?php echo $v['name'];?></td>
-						<td><span class="label <?php echo ($v['online']==1)?'label-success':'label-important';?>"><?php echo ($v['online']==1)?'En ligne':'Hors ligne';?></span></td>
-						<td>
-							<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/edit/'.$v['id']).'><img src='.Router::webroot('img/icons/icon_edit.png').' alt="Edit" /></a>';?>
-							<?php echo '<a href='.Router::url('/adm/'.$controllerData.'/delete/'.$v['id']).'><img src='.Router::webroot('img/icons/icon_delete.png').' alt="Delete" /></a></td>';?>
-						</td>
-					</tr>
-				<?php endforeach;?>
-			</tbody>
+			<?php endforeach;?>
+		</tbody>
 	</table>
 	<div>
 		<a href="<?php echo router::url('adm/'.$controllerData.'/add');?>" class="btn btn-primary">Ajouter un slider</a>
