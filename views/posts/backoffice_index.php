@@ -39,15 +39,19 @@
 			<?php endforeach;?>
 		</tbody>
 </table>
-<a href="<?php echo router::url('adm/'.$controllerData.'/add');?>" class="btn btn-primary">Ajouter une article</a>
-<div class="pagination">
-	<ul>
-		<li class="previous"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page=1';?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/previous.png');?>" /></a></li>
-		<?php for($i=1; $i<=$nbPages; $i++){ ?>
-		<li class="<?php echo ($i == $this->request->page)?'active':'';?>"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$i; ?>"><?php echo $i; ?></a></li>
-		<?php } ?>
-		<li class="next"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$nbPages; ?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/next.png');?>" /></a></li>
-	</ul>
-</div>
+	<div>
+		<a href="<?php echo router::url('adm/'.$controllerData.'/add');?>" class="btn btn-primary">Ajouter une article</a>
+	</div>
+
+		<div class="pagination">
+			<ul>
+				<li class="previous"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page=1';?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/previous.png');?>" /></a></li>
+				<?php for($i=1; $i<=$nbPages; $i++){ ?>
+				<li <?php echo ($i == $this->request->page)?'class="active"':'';?>><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$i; ?>"><?php echo $i; ?></a></li>
+				<?php } ?>
+				<li class="next"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$nbPages; ?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/next.png');?>" /></a></li>
+			</ul>
+		</div>
+
 </div>
 

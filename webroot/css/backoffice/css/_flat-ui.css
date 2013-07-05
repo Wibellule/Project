@@ -1492,7 +1492,7 @@ textarea,
     border-color: white;
     border-width: 2px;
     color: #d7dce0;
-    margin: 10px 5px 9px; }
+    /*margin: 10px 5px 9px;*/ }
     .pagination ul > li.active > a:hover, .pagination ul > li.active > a:focus, .pagination ul > li.active > span:hover, .pagination ul > li.active > span:focus {
       background-color: white;
       border-color: white;

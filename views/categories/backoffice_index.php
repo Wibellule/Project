@@ -1,3 +1,4 @@
+<div class="container">
 <div class="page-header">
 	<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
 	<?php $controllerData = $this->request->controller; //pr($controllerData);?>
@@ -38,12 +39,12 @@
 <a class="btn btn-primary" href="<?php echo Router::url('adm/categories/add');?>" title="Ajouter une page" alt="Liste des pages">Ajouter une page</a>		
 <div class="pagination">
 	<ul>
-		<li><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page=1';?>">First</a></li>
+		<li class="previous"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page=1';?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/previous.png');?>" /></a></li>
 		<?php for($i=1; $i<=$nbPages; $i++){ ?>
-			<li class="page"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$i; ?>"><?php echo $i; ?></a></li>
+		<li <?php echo ($i == $this->request->page)?'class="active"':'';?>><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$i; ?>"><?php echo $i; ?></a></li>
 		<?php } ?>
-		<li><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$nbPages; ?>">Last</a></li>
+		<li class="next"><a href="<?php echo Router::url('adm/'.$controllerData.'/index').'?page='.$nbPages; ?>"><img src="<?php echo Router::webroot('css/backoffice/images/pager/next.png');?>" /></a></li>
 	</ul>
 </div>
 
-
+</div>
