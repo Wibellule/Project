@@ -7,6 +7,7 @@
 		'typeprojects' => 'type de projet',
 		'postscomments' => 'commentaire');
 	// echo $titrepage[$this->request->controller];
+	
 	$messageFlash = Session::read('Flash');
 		if($messageFlash){
 			echo "<div class='alert alert-".Session::read('Flash.type')."'>";

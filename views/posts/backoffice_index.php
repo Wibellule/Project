@@ -1,18 +1,7 @@
 <div class="container">
 <div class="page-header">
-	<?php 
-		$messageFlash = Session::read('Flash');
-		if($messageFlash){
-			echo "<div class='alert alert-".Session::read('Flash.type')."'>";
-			echo Session::read('Flash.message').'</div>';
-		}
-		Session::delete('Flash');
-		// pr($_SESSION);
-	?>
-	<?php
-		$controllerData = $this->request->controller;
-		// pr($$controllerData);
-	?>
+	<?php $this->element(BACKOFFICE.DS.'formulaire'.DS.'message_flash.php');?>	
+	<?php $controllerData = $this->request->controller; //pr($controllerData);?>
 	<h1>Liste des articles</h1>
 	<h3><?php echo "Total d'articles: ".$nbElem;?></h3>
 </div>
