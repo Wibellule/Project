@@ -22,17 +22,15 @@ class PostsController extends AppController{
 		$this->loadModel('Typepost');
 		$d['typeposts'] = $this->Typepost->find();
 		
-		// pr($d['typeposts']);
+		/** Gestion des types de posts vides **/
 		foreach($d['typeposts'] as $k => $v){
-			// pr($v['name']);
 			$conditions = array('tag' => $v['name'] ,'online' => 1);
 			$count = $this->Post->findCount($conditions);
-			// pr($count);
 			if($count == 0){
 				unset($d['typeposts'][$k]);
 			}
 		}
-		// pr($d['typeposts']);
+
 		$this->set('post', $post);
 		$this->set($d);
 		
