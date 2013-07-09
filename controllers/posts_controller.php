@@ -21,6 +21,18 @@ class PostsController extends AppController{
 		}
 		$this->loadModel('Typepost');
 		$d['typeposts'] = $this->Typepost->find();
+		
+		// pr($d['typeposts']);
+		foreach($d['typeposts'] as $k => $v){
+			// pr($v['name']);
+			$conditions = array('tag' => $v['name'] ,'online' => 1);
+			$count = $this->Post->findCount($conditions);
+			// pr($count);
+			if($count == 0){
+				unset($d['typeposts'][$k]);
+			}
+		}
+		// pr($d['typeposts']);
 		$this->set('post', $post);
 		$this->set($d);
 		
@@ -76,6 +88,17 @@ class PostsController extends AppController{
 		$d['nbPages'] = ceil($d['nbPosts'] / $d['elementsPerPage']);
 		$this->loadModel('Typepost');
 		$d['typeposts'] = $this->Typepost->find();
+		
+		foreach($d['typeposts'] as $k => $v){
+			// pr($v['name']);
+			$conditions = array('tag' => $v['name'] ,'online' => 1);
+			$count = $this->Post->findCount($conditions);
+			// pr($count);
+			if($count == 0){
+				unset($d['typeposts'][$k]);
+			}
+		}		
+		
 		$this->set($d);
 		
 		/** Menu **/

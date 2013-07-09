@@ -22,7 +22,7 @@ $description_for_layout = 'Liste des articles';
 		
 	<?php } ?>
 	<?php 
-		// pr($posts);
+		// pr($typeposts);
 		// pr($this->request);
 		// if(isset($this->request->params[0]) && !empty($this->request->params[0])){
 			// $redir = $this->request->params[0];
