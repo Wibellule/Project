@@ -22,24 +22,30 @@ $description_for_layout = 'Liste des articles';
 		
 	<?php } ?>
 	<?php 
-		// pr($this->request->params[0]);
+		// pr($posts);
+		// pr($this->request);
 		// if(isset($this->request->params[0]) && !empty($this->request->params[0])){
 			// $redir = $this->request->params[0];
 		// }else{
 			// $redir = 'blog';
 		// }
+		if($this->request->url == '/blog.html'){
+			$url = 'blog';
+		}else{
+			$url = lcfirst($posts[0]['tag']);
+		}
 	?>
 	<ul class="pagination">
 	
-		<li class="next"><a href="<?php echo Router::url('blog').'?page=1';?>">&larr; Début</a></li>
+		<li class="next"><a href="<?php echo Router::url($url).'?page=1';?>">&larr; Début</a></li>
 		
 		<?php for($i=1; $i<=$nbPages; $i++){ ?>
 		
-			<li><a href="<?php echo Router::url('blog').'?page='.$i; ?>" class="<?php echo ($i == $this->request->page)?'current':'';?>"><?php echo $i; ?></a></li>
+			<li><a href="<?php echo Router::url($url).'?page='.$i; ?>" class="<?php echo ($i == $this->request->page)?'current':'';?>"><?php echo $i; ?></a></li>
 			
 		<?php } ?>
 		
-		<li class="prev"><a href="<?php echo Router::url('blog').'?page='.$nbPages; ?>">Fin &rarr;</a></li>
+		<li class="prev"><a href="<?php echo Router::url($url).'?page='.$nbPages; ?>">Fin &rarr;</a></li>
 		
 	</ul>
 	
