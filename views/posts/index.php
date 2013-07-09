@@ -32,7 +32,11 @@ $description_for_layout = 'Liste des articles';
 		if($this->request->url == '/blog.html'){
 			$url = 'blog';
 		}else{
-			$url = lcfirst($posts[0]['tag']);
+			if(!empty($posts) && isset($posts)){
+				$url = lcfirst($posts[0]['tag']);
+			}else{
+				$this->redirect('blog');
+			}
 		}
 	?>
 	<ul class="pagination">
