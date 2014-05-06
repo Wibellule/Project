@@ -9,6 +9,7 @@ Projet de cr&eacute;ation d'un framework personnel :
 - Gestionnaire d'évènements @version 0.1 (stable) (Niv: Model) :
 - MAJ : @version 0.2 30/06/13 possiblité de charger des model dans les fonctions des évènements
 - Gestionnaire d'installation automatique de l'application
+- Création d'un class_registry qui étend le model principal
 
 Options :
 - Librairie SwiftMailer - ConfigMagik - CakePhp ( Inflector / Set / String )
