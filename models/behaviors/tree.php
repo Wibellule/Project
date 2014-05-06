@@ -1,53 +1,52 @@
 <?php
 /**
  * BEHAVIORS | TREE
- * Représentation intervallaire pour la gestion des pages (catégories)
+ * ReprÃ©sentation intervallaire pour la gestion des pages (catÃ©gories)
  *
  * @version 0.1 - 09/05/2013
  *
- * @link        http://www.koezion-cms.com  
- * @link 		http://www.siteduzero.com/tuto-3-20017-1-la-representation-intervallaire.html Tutoriel sur la Représentation Intervallaire d'arbre en SQL
+ * @link 		http://www.siteduzero.com/tuto-3-20017-1-la-representation-intervallaire.html Tutoriel sur la ReprÃ©sentation Intervallaire d'arbre en SQL
  * @link 		http://sqlpro.developpez.com/cours/arborescence/ Cours sur la gestion d'arborescence en SQL (par Frederic Brouard)
  *
- * @link		Références - http://fr2.php.net/manual/fr/language.references.whatare.php
+ * @link		RÃ©fÃ©rences - http://fr2.php.net/manual/fr/language.references.whatare.php
  */
  
  class Tree extends Model {
  
 	/**
-	 * Tableau contenant l'arbre à afficher
+	 * Tableau contenant l'arbre Ã  afficher
 	 *
 	 * @var 	array
 	 * @access 	public
-	 * @author 	koéZionCMS
+	 * @author 	koÃ©ZionCMS
 	 * @version 0.1 - 17/01/2012 by FI
 	 */	
 	var $displayTree = array();
  
 	/**
-	 * Tableau contenant la correspondance entre les anciens id et les nouveaux lors du déplacement d'un noeud
+	 * Tableau contenant la correspondance entre les anciens id et les nouveaux lors du dÃ©placement d'un noeud
 	 *
 	 * @var 	array
 	 * @access 	public
-	 * @author 	koéZionCMS
+	 * @author 	koÃ©ZionCMS
 	 * @version 0.1 - 20/02/2012 by FI
 	 */
 	var $oldNewId = array();
 	
 	/**
-	 * Fonction de récupération de l'arbre
-	 * @param $req tableau -> requete supplémentaire
-	 * @return $return tableau -> noeuds passé par référence
+	 * Fonction de rÃ©cupÃ©ration de l'arbre
+	 * @param $req tableau -> requete supplÃ©mentaire
+	 * @return $return tableau -> noeuds passÃ© par rÃ©fÃ©rence
 	 */
 	function getTree($req = array()){
 	
-		$defaultReq = array('order' => 'lft ASC'); //Requête à executer - tri par la borne gauche	
-    	$req = array_merge($defaultReq, $req); //Génération du tableau utilisé pour les conditions de recherche - fusion des tableaux
+		$defaultReq = array('order' => 'lft ASC'); //RequÃªte Ã  executer - tri par la borne gauche	
+    	$req = array_merge($defaultReq, $req); //GÃ©nÃ©ration du tableau utilisÃ© pour les conditions de recherche - fusion des tableaux
     	
-    	$tree = $this->find($req);//execution de la requête
+    	$tree = $this->find($req);//execution de la requÃªte
     	
         $return = array(); //Tableau de retour 
-		foreach ($tree as &$node) { //Mise en forme du tableau + passage par référence
+		foreach ($tree as &$node) { //Mise en forme du tableau + passage par rÃ©fÃ©rence
 			$return[$node['id']] = $node;  
 		}     
         return $return; //On le retourne
@@ -55,22 +54,22 @@
 	}
 	
 	/**
-	 * Cette fonction permet de récupérer les données sous forme de tableau pouvant être utilisé pour une liste déroulante
+	 * Cette fonction permet de rÃ©cupÃ©rer les donnÃ©es sous forme de tableau pouvant Ãªtre utilisÃ© pour une liste dÃ©roulante
 	 *
 	 * @param 	boolean $withRacine 	Indique si il faut ou non renvoyer le noeud racine
-	 * @param 	varchar $req	 		Paramètres de recherche
+	 * @param 	varchar $req	 		ParamÃ¨tres de recherche
 	 * @access	public
-	 * @author	koéZionCMS
+	 * @author	koÃ©ZionCMS
 	 * @return 	array Liste de tous les noeuds de l'arbre
 	 * @version 0.1 - 27/12/2011 by FI
-	 * @version 0.2 - 23/02/2012 by FI - Rajout du passage de conditions pour la récupération de l'arbre
-	 * @version 0.3 - 16/05/2012 by FI - Modification de la récupération des catégories suite à la mise en place de la gestion des sites - Récupération en premier de la catégorie parente du site et suppression de celle-ci du résultat
+	 * @version 0.2 - 23/02/2012 by FI - Rajout du passage de conditions pour la rÃ©cupÃ©ration de l'arbre
+	 * @version 0.3 - 16/05/2012 by FI - Modification de la rÃ©cupÃ©ration des catÃ©gories suite Ã  la mise en place de la gestion des sites - RÃ©cupÃ©ration en premier de la catÃ©gorie parente du site et suppression de celle-ci du rÃ©sultat
 	 */    
 		function getTreeList($withRacine = true, $req = array()) {
 			
-			$arbre = $this->getTree($req); //Récupération de l'arbre       	
-			$racine = each($arbre); //Récupération de la racine de l'arbre
-			if($racine['value']['type'] == 3) { unset($arbre[$racine['key']]); } //On supprime maintenant l'élément correspondant à la racine du site
+			$arbre = $this->getTree($req); //RÃ©cupÃ©ration de l'arbre       	
+			$racine = each($arbre); //RÃ©cupÃ©ration de la racine de l'arbre
+			if($racine['value']['type'] == 3) { unset($arbre[$racine['key']]); } //On supprime maintenant l'Ã©lÃ©ment correspondant Ã  la racine du site
 			
 			if($withRacine) { $retour = array($racine['key'] => 'Racine'); }
 			else { $retour = array(); }
@@ -80,16 +79,16 @@
 		} 
 
 	/**
-	 * Cette fonction permet de récupérer l'arbre sous forme de parents/enfants
+	 * Cette fonction permet de rÃ©cupÃ©rer l'arbre sous forme de parents/enfants
 	 *
-	 * @param 	array 	$req 		Liste des paramètres à prendre en compte pour la recherche
-	 * @param 	integer $parentId 	Identifiant de l'élément parent
+	 * @param 	array 	$req 		Liste des paramÃ¨tres Ã  prendre en compte pour la recherche
+	 * @param 	integer $parentId 	Identifiant de l'Ã©lÃ©ment parent
 	 * @return 	array Arbre
 	 * @access	public
-	 * @author	koéZionCMS
+	 * @author	koÃ©ZionCMS
 	 * @version 0.1 - 01/01/2012 by FI
-	 * @version 0.2 - 23/02/2012 by FI - Modification de la structure de la fonction pour gérer d'un coté l'identifiant du parent et de l'autre les conditions supplémentaires
-	 * @version 0.2 - 13/04/2012 by FI - Modification de l'ordre et de la structure des paramètres
+	 * @version 0.2 - 23/02/2012 by FI - Modification de la structure de la fonction pour gÃ©rer d'un cotÃ© l'identifiant du parent et de l'autre les conditions supplÃ©mentaires
+	 * @version 0.2 - 13/04/2012 by FI - Modification de l'ordre et de la structure des paramÃ¨tres
 	 */    
 		function getTreeRecursive($req = array(), $parentId = null) {
 
@@ -98,28 +97,28 @@
 		}    
 	
 	/**
-	 * Cette fonction permet de récupérer les enfants de l'élément dont l'identifiant est passé en paramètre
+	 * Cette fonction permet de rÃ©cupÃ©rer les enfants de l'Ã©lÃ©ment dont l'identifiant est passÃ© en paramÃ¨tre
 	 *
-	 * @param 	integer $id 		Indentifiant de l'élément parent
-	 * @param 	boolean $withParent Indique si il faut également retourner le parent dans la liste
+	 * @param 	integer $id 		Indentifiant de l'Ã©lÃ©ment parent
+	 * @param 	boolean $withParent Indique si il faut Ã©galement retourner le parent dans la liste
 	 * @param 	boolean $reverse 	Indique si il faut renvoyer le tableau en ordre inverse
-	 * @param 	varchar $level 		Indique le niveau des enfants à retourner
-	 * @param 	array 	$conditions Conditions de recherches supplémentaires
+	 * @param 	varchar $level 		Indique le niveau des enfants Ã  retourner
+	 * @param 	array 	$conditions Conditions de recherches supplÃ©mentaires
 	 * @return 	array Liste de tous les enfants du noeud parent
 	 * @access	public
-	 * @author	koéZionCMS
+	 * @author	koÃ©ZionCMS
 	 * @version 0.1 - 01/01/2012 by FI
-	 * @version 0.2 - 28/02/2012 by FI - Rajout du niveau à retourner
+	 * @version 0.2 - 28/02/2012 by FI - Rajout du niveau Ã  retourner
 	 */    
     function getChildren($id, $withParent = false, $reverse = true, $level = null, $conditions = array()){
 
 		$id = (int)$id; //On force le type de l'identifiant
-        $tree = $this->getTree($conditions); //Récupération de l'arbre
+        $tree = $this->getTree($conditions); //RÃ©cupÃ©ration de l'arbre
         
 		if(!isset($tree[$id])) { return array(); } //Si l'identifiant n'existe pas on retourne une valeur vide
         
 		$parent = $tree[$id];
-		$childs = array(); //Liste des enfants à retourner
+		$childs = array(); //Liste des enfants Ã  retourner
         
 		if(!$withParent && isset($tree[$id])) unset($tree[$id]);
 
@@ -141,12 +140,12 @@
     }
 	
 	/**
-	 * Fonction save qui va permettre soit de faire un ajout soit une édition des données
-	 * @param $datas tableau des données à sauvegarder
+	 * Fonction save qui va permettre soit de faire un ajout soit une Ã©dition des donnÃ©es
+	 * @param $datas tableau des donnÃ©es Ã  sauvegarder
 	 */
-	function save($datas) {
+	function save($datas, $forceInsert = false) {
 		
-		//Si la clé id est présente dans les données à sauvegarder il s'agit d'un update
+		//Si la clÃ© id est prÃ©sente dans les donnÃ©es Ã  sauvegarder il s'agit d'un update
 		if(isset($datas['id'])) { $this->edit($datas); } 
 		//Sinon il s'agit d'un ajout
 		else { $this->add($datas); }
@@ -154,23 +153,23 @@
 	
 	/**
 	 * Fonction add qui va ajouter une feuille dans l'arbre
-	 * @param $datas tableau des données à sauvegarder
-	 * @param $forceInsert booleen permettant même si le champ id est présent dans le tableau de forcer l'insert
+	 * @param $datas tableau des donnÃ©es Ã  sauvegarder
+	 * @param $forceInsert booleen permettant mÃªme si le champ id est prÃ©sent dans le tableau de forcer l'insert
 	 */
 	function add($datas, $forceInsert = false){
 	
-		if(!is_array($datas)) { return false; } //Si les données à sauvegarder ne sont pas sous forme de tableau on retourne faux
+		if(!is_array($datas)) { return false; } //Si les donnÃ©es Ã  sauvegarder ne sont pas sous forme de tableau on retourne faux
 		
-		//Cas multi site où la racine n'existe pas
-		if(!isset($datas['parent_id'])) { $datas['parent_id'] = 0; } //Si la valeur du parent_id n'est pas définie on va lui attribuer 0 par défaut 	
-    	$parent_id = $datas['parent_id']; //On stocke cette valeur dans une variable pour plus de facilité
+		//Cas multi site oÃ¹ la racine n'existe pas
+		if(!isset($datas['parent_id'])) { $datas['parent_id'] = 0; } //Si la valeur du parent_id n'est pas dÃ©finie on va lui attribuer 0 par dÃ©faut 	
+    	$parent_id = $datas['parent_id']; //On stocke cette valeur dans une variable pour plus de facilitÃ©
 		
 		//   HACK SPECIAL POUR LE DEPLACEMENT D'UN NOEUD   //
     	if(isset($this->oldNewId[$parent_id])) { $parent_id = $this->oldNewId[$parent_id]; }
     	
-        $tree = $this->getTree(); //Récupération de l'arbre
+        $tree = $this->getTree(); //RÃ©cupÃ©ration de l'arbre
         // pr($tree);
-        //Si le parent existe dans l'arbre on va sélectionner ses bornes gauche et droite
+        //Si le parent existe dans l'arbre on va sÃ©lectionner ses bornes gauche et droite
         if($parent_id != 0 && isset($tree[$parent_id])) {
         	
         	$parent_data = array(
@@ -178,30 +177,30 @@
         		'level' => $tree[$parent_id]['level']
         	);
         	
-		//Sinon on va sélectionner la borne la plus à droite et rejouter 1 pour l'insérer        	
+		//Sinon on va sÃ©lectionner la borne la plus Ã  droite et rejouter 1 pour l'insÃ©rer        	
         } else {
-			//coalesce récupère le premier élement non null parmis ses arguments
+			//coalesce rÃ©cupÃ¨re le premier Ã©lement non null parmis ses arguments
         	$sql = 'SELECT (COALESCE(MAX(rgt), 0) + 1) as rgt, -1 as level FROM '.$this->table;
         	$parent_data = current($this->query($sql, true));
 			// pr($parent_data);
         }
         
-        //Décalage des bornes droite
+        //DÃ©calage des bornes droite
         $sql = 'UPDATE '.$this->table.' SET rgt = rgt + 2 WHERE rgt >= '.$parent_data['rgt'];        
         $this->query($sql);
 		// pr($sql);
         
-        //Décalage des bornes gauche
+        //DÃ©calage des bornes gauche
         $sql = 'UPDATE '.$this->table.' SET lft = lft + 2 WHERE lft >= '.$parent_data['rgt'];
         $this->query($sql);
 		// pr($sql);
 
-        //On ajoute les données manquantes aux données à sauvegarder
+        //On ajoute les donnÃ©es manquantes aux donnÃ©es Ã  sauvegarder
         $datas['lft'] = $parent_data['rgt'];
 		$datas['rgt'] = $parent_data['rgt'] + 1;
 		$datas['level'] = $parent_data['level'] + 1;
         
-		parent::save($datas, $forceInsert); //Sauvegarde des données en faisant appel à la fonction parente
+		parent::save($datas, $forceInsert); //Sauvegarde des donnÃ©es en faisant appel Ã  la fonction parente
 		
 		// pr($parent_id);
 		// pr($datas);
@@ -211,43 +210,43 @@
 	}
 	
 	/**
-	 * Fonction chargée de l'édition d'une feuille de l'arbre
+	 * Fonction chargÃ©e de l'Ã©dition d'une feuille de l'arbre
 	 *
-	 * @param 	array $datas Données à mettre à jour
-	 * @return  mixed Un booléen si faux, un entier si vrai : la valeur de l'élément créé si vrai
+	 * @param 	array $datas DonnÃ©es Ã  mettre Ã  jour
+	 * @return  mixed Un boolÃ©en si faux, un entier si vrai : la valeur de l'Ã©lÃ©ment crÃ©Ã© si vrai
 	 * @access	public
-	 * @author	koéZionCMS
+	 * @author	koÃ©ZionCMS
 	 * @version 0.1 - 28/12/2011 by FI
-	 * @todo 	28/12/2011 - A voir si au lieu de retourner faux lors du test sur l'id et la présence du noeud dans l'arbre on ne fait pas appel à la fonction add
+	 * @todo 	28/12/2011 - A voir si au lieu de retourner faux lors du test sur l'id et la prÃ©sence du noeud dans l'arbre on ne fait pas appel Ã  la fonction add
 	 */
 	function edit($datas) {
 		
-		if(!is_array($datas)) { return false; } //Si les données à sauvegarder ne sont pas sous forme de tableau on retourne faux
+		if(!is_array($datas)) { return false; } //Si les donnÃ©es Ã  sauvegarder ne sont pas sous forme de tableau on retourne faux
     	    	
-		$key = $this->primaryKey; //Récupération de la clé primaire
-        $id = $datas['id']; //Récupération de la valeur de l'identifiant
-        $fields = array(); //Tableau qui va contenir la liste des champs à sauvegarder
+		$key = $this->primaryKey; //RÃ©cupÃ©ration de la clÃ© primaire
+        $id = $datas['id']; //RÃ©cupÃ©ration de la valeur de l'identifiant
+        $fields = array(); //Tableau qui va contenir la liste des champs Ã  sauvegarder
 
-        $tree = $this->getTree(); //Récupération de l'arbre
+        $tree = $this->getTree(); //RÃ©cupÃ©ration de l'arbre
 
 		if(!$id || !isset($tree[$id])) { return false; } //Si l'identifiant n'existe par ou que le noeud n'est pas dans l'arbre on retourne faux
         
-        $current = $tree[$id]; //Récupération du noeud courant
+        $current = $tree[$id]; //RÃ©cupÃ©ration du noeud courant
         // pr($current);
-        parent::save($datas); //Sauvegarde des données en faisant appel à la fonction parente      
+        parent::save($datas); //Sauvegarde des donnÃ©es en faisant appel Ã  la fonction parente      
         // pr($id);
 		
 		// pr($datas['parent_id']);
 		
-        //Si le champ parent_id est présent dans les données à mettre à jour
-        //ET que la valeur courante du champ parent_id et différente de celle postée
+        //Si le champ parent_id est prÃ©sent dans les donnÃ©es Ã  mettre Ã  jour
+        //ET que la valeur courante du champ parent_id et diffÃ©rente de celle postÃ©e
         if(isset($datas['parent_id']) && $current['parent_id'] != $datas['parent_id']) {
 
-        	//On va extraire l'arbre, le supprimer puis l'insérer à la bonne place
-            //On récupère également le noeud parent          
+        	//On va extraire l'arbre, le supprimer puis l'insÃ©rer Ã  la bonne place
+            //On rÃ©cupÃ¨re Ã©galement le noeud parent          
             $curTree = $this->getChildren($id, true, false);
             // pr($curTree);
-            //Pour chacun des éléments de l'arbre on va supprimer les valeurs lft, rgt et level car elles vont être recalculée lors de l'ajout
+            //Pour chacun des Ã©lÃ©ments de l'arbre on va supprimer les valeurs lft, rgt et level car elles vont Ãªtre recalculÃ©e lors de l'ajout
             foreach($curTree as $key => $node) { unset($curTree[$key]['lft'], $curTree[$key]['rgt'], $curTree[$key]['level']); }
                         
             $curTree[0]['parent_id'] = $datas['parent_id']; //On affecte au noeud parent la nouvelle valeur du champ parent
@@ -255,7 +254,7 @@
                    
 			// pr($curTree);
 				   
-            //On va parcourir le tableau d'éléments du noeud courant
+            //On va parcourir le tableau d'Ã©lÃ©ments du noeud courant
             foreach($curTree as $key => $node){ $this->add($node, true); }//Ajouter le noeud dans l'arbre 
 
         }
@@ -264,29 +263,29 @@
     }  
 
 	/**
-	 * Fonction chargée de la suppression d'un élément de l'arbre
+	 * Fonction chargÃ©e de la suppression d'un Ã©lÃ©ment de l'arbre
 	 *
-	 * @param 	integer $id Identifiant du noeud à supprimer
+	 * @param 	integer $id Identifiant du noeud Ã  supprimer
 	 * @access	public
-	 * @author	koéZionCMS
-	 * @return 	boolean Vrai si la suppression s'est correctement déroulée, faux sinon
+	 * @author	koÃ©ZionCMS
+	 * @return 	boolean Vrai si la suppression s'est correctement dÃ©roulÃ©e, faux sinon
 	 * @version 0.1 - 28/12/2011 by FI
 	 */
 	function delete($id) {
     	
         $id = (int)$id; //On fait un cast sur l'id
-        $tree = $this->getTree(); //Récupération de l'arbre        
-        if(!isset($tree[$id])) { return false; } //Si l'identifiant passé en paramètre ne fait pas parti de l'arbre
+        $tree = $this->getTree(); //RÃ©cupÃ©ration de l'arbre        
+        if(!isset($tree[$id])) { return false; } //Si l'identifiant passÃ© en paramÃ¨tre ne fait pas parti de l'arbre
         
-        //On récupère la valeur lft et rgt du noeud courant
+        //On rÃ©cupÃ¨re la valeur lft et rgt du noeud courant
         $curLft = $tree[$id]['lft'];
         $curRgt = $tree[$id]['rgt'];
 		
 		// pr($curLft);
 		// pr($curRgt);
         
-        //Sélection des identifiants des catégories à supprimer        
-        //On formate le tout sous forme de tableau puis on fait appel à la fonction parente pour la suppression
+        //SÃ©lection des identifiants des catÃ©gories Ã  supprimer        
+        //On formate le tout sous forme de tableau puis on fait appel Ã  la fonction parente pour la suppression
         $sql = 'SELECT id FROM '.$this->table.' WHERE lft >= '.$curLft.' AND rgt <= '.$curRgt;
 		
 		// pr($sql);
@@ -301,10 +300,10 @@
 		
 		// pr($idToDelete);
                 
-        $diff = $tree[$id]['rgt'] - $tree[$id]['lft'] + 1; //On calcule la différence des deux bornes supprimées
+        $diff = $tree[$id]['rgt'] - $tree[$id]['lft'] + 1; //On calcule la diffÃ©rence des deux bornes supprimÃ©es
         
         //Rebouchage des trous
-        $sql = 'UPDATE '.$this->table.' SET lft = lft - :diff WHERE lft >= :lft'; //Préparation de la requête
+        $sql = 'UPDATE '.$this->table.' SET lft = lft - :diff WHERE lft >= :lft'; //PrÃ©paration de la requÃªte
 		// pr($sql);
         $d[":lft"] = $curLft;
         $d[":diff"] = $diff;
@@ -326,32 +325,32 @@
     }
 	
 	/**
-	 * Cette fonction permet de récupérer le chemin d'un noeud
+	 * Cette fonction permet de rÃ©cupÃ©rer le chemin d'un noeud
 	 * Fonction pratique pour la mise en place du fil d'ariane
 	 *
 	 * @param 	integer 	$childrenId Identifiant du noeud 
-	 * @param 	varchar 	$type Type de retour souhaité (array dans son fonctionnement normal, varchar si on l'utilise dans la fonction récursive)
-	 * @return	mixed	Soit un tableau, soit une chaine de caractères
+	 * @param 	varchar 	$type Type de retour souhaitÃ© (array dans son fonctionnement normal, varchar si on l'utilise dans la fonction rÃ©cursive)
+	 * @return	mixed	Soit un tableau, soit une chaine de caractÃ¨res
 	 * @access	public
-	 * @author	koéZionCMS
+	 * @author	koÃ©ZionCMS
 	 * @version 0.1 - 01/01/2012 by FI
 	 * @version 0.2 - 13/04/2012 by FI - Modification des conditions de recherche
-	 * @version 0.3 - 16/05/2012 by FI - Modification de la récupération des catégories suite à la mise en place de la gestion des sites - On ne récupère pas les catégories de type 3
+	 * @version 0.3 - 16/05/2012 by FI - Modification de la rÃ©cupÃ©ration des catÃ©gories suite Ã  la mise en place de la gestion des sites - On ne rÃ©cupÃ¨re pas les catÃ©gories de type 3
 	 */    
 		function getPath($childrenId, $type = 'array') {
 			
-			$children = $this->getTree(array('conditions' => array('id' => $childrenId))); //Récupération de l'enfant    	
-			$children = $children[$childrenId]; //Récupération de l'enfant
+			$children = $this->getTree(array('conditions' => array('id' => $childrenId))); //RÃ©cupÃ©ration de l'enfant    	
+			$children = $children[$childrenId]; //RÃ©cupÃ©ration de l'enfant
 
 			$req = array('moreConditions' => "lft<".$children['lft']." AND rgt>".$children['rgt']." AND type != 3"); //Conditions de recherche
-			$node = $this->getTree($req); //On va récupérer les menus
+			$node = $this->getTree($req); //On va rÃ©cupÃ©rer les menus
 			
 			if($type == 'array') {
 				
 				if(!empty($node)) return array_merge($node, array($childrenId => $children));
 				else return array(0 => $children);
 				
-			//Utilisé pour la génération de la fonction récursive pour la mise en place de l'arbre    		
+			//UtilisÃ© pour la gÃ©nÃ©ration de la fonction rÃ©cursive pour la mise en place de l'arbre    		
 			} else if($type == 'varchar') {
 
 				if(!empty($node)) {
@@ -365,28 +364,28 @@
 					}
 					
 					$return = substr($return, 0, strlen($return) - 1); //Suppression du dernier .
-					return $return; //On retourne les données
+					return $return; //On retourne les donnÃ©es
 				} else {
 					
-					return $childrenId; //On retourne l'identifiant du noeud par défaut
+					return $childrenId; //On retourne l'identifiant du noeud par dÃ©faut
 				} 
 			}
 		}
 		
 	/**
-	 * Cette fonction est utilisée pour mettre en place l'arbre avec toutes les dépendances parents/enfants
+	 * Cette fonction est utilisÃ©e pour mettre en place l'arbre avec toutes les dÃ©pendances parents/enfants
 	 *
-	 * @param 	array 	$req 		paramètres de recherche
-	 * @param 	integer $parentId 	Identifiants de l'élement parent
+	 * @param 	array 	$req 		paramÃ¨tres de recherche
+	 * @param 	integer $parentId 	Identifiants de l'Ã©lement parent
 	 * @access	public
-	 * @author	koéZionCMS
+	 * @author	koÃ©ZionCMS
 	 * @version 0.1 - 01/01/2012 by FI
-	 * @version 0.2 - 23/02/2012 by FI - Modification de la structure de la fonction pour gérer d'un coté l'identifiant du parent et de l'autre les conditions supplémentaires 
-	 * @version 0.3 - 16/05/2012 by FI - Modification de la récupération des catégories suite à la mise en place de la gestion des sites - Récupération en premier de la catégorie parente du site 
+	 * @version 0.2 - 23/02/2012 by FI - Modification de la structure de la fonction pour gÃ©rer d'un cotÃ© l'identifiant du parent et de l'autre les conditions supplÃ©mentaires 
+	 * @version 0.3 - 16/05/2012 by FI - Modification de la rÃ©cupÃ©ration des catÃ©gories suite Ã  la mise en place de la gestion des sites - RÃ©cupÃ©ration en premier de la catÃ©gorie parente du site 
 	 */    
 		function _recursive($req = array(), $parentId = null) {
 						
-			//Récupération de l'indentifiant de la catégorie racine du site
+			//RÃ©cupÃ©ration de l'indentifiant de la catÃ©gorie racine du site
 			$racineConditions = array('conditions' => array('type' => 3, 'online' => 1));
 			$racine = $this->findFirst($racineConditions);
 			$racineId = $racine['id'];
@@ -394,15 +393,15 @@
 			if(empty($parentId)) { $req['conditions']['parent_id'] = $racineId; }
 			else { $req['conditions']['parent_id'] = $parentId; }
 					
-			$nodes = $this->getTree($req); //On va récupérer les menus
+			$nodes = $this->getTree($req); //On va rÃ©cupÃ©rer les menus
 			foreach($nodes as $k => $v) { //On parcours l'ensemble de ces menus
 				
-				$path = $this->getPath($v['id'], 'varchar'); //On récupère le path    		
-				$this->displayTree = Set::insert($this->displayTree, $path, $v); //On insère l'élément courant dans l'arbre
+				$path = $this->getPath($v['id'], 'varchar'); //On rÃ©cupÃ¨re le path    		
+				$this->displayTree = Set::insert($this->displayTree, $path, $v); //On insÃ¨re l'Ã©lÃ©ment courant dans l'arbre
 				
-				//Pour savoir si le noeud courant à des enfants il suffit de faire 
-				//la différence entre la borne doite et la borne gauche si cette
-				//valeur est > 1 il y à des enfants    		
+				//Pour savoir si le noeud courant Ã  des enfants il suffit de faire 
+				//la diffÃ©rence entre la borne doite et la borne gauche si cette
+				//valeur est > 1 il y Ã  des enfants    		
 				$diff = $v['rgt'] - $v['lft'];    		
 				if($diff > 1) { $this->_recursive($req, $v['id']); } //On relance la fonction
 			}
