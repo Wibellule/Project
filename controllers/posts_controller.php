@@ -1,5 +1,11 @@
 <?php
 class PostsController extends AppController{
+
+	/**
+	 * Fonction view
+	 * @param $id id
+	 * @param $slug
+	 */
 	function view($id = null,$slug){
 		
 		$id = (int) $id;
@@ -70,6 +76,10 @@ class PostsController extends AppController{
 		$this->set('menuGeneral', $menu);
 	}
 
+	/**
+	 * Fonction index
+	 * @param $tag tag
+	 */
 	function index($tag = null){
 		parent::index();
 		$d['elementsPerPage'] = 5;
@@ -110,7 +120,7 @@ class PostsController extends AppController{
 		// $this->set('nbcomments', $nb_comments);
 	}
 		
-	function backoffice_add(){
+	function backoffice_add($id = null){
 		parent::backoffice_add();
 		$this->loadModel('Typepost');
 		$d['typeposts'] = $this->Typepost->find();
