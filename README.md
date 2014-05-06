@@ -12,7 +12,7 @@ Projet de cr&eacute;ation d'un framework personnel :
 - Création d'un class_registry qui étend le model principal
 
 Options :
-- Librairie SwiftMailer - ConfigMagik - CakePhp ( Inflector / Set / String )
+- Librairie SwiftMailer - ConfigMagik - CakePhp ( Inflector / Set / String / Hash )
 - Configuration de la connexion de la base de données avec ConfigMagik
 
 Design :
