@@ -16,6 +16,7 @@ require ROOT.DS.'views'.DS.'helpers'.DS.'form.php';
 //Librairie CakePHP
 require('CakePHP'.DS.'inflector.php');
 require('CakePHP'.DS.'set.php');
+require('CakePHP'.DS.'hash.php');
 
 //Librairie SwiftMailer
 
