@@ -17,7 +17,7 @@ Options :
 
 Design :
 - Mise à disposition du thème SmartStart pour le Frontoffice
-- Flat UI pour le design du backoffice
+- Bootstrap Twitter v3.0 pour le design du backoffice
 - Inclusion de CKEDITOR et CKFINDER pour l'édition et l'upload de fichier
 - Plugins CKEDITOR Video HTML5
 
