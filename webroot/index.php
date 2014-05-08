@@ -41,7 +41,7 @@ define('EVENT_MANAGER', CORE.DS.'Event'.DS.'event_manager.php'); //Chemin vers l
 define('EVENT_LISTENER', CORE.DS.'Event'.DS.'event_listener.php'); //Chemin vers l'event_listener
 
 
-require(CORE.DS.'includes.php');
+require(CORE.DS.'bootstrap.php');
 
 //Test pour savoir si le site a un fichier de config paramétré
 //Si le fichier database.ini n'existe pas cela veut dire que le site n'est pas correctement paramétré
