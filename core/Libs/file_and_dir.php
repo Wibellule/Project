@@ -80,7 +80,7 @@ class FileAndDir {
 		else { return false; }
 	}
 	
-	function fcopy($source, $dest) {
+	static function fcopy($source, $dest) {
 		
 		return copy($source, $dest);
 	}
