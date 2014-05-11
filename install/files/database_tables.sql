@@ -208,6 +208,68 @@ CREATE TABLE IF NOT EXISTS `websites` (
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
 
+--  --------------------------------------------------------
+
+--
+-- Structure de la table `modules`
+--
+
+CREATE TABLE IF NOT EXISTS `modules` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `controller_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `action_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `display_in_menu` int(11) NOT NULL,
+  `order_by` int(11) NOT NULL,
+  `online` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modules_type_id` int(11) NOT NULL,
+  `plugin_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=13 ;
+
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `modulestypes`
+--
+
+CREATE TABLE IF NOT EXISTS `modulestypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `order_by` int(11) NOT NULL,
+  `online` int(11) NOT NULL,
+  `created` datetime DEFAULT NULL,
+  `modified` datetime NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=8 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `plugins`
+--
+
+CREATE TABLE IF NOT EXISTS `plugins` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `code` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `author` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `online` int(11) NOT NULL,
+  `installed` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `modified` datetime NOT NULL,
+  `created_by` int(11) NOT NULL,
+  `modified_by` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci AUTO_INCREMENT=1 ;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+
+
