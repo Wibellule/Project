@@ -50,3 +50,21 @@ INSERT INTO `typeprojects` (`id`, `name`, `online`) VALUES
 
 INSERT INTO `users` (`id`, `login`, `password`, `online`) VALUES
 (1, 'admin', 'admin', 1);
+
+INSERT INTO `modules` (`id`, `name`, `controller_name`, `action_name`, `display_in_menu`, `order_by`, `online`, `created`, `modules_type_id`, `plugin_id`) VALUES
+(1, 'Catégories', 'categories', '', 0, 3, 1, '2012-11-29 22:58:29', 2, 0),
+(2, 'Sliders', 'sliders', '', 0, 4, 1, '2012-11-29 22:58:46', 2, 0),
+(5, 'Articles', 'posts', '', 0, 8, 1, '2012-11-29 23:00:13', 4, 0),
+(6, 'Types d''article', 'typeposts', '', 0, 9, 1, '2012-11-29 23:00:35', 4, 0),
+(7, 'Commentaires articles', 'postcomments', '', 0, 10, 1, '2012-11-29 23:01:11', 4, 0),
+(9, 'Sites Internet', 'websites', '', 0, 0, 1, '2012-11-30 09:27:12', 5, 0),
+(10, 'Liste des utilisateurs', 'users', '', 0, 1, 1, '2012-11-30 09:27:32', 5, 0),
+(11, 'Plugins', 'plugins', '', 0, 2, 1, '2012-11-30 09:27:47', 5, 0),
+(12, 'Projets', 'projects', '', 0, 5, 1, '2014-05-06 00:00:00', 2, 0);
+
+INSERT INTO `modulestypes` (`id`, `name`, `order_by`, `online`, `created`, `modified`, `modified_by`) VALUES
+(7, 'Tableau de bord', 0, 1, '2012-12-01 06:39:27', '2012-12-01 06:39:27', 1),
+(2, 'Contenus', 1, 1, '2012-12-01 06:38:44', '2012-12-01 06:38:44', 1),
+(4, 'Actualités / Blog', 2, 1, '2012-12-01 06:39:16', '2012-12-01 06:39:16', 1),
+(6, 'Plugins', 3, 1, '2012-12-03 22:39:48', '2012-12-03 22:39:48', 1),
+(5, 'Paramètres', 4, 1, '2012-12-01 06:39:27', '2012-12-01 06:39:27', 1);
