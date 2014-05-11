@@ -7,14 +7,14 @@ class ProjectsController extends AppController{
 		$id = (int) $id;
 		// pr($id);
 		// die();
-		//On test si un paramètre existe
+		//On test si un paramï¿½tre existe
 		if(!isset($id)){ $this->e404('La page demandÃ©e n\'existe pas.'); }
 		
 		else if( !$id ){ $this->e404('La page demandÃ©e n\'existe pas.'); }
 		
 		$post = $this->Project->findFirst( array( 'conditions' => array( 'id' => $id, 'online' => 1) ) );
 		
-		//On test si la page demandée existe
+		//On test si la page demandï¿½e existe
 		if(empty($post)){ $this->e404('La page demandÃ©e n\'existe pas.'); }
 		
 		if(isset($post['slug'])){
@@ -46,7 +46,7 @@ class ProjectsController extends AppController{
 		$this->set('link', $d);
 		////////////////////////////
 		
-		//On envoi les variables à la vue
+		//On envoi les variables ï¿½ la vue
 		$this->set('project', $post);
 		
 		/* menu */
@@ -100,7 +100,7 @@ class ProjectsController extends AppController{
 		// pr($d['typeprojects']);
 	}
 	
-	function backoffice_add(){
+	function backoffice_add($id = null){
 		parent::backoffice_add();
 		$this->loadModel('Typeproject');
 		$d['typeprojects'] = $this->Typeproject->find();
