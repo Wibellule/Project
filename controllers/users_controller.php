@@ -12,7 +12,7 @@ class UsersController extends AppController{
 			$postLogin = $data['login'];
 			$postPassword = $data['mdp'];
 			
-			$user = $this->User->findFirst(array('conditions' => array( 'login' => $postPassword )));
+			$user = $this->User->findFirst(array('conditions' => array( 'login' => $postLogin )));
 			if(!empty($user)){
 				//Etape1 Login
 				$bddPassword = $user['password'];
